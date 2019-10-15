@@ -14,5 +14,18 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+ computed: {
+   // eslint-disable-next-line vue/return-in-computed-property
+   getlogging(){
+     return this.$store.state.logging
+   }
+ },
+ watch: {
+  getlogging(newVal, oldVal){
+  console.log(newVal) 
+  console.log(oldVal)
+  localStorage.setItem("log", newVal);
+ }
+},
   render: h => h(App)
 }).$mount('#app')

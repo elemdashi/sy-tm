@@ -1,0 +1,38 @@
+{
+    "code": 200,
+    "msg": "成功!",
+    "data": {
+        "tuijian": [
+            {
+              "nvzhuang":[
+                  {
+                      "url":"//img.alicdn.com/tfs/TB1mvSHSVXXXXcxXXXXXXXXXXXX-100-100.jpg_210x210Q50s50.jpg_.webp",
+                      "name":"连衣裙"
+                  },
+                  {
+                    "url":"//img.alicdn.com/tfs/TB1I0W2qf1TBuNjy0FjXXajyXXa-100-100.jpg_210x210Q50s50.jpg_.webp",
+                    "name":"T桖"
+                },
+                {
+                    "url":"//img.alicdn.com/tfs/TB1JjmnqkOWBuNjSsppXXXPgpXa-100-100.jpg_210x210Q50s50.jpg_.webp",
+                    "name":"衬衫"
+                },
+                {
+                    "url":"//img.alicdn.com/tfs/TB1XzKuqXuWBuNjSspnXXX1NVXa-100-100.jpg_210x210Q50s50.jpg_.webp",
+                    "name":"雪纺衫"
+                },
+                {
+                    "url":"//img.alicdn.com/tfs/TB1kO5nqkOWBuNjSsppXXXPgpXa-100-100.jpg_210x210Q50s50.jpg_.webp",
+                    "name":"裤子"
+                },
+                {
+                    "url":"//img.alicdn.com/tfs/TB1H6enqkOWBuNjSsppXXXPgpXa-100-100.jpg_210x210Q50s50.jpg_.webp",
+                    "name":"牛仔裤"
+                }
+              
+              ]
+            }
+            
+        ]
+    }
+}
