@@ -4,6 +4,8 @@ import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Class from './components/Class.vue'
 import Shopcar from './components/Shopcar.vue'
+import Search from './components/Search.vue'
+import ProductList from './components/ProductList.vue'
 
 Vue.use(Router)
 
@@ -39,6 +41,15 @@ export default new Router({
       name:"shopcar",
       component: Shopcar
      },
-     
+     {
+       path:"/search",
+       name:"search",
+       component:Search
+     },
+     {
+       path:"/productlist",
+       name:"productList",
+       component:ProductList
+     }     
   ]
 })
