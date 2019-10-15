@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>主页</h1>
+  <div class="class">
+   <h1>分类页面</h1>
    
   </div>
 </template>
@@ -10,7 +10,7 @@
 
 
 export default {
-  name: 'home',
+  name: 'class',
  
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="login">
+    <h1>登录页面</h1>
   </div>
 </template>
 <script>
