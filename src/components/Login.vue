@@ -9,6 +9,7 @@
   <div class="login">
    
     <div class="login-top">
+      
       <span>淘宝账户登录</span>
     </div>
     <!-- 输入框---------------------- -->
@@ -24,12 +25,13 @@
         <div>
           <input type="text" class="login-you" v-model="input2" placeholder="请输入密码" />
         </div>
+
       </div>
     </div>
 
     <!-- 登录按钮 -->
     <router-link to="/home" tag="div">
-      <div class="login-anniu" >
+      <div class="login-anniu" @click="denglu()" >
         <span>登&nbsp;录</span>
       </div>
     </router-link>
@@ -51,7 +53,7 @@ export default {
     return {
       input1: "",
       input2: "",
-
+      leave:"",
       telephone: "110",
       email: "123456@qq.com",
       name: "小王",
@@ -59,15 +61,30 @@ export default {
     };
   },
   beforeRouteLeave: function(to, from, next) {
-    if (
+    if(this.leave=="true"){
+      next()
+    }
+    
+   
+  },
+
+  methods: {
+    quxiao(){
+      let a=document.querySelector(".login-zhezhao")
+      a.style.display="none"
+    },
+    denglu(){
+      console.log("bbb")
+       if (
       this.input1 == this.telephone ||
       this.input1 == this.email ||
       this.input1 == this.email
     ) {
       if (this.input2 == this.submit) {
         this.$store.state.logging = "true";
+        this.leave="true"
         console.log(this.$store.state.logging);
-        next();
+       
       } else {
           let a=document.querySelector(".login-zhezhao")
       a.style.display="block"
@@ -76,13 +93,6 @@ export default {
        let a=document.querySelector(".login-zhezhao")
       a.style.display="block"
     }
-   
-  },
-
-  methods: {
-    quxiao(){
-      let a=document.querySelector(".login-zhezhao")
-      a.style.display="none"
     }
   }
 };
