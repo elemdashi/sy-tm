@@ -13,20 +13,25 @@ export default new Router({
       name: 'home',
       component: Home
     },
+    // {
+    //  path:"/login",
+    //  name:"login",
+    //  component: Login
+    // },
+    // {
+    //   path:"/class",
+    //   name:"class",
+    //   component: Class
+    //  },
+    //  {
+    //   path:"/shopcar",
+    //   name:"shopcar",
+    //   component: Shopcar
+    //  },
     {
-     path:"login",
-     name:"login",
-     component: Login
-    },
-    {
-      path:"class",
-      name:"class",
-      component: Class
-     },
-     {
-      path:"shopcar",
-      name:"shopcar",
-      component: Shopcar
-     }
+      path:"*"
+    }
+
+     
   ]
 })
