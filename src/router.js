@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Class from './components/Class.vue'
+import classtwo from './components/ClassTwo.vue'
 import Shopcar from './components/Shopcar.vue'
 import Search from './components/Search.vue'
 import ProductList from './components/ProductList.vue'
@@ -70,6 +71,11 @@ export default new Router({
           component:nanxie
         },
       ]
+     },
+     {
+      path:"/classtwo",
+      name:"classtwo",
+      component: classtwo
      },
 
      {

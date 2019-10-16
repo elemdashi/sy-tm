@@ -16,7 +16,7 @@
 
   <!-- 外链跳转 -->
     <div class="top-adv-bar">
-      <a href="https://suning.tmall.com/?pos=1&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547149173937_1699747&spm=a211ue.11501597.icon.1"><img class="adv-icon"src="https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>苏宁易购</span></a>
+      <a href="https://suning.tmall.com/?pos=1&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547149173937_1699747&spm=a211ue.11501597.icon.1"><img class="adv-icon" src="https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>苏宁易购</span></a>
       <a href="https://chaoshi.m.tmall.com/?pos=2&acm=201704071.1003.64.1699747&_ig=shoumao&scm=1003.64.201704071.OTHER_1545931209467_1699747&spm=a211ue.11501597.icon.2"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp"><span>天猫超市</span></a>
       <a href="https://pages.tmall.com/wow/jinkou/act/zhiying?wh_from=icon&pos=3&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547673722287_1699747&spm=a211ue.11501597.icon.3"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1Jc0fSFXXXXXTapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>天猫国际</span></a>
       <a href="https://tb.cn/x/ju?pos=4&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547844648097_1699747&spm=a211ue.11501597.icon.4"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp"><span>聚划算</span></a>
@@ -235,6 +235,7 @@ export default {
       tabIndex:1
     }
   },
+<<<<<<< HEAD
   mounted(){ 
   var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
@@ -258,6 +259,25 @@ export default {
 				},
 			}
 		})
+=======
+  mounted(){
+   
+    const mySwiper = new Swiper ('.swiper-container', {  
+    autoplay: true,
+    loop: true,
+    
+    // 如果需要分页器
+    pagination: {
+      el:'.swiper-pagination'
+    },
+    paginationClickable: true,
+    longSwipesRatio: 0.3,
+    touchRatio:1,
+    observer:true,//修改swiper自己或子元素时，自动初始化swiper
+    observeParents:true,//修改swiper的父元素时，自动初始化swiper
+    scrollbar: '.swiper-scrollbar',
+  }) 
+>>>>>>> e1e30fbb7ae122349d52266077f93d5ad0cf6e00
       countDown("2019-11-01 00:00:00")
     document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll)
 

@@ -1,6 +1,7 @@
 <template>
   <div class="class">
-    <div class="class-top-wai">
+    <div class="classtwo-top-wai">
+        <div class="classtwo-top"></div>
       <div class="class-top">
         <span>全部分类</span>
       </div>
@@ -8,7 +9,7 @@
     <div class="class-xia">
       <div class="class-gundong">
         <div class="class-zuo">
-          <div class="class-lie" @click="tabClick(0)" v-bind:class="{active:tabIndex==0}">为您推荐</div>
+          <div class="class-lie" @click="tabClick(0)" v-bind:class="{active:tabIndex==0}">流行趋势</div>
           <div class="class-lie" @click="tabClick(1)" v-bind:class="{active:tabIndex==1}">国际大牌</div>
           <div class="class-lie" @click="tabClick(2)" v-bind:class="{active:tabIndex==2}">天猫国际</div>
           <div class="class-lie" @click="tabClick(3)" v-bind:class="{active:tabIndex==3}">女装</div>
@@ -26,7 +27,6 @@
     </div>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 
@@ -41,7 +41,7 @@ Vue.use(axios);
 
 
 export default {
-  name: "class",
+  name: "classtwo",
   data() {
     return {
       tuijian: [],
@@ -140,9 +140,13 @@ export default {
 };
 </script>
 <style >
-.class-top-wai {
-  display: flex;
+.classtwo-top-wai {
+  width: 100%;
   background-color: rgb(238, 238, 238);
+}
+.classtwo-top{
+    width: 100%;
+    height: 40px;
 }
 .class-top {
   height: 40px;
