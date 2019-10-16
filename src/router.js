@@ -6,7 +6,13 @@ import Class from './components/Class.vue'
 import Shopcar from './components/Shopcar.vue'
 import Search from './components/Search.vue'
 import ProductList from './components/ProductList.vue'
-
+import dapai from './components/class-router/dapai.vue'
+import tianmao from './components/class-router/tianmao.vue'
+import tuijian from './components/class-router/tuijian.vue'
+import nvzhuang from './components/class-router/nvzhuang.vue'
+import nvxie from './components/class-router/nvxie.vue'
+import nanzhuang from './components/class-router/nanzhuang.vue'
+import nanxie from './components/class-router/nanxie.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -33,7 +39,37 @@ export default new Router({
     {
       path:"/class",
       name:"class",
-      component: Class
+      component: Class,
+      children:[
+        {
+          path:"dapai",
+          component: dapai
+        },
+        {
+          path:"tianmao",
+          component:tianmao
+        },
+        {
+          path:"tuijian",
+          component:tuijian
+        },
+        {
+          path:"nvzhuang",
+          component:nvzhuang
+        },
+        {
+          path:"nvxie",
+          component:nvxie
+        },
+        {
+          path:"nanzhuang",
+          component:nanzhuang
+        },
+        {
+          path:"nanxie",
+          component:nanxie
+        },
+      ]
      },
 
      {

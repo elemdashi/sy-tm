@@ -9,7 +9,8 @@
   <div class="login">
    
     <div class="login-top">
-      
+     
+     <div @click="fanhui()" class="login-fanhui">返回</div> 
       <span>淘宝账户登录</span>
     </div>
     <!-- 输入框---------------------- -->
@@ -54,6 +55,7 @@ export default {
       input1: "",
       input2: "",
       leave:"",
+      fanhuianniu:"",
       telephone: "110",
       email: "123456@qq.com",
       name: "小王",
@@ -64,11 +66,18 @@ export default {
     if(this.leave=="true"){
       next()
     }
-    
+    if(this.fanhuianniu=="true"){
+      next()
+    }
    
   },
 
   methods: {
+    fanhui(){
+      console.log("222")
+       this.fanhuianniu="true"
+       window.history.back()
+    },
     quxiao(){
       let a=document.querySelector(".login-zhezhao")
       a.style.display="none"
@@ -97,7 +106,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -115,6 +124,7 @@ export default {
   line-height: 40px;
   border-bottom: 1px solid #ccc;
   background-color: rgb(247, 247, 248);
+
 }
 .login-text {
   width: 100%;
@@ -184,5 +194,11 @@ input::-webkit-input-placeholder {
     background-color: aliceblue;
     line-height: 45px;
     border: 1px solid #ccc
+}
+.login-fanhui{
+  width: 40px;
+  display: inline-block;
+ position: relative;
+ left: -120px;
 }
 </style>
