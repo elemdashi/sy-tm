@@ -71,7 +71,7 @@
       </el-col>
       <el-col :span="12">
         <div class="grid-content bg-purple">
-           <div class="grid-content-top">
+           <div class="grid-content-top left">
              <span>天猫好物</span>
           </div>
 
@@ -93,7 +93,7 @@
     <el-row :gutter="6">
       <el-col :span="12">
         <div class="grid-content bg-purple">
-           <div class="grid-content-top">
+           <div class="grid-content-top left">
              <span>聚划算</span>
           </div>
 
@@ -112,7 +112,7 @@
       </el-col>
       <el-col :span="12">
         <div class="grid-content bg-purple">
-           <div class="grid-content-top">
+           <div class="grid-content-top left" >
              <span>天猫闪降</span>
           </div>
 
@@ -138,15 +138,36 @@
         <span>猜你喜欢</span>
       </div>
       <div class="guess-product-list">
-        <el-row :gutter="10">
-          <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
+        <el-row :gutter="10" v-for="(item,index) in homelist">
+          <el-col :span="12" v-for="(item,index) in homelist">
+            <div class="grid-content bg-purple" >
+              <!-- 商品主图 -->
+              <div class="guess-product-list-img">
+                <img :src="item.imgadress">
+              </div>
+              <!-- 商品介绍文字 -->
+              <div class="guess-product-list-title">
+                <div class="label">
+                  <span>唤狼</span>
+                </div>
+                <div class="mainintro">
+                  <span>男士秋季宽松直筒修身休闲牛仔裤</span>
+                </div>
+                <div class="specialtyurl">
+                  <img src="//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp" alt="">
+                </div>
+                <div class="price-content">
+                  <span class="price">￥49</span>
+                  <div class="looksame">
+                    <span class="title"><a href="https://market.m.taobao.com/apps/market/tmalltoplist/top-find.html?wh_weex=true&wx_navbar_transparent=true&callFrom=tradeFeeds&itemId=602705858617&spm=a211ue.11501597.new-recommend.1">看相似</a></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </el-col>
         </el-row>
 
-        <el-row :gutter="10">
-          <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-        </el-row>
+        
       </div>
       
     </div>
@@ -209,26 +230,34 @@ export default {
   name: 'home',
    data(){
     return{
+      homelist:[],
       input:"",
       tabIndex:1
     }
   },
-  mounted(){
-   
-    const mySwiper = new Swiper ('.swiper-container', {  
-    autoplay: true,
-    loop: true,
-    // 如果需要分页器
-    pagination: {
-      el:'.swiper-pagination'
-    },
-    paginationClickable: true,
-    longSwipesRatio: 0.3,
-    touchRatio:1,
-    observer:true,//修改swiper自己或子元素时，自动初始化swiper
-    observeParents:true,//修改swiper的父元素时，自动初始化swiper
-    scrollbar: '.swiper-scrollbar',
-  }) 
+  mounted(){ 
+  var mySwiper = new Swiper('.swiper-container', {
+			autoplay: true,//可选选项，自动滑动
+            loop: true, // 循环模式选项，true 循环播放
+            observer: true,//实时检测，动态更新
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'custom',
+				autoplayDisableOnInteraction : false,
+				renderCustom: function (swiper, current, total) {
+					var paginationHtml = " ";
+					for (var i = 0; i < total; i++) {
+						// 判断是不是激活焦点，是的话添加active类，不是就只添加基本样式类
+						if (i === (current - 1)) {
+							paginationHtml += '<span class="swiper-pagination-customs swiper-pagination-customs-active"></span>';
+						}else{
+							paginationHtml += '<span class="swiper-pagination-customs"></span>';
+						}						  
+					}
+					return paginationHtml;
+				},
+			}
+		})
       countDown("2019-11-01 00:00:00")
     document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll)
 
@@ -242,7 +271,6 @@ created(){
       
       var scrolldata = document.getElementById('orderFullScreen').scrollTop
       if(scrolldata >300){
-        console.log(document.getElementById("search-input").marginTop)
         document.getElementById("homeLogo").style.display = "none"
         document.getElementById("search-input").style.width = 285+'px'
         document.getElementsByClassName("search-input")[0].style.width = 285+'px'
@@ -259,9 +287,6 @@ created(){
         document.getElementById("homeLogo").style.display = "block"
         document.getElementById("content").style.height= 90+'px'
         document.getElementById("jump-img").style.display = "none"
-
-
-
         console.log("取消导航栏变形")
       }
       
@@ -269,7 +294,7 @@ created(){
 
  toPageClass(){
       this.$router.push({
-        name:'class',
+        name:'classtwo',
       })
     },
     toPageLogin(){
@@ -286,18 +311,19 @@ created(){
 
     getData() {
             console.log("获取后台数据");
-           
-            axios.get('/data/shouye.json')
+           let that = this
+            axios.get('/data/homepage.json')
                 .then(function (response) {
                     console.log(response)
-                    // that.dyList = response.data.data.dy;
-                    // that.techList = response.data.data.tech;
-                    // that.autoList = response.data.data.auto;
-                    // that.moneyList = response.data.data.money;
-                    // that.sportList = response.data.data.sports;
-                    // that.warList = response.data.data.war;
-                    // that.entList = response.data.data.ent;
-                    // that.touTiaoList = response.data.data.toutiao;
+                     that.homelist = response.data.data.product;
+                     console.log(that.homelist)
+            //         // that.techList = response.data.data.tech;
+            //         // that.autoList = response.data.data.auto;
+            //         // that.moneyList = response.data.data.money;
+            //         // that.sportList = response.data.data.sports;
+            //         // that.warList = response.data.data.war;
+            //         // that.entList = response.data.data.ent;
+            //         // that.touTiaoList = response.data.data.toutiao;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -364,7 +390,6 @@ created(){
   }
     #search-input{
        margin:-5px auto;
-       border:1px solid black;
     }
   .content .search-input{
     margin:18px auto;
@@ -412,11 +437,32 @@ created(){
    .home .swiper-wrapper {
      margin-top:10px;
    }
-  .home .swiper-pagination {
-          box-sizing :border-box;
-          border-radius:5px;
-          bottom: 10px;
+//  自定义分页器样式
+/*包裹自定义分页器的div的位置等CSS样式*/
+    .swiper-pagination-custom {
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    text-align: center;
   }
+  /*自定义分页器的样式，这个你自己想要什么样子自己写*/
+    .swiper-pagination-customs {
+      width: 15px;
+      height: 2px;
+      display:inline-block;
+      background: #fff;
+      opacity: .3;
+      margin: 0 5px;
+      outline: 0;
+    }
+  /*自定义分页器激活时的样式表现*/
+  .swiper-pagination-customs-active{
+    opacity :1;
+    background:#ffff;
+  }
+
+
    .home .middle-adv img{
       height: 180px;
       margin:0 auto;
@@ -572,5 +618,104 @@ created(){
 
   .guess-product-list{
     margin-top:10px;
+  }
+
+  .left {
+    justify-content :left;
+  }
+  .left span{
+    margin-left:8px;
+  }
+  // 
+  .home .guess-product-list-img{
+    width:138px;
+    height:138px;
+    margin:10px auto;
+  }
+  .home .guess-product-list-img img{
+    width:138px;
+    height:138px;
+  }
+
+  .guess-product-list-title .label{
+    width:34px;
+    height:18px;
+    background:rgb(206,175,163);
+    display:flex;
+    top: 159px;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 18px;
+    align-items :center;
+    flex-shrink: 0;
+    align-content: flex-start;
+  }
+  .guess-product-list-title .label span{
+    color:#fff;
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+
+  .guess-product-list-title .mainintro,
+  .specialtyurl,{
+    margin-left: 10px;
+    display:flex;
+    align-content :flex-start;
+  }
+  .guess-product-list-title .price-content{
+    display:flex;
+    margin-left: 10px;
+    justify-content :space-between;
+  }
+  .guess-product-list-title .price-content .price{
+     font-size: 16px;
+    font-weight: 600;
+    color: rgb(255, 0, 0);
+    line-height: 28px;
+  }
+  .guess-product-list-title .price-content .looksame{
+    display:flex;
+    align-content :center;
+    align-items :center;
+    background:rgb(255,230,235);
+    margin-right:10px;
+    padding:1px 8px 1px 8px;
+    height: 23px;
+    border-radius:15px;
+   
+  }
+  .guess-product-list-title .price-content .looksame .title{
+    flex-shrink: 0;
+    font-size: 11px;
+    height: 11px;
+    line-height: 11px;
+    font-weight:350;
+  }
+  .guess-product-list-title .price-content .looksame .title a {
+    text-decoration :none;
+    color: rgb(255, 0, 54);
+  }
+   
+ 
+  .guess-product-list-title .mainintro span{
+    font-size:14px;
+    font-weight :350;
+    // flex-shrink: 0;
+    white-space: pre-wrap;
+    line-height: 18px;
+    height: 36px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .specialtyurl img{
+    width:73.17px;
+    height:14px;
+  }
+
+  .specialtyurl{
+    margin-top:3px;
   }
 </style>
