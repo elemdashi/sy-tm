@@ -20,7 +20,7 @@
       <a href="https://chaoshi.m.tmall.com/?pos=2&acm=201704071.1003.64.1699747&_ig=shoumao&scm=1003.64.201704071.OTHER_1545931209467_1699747&spm=a211ue.11501597.icon.2"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp"><span>天猫超市</span></a>
       <a href="https://pages.tmall.com/wow/jinkou/act/zhiying?wh_from=icon&pos=3&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547673722287_1699747&spm=a211ue.11501597.icon.3"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1Jc0fSFXXXXXTapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>天猫国际</span></a>
       <a href="https://tb.cn/x/ju?pos=4&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547844648097_1699747&spm=a211ue.11501597.icon.4"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp"><span>聚划算</span></a>
-      <a @click="toPageClass()"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>分类</span></a>
+      <a @click="toPageClasstwo()"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>分类</span></a>
     </div>
 
     <!-- 首页轮播 -->
@@ -325,10 +325,15 @@ created(){
       }
       
     },
+    toPageClasstwo(){
+    this.$router.push({
+            name:'classtwo',
+          })
+    },
 
  toPageClass(){
       this.$router.push({
-        name:'classtwo',
+        name:'class',
       })
     },
     toPageLogin(){
