@@ -2,14 +2,15 @@
     "code": 200,
     "msg": "成功!",
     "data": {
-        "product": [
+        "leftproduct": [
             {
                "imgadress":"//gw.alicdn.com/bao/uploaded/i4/2261786154/O1CN01A7Nc7P1vKZwmfJYSx_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
                "label":"唤狼",
                "mainintro":"男士秋季宽松直筒修身休闲牛仔裤",
                "url":"https://detail.m.tmall.com/item.htm?id=602705858617&scm=1007.12144.135827.1720401_0_0&pvid=9adc3d38-81b6-4546-b4f6-c435b18298f0&utparam={%22x_hestia_source%22:%221720401%22,%22x_object_type%22:%22item%22,%22x_mt%22:8,%22x_src%22:%221720401%22,%22x_pos%22:1,%22x_pvid%22:%229adc3d38-81b6-4546-b4f6-c435b18298f0%22,%22x_object_id%22:602705858617}&spm=a211ue.11501597.new-recommend.1",
                "specialtyurl":"//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp",
-               "price":"￥49"
+               "price":"￥49",
+               "id":"001"
             },
             {
                "imgadress":"//gw.alicdn.com/bao/uploaded/i4/O1CN01LL2u081fpEblh8EwS_!!0-juitemmedia.jpg_290x10000Q75.jpg_.webp",
@@ -17,7 +18,8 @@
                "mainintro":"乳酸菌小口袋面包整箱蛋糕零食小吃糕点买一箱送一箱早餐休闲食品",
                "url":"https://detail.m.tmall.com/item.htm?id=601004642860&scm=1007.12144.135827.1720401_0_0&pvid=f6d6f330-fe7d-403a-9df5-cb75f450217e&utparam={%22x_hestia_source%22:%221720401%22,%22x_object_type%22:%22item%22,%22x_mt%22:8,%22x_src%22:%221720401%22,%22x_pos%22:2,%22x_pvid%22:%22f6d6f330-fe7d-403a-9df5-cb75f450217e%22,%22x_object_id%22:601004642860}&spm=a211ue.11501597.new-recommend.3",
                "specialtyurl":"//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp",
-               "price":"￥9.9"
+               "price":"￥9.9",
+               "id":"002"
             },
             {
                "imgadress":"//gw.alicdn.com/bao/uploaded/i4/3039085157/O1CN01cRPZ3h1nxx4JZGlsC_!!2-item_pic.png_290x10000.jpg_.webp",
@@ -25,7 +27,8 @@
                "mainintro":"山东紫薯新鲜地瓜农家现挖软糯蜜板栗10斤山芋小番薯蔬菜紫心红薯",
                "url":"https://detail.m.tmall.com/item.htm?id=601871408413&scm=1007.12144.135827.1720401_0_0&pvid=045701c8-10a4-428f-b4b8-6850f835066b&utparam={%22x_hestia_source%22:%221720401%22,%22x_object_type%22:%22item%22,%22x_mt%22:8,%22x_src%22:%221720401%22,%22x_pos%22:3,%22x_pvid%22:%22045701c8-10a4-428f-b4b8-6850f835066b%22,%22x_object_id%22:601871408413}&spm=a211ue.11501597.new-recommend.4",
                "specialtyurl":"//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp",
-               "price":"￥18.8"
+               "price":"￥18.8",
+               "id":"003"
             },
             {
                "imgadress":"//gw.alicdn.com/bao/uploaded/i4/3039085157/O1CN01cRPZ3h1nxx4JZGlsC_!!2-item_pic.png_290x10000.jpg_.webp",
@@ -33,12 +36,9 @@
                "mainintro":"山东紫薯新鲜地瓜农家现挖软糯蜜板栗10斤山芋小番薯蔬菜紫心红薯",
                "url":"https://detail.m.tmall.com/item.htm?id=601871408413&scm=1007.12144.135827.1720401_0_0&pvid=045701c8-10a4-428f-b4b8-6850f835066b&utparam={%22x_hestia_source%22:%221720401%22,%22x_object_type%22:%22item%22,%22x_mt%22:8,%22x_src%22:%221720401%22,%22x_pos%22:3,%22x_pvid%22:%22045701c8-10a4-428f-b4b8-6850f835066b%22,%22x_object_id%22:601871408413}&spm=a211ue.11501597.new-recommend.4",
                "specialtyurl":"//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp",
-               "price":"￥18.8"
+               "price":"￥18.8",
+               "id":"004"
             }
-            
-
-
-          
         ]
     }
 }

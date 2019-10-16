@@ -26,11 +26,16 @@
     <!-- 首页轮播 -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="//gw.alicdn.com/tps/i4/TB1sNryiV67gK0jSZPfSuuhhFXa.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/tfs/TB1GDEJdKP2gK0jSZFoXXauIVXa-1035-390.png_790x10000.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/tps/i4/TB12OAqiVY7gK0jSZKzSuuikpXa.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/tfs/TB1KrKCiYr1gK0jSZR0XXbP8XXa-1035-390.jpg_790x10000Q75.jpg_.webp"></div>
+          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tps/i4/TB1sNryiV67gK0jSZPfSuuhhFXa.jpg_790x10000Q75.jpg_.webp"></a></div>
+          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tfs/TB1GDEJdKP2gK0jSZFoXXauIVXa-1035-390.png_790x10000.jpg_.webp"></a></div>
+          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tps/i4/TB12OAqiVY7gK0jSZKzSuuikpXa.jpg_790x10000Q75.jpg_.webp"></a></div>
+          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tfs/TB1KrKCiYr1gK0jSZR0XXbP8XXa-1035-390.jpg_790x10000Q75.jpg_.webp"></a></div>
           <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i1/1154864/O1CN01xUaYfw1lnl1VGCGHl_!!1154864-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
+          <div class="swiper-slide"><img src="//gw.alicdn.com/tfs/TB1HHWbNrPpK1RjSZFFXXa5PpXa-1035-390.png_790x10000.jpg_.webp"></div>
+          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i4/251856/O1CN01QVVowT1Pa5fCSOrZn_!!251856-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
+          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i4/1058333/O1CN01U29JfK2BQYyqaZrbd_!!1058333-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
+          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i1/1462642/O1CN012OCIvZ1VO4y4bvkos_!!1462642-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
+          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i2/918137/O1CN01P8a7bI29ynLj1OZlj_!!918137-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
       </div>
       <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>
@@ -138,9 +143,10 @@
         <span>猜你喜欢</span>
       </div>
       <div class="guess-product-list">
-        <el-row :gutter="10" v-for="(item,index) in homelist">
-          <el-col :span="12" v-for="(item,index) in homelist">
-            <div class="grid-content bg-purple" >
+        <el-row :gutter="10" v-for="(item,index) in homelistleft">
+          <el-col :span="12" >
+            <a :href="item.url">
+               <div class="grid-content bg-purple" >
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
                 <img :src="item.imgadress">
@@ -148,22 +154,54 @@
               <!-- 商品介绍文字 -->
               <div class="guess-product-list-title">
                 <div class="label">
-                  <span>唤狼</span>
+                  <span>{{item.label}}</span>
                 </div>
                 <div class="mainintro">
-                  <span>男士秋季宽松直筒修身休闲牛仔裤</span>
+                  <span>{{item.mainintro}}</span>
                 </div>
                 <div class="specialtyurl">
                   <img src="//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp" alt="">
                 </div>
                 <div class="price-content">
-                  <span class="price">￥49</span>
+                  <span class="price">{{item.price}}</span>
                   <div class="looksame">
                     <span class="title"><a href="https://market.m.taobao.com/apps/market/tmalltoplist/top-find.html?wh_weex=true&wx_navbar_transparent=true&callFrom=tradeFeeds&itemId=602705858617&spm=a211ue.11501597.new-recommend.1">看相似</a></span>
                   </div>
                 </div>
               </div>
             </div>
+            </a>
+           
+          </el-col>
+
+           <el-col :span="12" >
+            <a :href="item.url">
+               <div class="grid-content bg-purple" >
+              <!-- 商品主图 -->
+              <div class="guess-product-list-img">
+                <img :src="item.imgadress">
+              </div>
+              <!-- 商品介绍文字 -->
+              <div class="guess-product-list-title">
+                <div class="label">
+                  <span>{{item.label}}</span>
+                </div>
+                <div class="mainintro">
+                  <span>{{item.mainintro}}</span>
+                </div>
+                <div class="specialtyurl">
+                  <img src="//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp" alt="">
+                </div>
+                <div class="price-content">
+                  <span class="price">{{item.price}}</span>
+                  <div class="looksame">
+                    <span class="title"><a href="https://market.m.taobao.com/apps/market/tmalltoplist/top-find.html?wh_weex=true&wx_navbar_transparent=true&callFrom=tradeFeeds&itemId=602705858617&spm=a211ue.11501597.new-recommend.1">看相似</a></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </a>
+           
           </el-col>
         </el-row>
 
@@ -171,10 +209,6 @@
       </div>
       
     </div>
-    <div>sdddd</div>
-    <div>sdddd</div>
-    <div>sdddd</div>
-    <div>sdddd</div>
     <div class="test">
       <a href="#top"><img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img"></a>
     </div>
@@ -230,7 +264,7 @@ export default {
   name: 'home',
    data(){
     return{
-      homelist:[],
+      homelistleft:[],
       input:"",
       tabIndex:1
     }
@@ -314,16 +348,7 @@ created(){
            let that = this
             axios.get('/data/homepage.json')
                 .then(function (response) {
-                    console.log(response)
-                     that.homelist = response.data.data.product;
-                     console.log(that.homelist)
-            //         // that.techList = response.data.data.tech;
-            //         // that.autoList = response.data.data.auto;
-            //         // that.moneyList = response.data.data.money;
-            //         // that.sportList = response.data.data.sports;
-            //         // that.warList = response.data.data.war;
-            //         // that.entList = response.data.data.ent;
-            //         // that.touTiaoList = response.data.data.toutiao;
+                     that.homelistleft = response.data.data.leftproduct;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -594,7 +619,7 @@ created(){
 }
 
 .guess-content .el-row {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     &:last-child {
       margin-bottom: 0;
     }
@@ -638,17 +663,15 @@ created(){
   }
 
   .guess-product-list-title .label{
-    width:34px;
-    height:18px;
+    width:auto;
+    height:auto;
     background:rgb(206,175,163);
-    display:flex;
+    display:inline-block
     top: 159px;
     margin-left: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    height: 18px;
     align-items :center;
-    flex-shrink: 0;
     align-content: flex-start;
   }
   .guess-product-list-title .label span{
@@ -662,6 +685,10 @@ created(){
     margin-left: 10px;
     display:flex;
     align-content :flex-start;
+  }
+  .guess-product-list a {
+    text-decoration :none;
+    color:black;
   }
   .guess-product-list-title .price-content{
     display:flex;
