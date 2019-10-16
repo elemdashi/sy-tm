@@ -3,7 +3,11 @@
     <div class="classtwo-top-wai">
         <div class="classtwo-top"></div>
       <div class="class-top">
-        <span>全部分类</span>
+          <div class="class-tui" @click="tui()"> 返回 </div>
+        <router-link to="/search"  id="search-input">
+        <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌">
+        </router-link>
+       
       </div>
     </div>
     <div class="class-xia">
@@ -48,7 +52,7 @@ export default {
       dapai:[],
       tianmaoguoji: "",
       nvzhuang: "",
-
+ input:"",
       nvxie: "",
       nanzhuang: "",
       nanxie: "",
@@ -65,6 +69,10 @@ export default {
   
   
   methods: {
+ 
+
+
+
     getData() {
       console.log(this);
       let that = this;
@@ -133,32 +141,56 @@ export default {
             
 
 
+        },
+        //-------------
+        tui(){
+            window.history.back()
         }
+
 
 
   }
 };
 </script>
 <style >
+.class-tui{
+    position: absolute;
+    left: 5px;
+}
+ #search-input{
+       margin:-5px auto;
+    }
+ .search-input{
+    margin:0px auto;
+    width:60%;
+    height:35px;
+    border-radius :5px;
+    border:none;
+    flex-shrink :0;
+     background-color: rgb(238, 238, 238);
+  }   
 .classtwo-top-wai {
   width: 100%;
-  background-color: rgb(238, 238, 238);
+  height: 90px;
+  background-color: white;
 }
 .classtwo-top{
     width: 100%;
     height: 40px;
+   
 }
 .class-top {
   height: 40px;
-  width: 100px;
+  width:100%;
   text-align: center;
   line-height: 40px;
-  background-color: rgb(238, 238, 238);
+ background-color: white
+ 
 }
 .class-zuo {
   width: 100px;
   height: 900px;
-  background-color: rgb(238, 238, 238);
+
 }
 .class-xia {
   width: 100%;

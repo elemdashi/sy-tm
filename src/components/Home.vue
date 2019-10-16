@@ -235,7 +235,6 @@ export default {
       tabIndex:1
     }
   },
-<<<<<<< HEAD
   mounted(){ 
   var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
@@ -259,25 +258,6 @@ export default {
 				},
 			}
 		})
-=======
-  mounted(){
-   
-    const mySwiper = new Swiper ('.swiper-container', {  
-    autoplay: true,
-    loop: true,
-    
-    // 如果需要分页器
-    pagination: {
-      el:'.swiper-pagination'
-    },
-    paginationClickable: true,
-    longSwipesRatio: 0.3,
-    touchRatio:1,
-    observer:true,//修改swiper自己或子元素时，自动初始化swiper
-    observeParents:true,//修改swiper的父元素时，自动初始化swiper
-    scrollbar: '.swiper-scrollbar',
-  }) 
->>>>>>> e1e30fbb7ae122349d52266077f93d5ad0cf6e00
       countDown("2019-11-01 00:00:00")
     document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll)
 
