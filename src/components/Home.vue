@@ -8,10 +8,12 @@
         <img id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
         <button @click="toPageLogin()">登录</button>
       </div>
-      <input  id="search-input" icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
-
-   
+      <div id="search-input">
+        <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
+      </div>
+     
     </div>
+
   <!-- 外链跳转 -->
     <div class="top-adv-bar">
       <a href="https://suning.tmall.com/?pos=1&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547149173937_1699747&spm=a211ue.11501597.icon.1"><img class="adv-icon" src="https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>苏宁易购</span></a>
@@ -241,15 +243,20 @@ created(){
       
       var scrolldata = document.getElementById('orderFullScreen').scrollTop
       if(scrolldata >300){
-        console.log(document.getElementById("search-input").style)
+        console.log(document.getElementById("search-input").marginTop)
         document.getElementById("homeLogo").style.display = "none"
         document.getElementById("search-input").style.width = 285+'px'
+        document.getElementsByClassName("search-input")[0].style.width = 285+'px'
+        document.getElementById("search-input").style.marginTop = -40+'px'
         document.getElementById("content").style.height= 60+'px'
         document.getElementById("jump-img").style.display = "block"
         // console.log(document.getElementById("search-input").getBoundingClientRect())  
         console.log("导航栏变形")
       }else{
         document.getElementById("search-input").style.width = 345+'px'
+        document.getElementsByClassName("search-input")[0].style.width = 345+'px'
+        document.getElementById("search-input").style.marginTop = -10+'px'
+        document.getElementById("search-input").style.marginLeft = "auto"
         document.getElementById("homeLogo").style.display = "block"
         document.getElementById("content").style.height= 90+'px'
         document.getElementById("jump-img").style.display = "none"
@@ -283,10 +290,7 @@ created(){
            
             axios.get('/data/shouye.json')
                 .then(function (response) {
-                
-                    console.log("111");
                     console.log(response)
-
                     // that.dyList = response.data.data.dy;
                     // that.techList = response.data.data.tech;
                     // that.autoList = response.data.data.auto;
@@ -359,7 +363,10 @@ created(){
     height: 20.5px;
     margin-top:10px;
   }
-
+    #search-input{
+       margin:-5px auto;
+       border:1px solid black;
+    }
   .content .search-input{
     margin:18px auto;
     width:345px;
