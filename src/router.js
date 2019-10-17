@@ -14,6 +14,9 @@ import nvzhuang from './components/class-router/nvzhuang.vue'
 import nvxie from './components/class-router/nvxie.vue'
 import nanzhuang from './components/class-router/nanzhuang.vue'
 import nanxie from './components/class-router/nanxie.vue'
+import liuxing from './components/classtwo-router/liuxing.vue'
+import pingpai from   './components/classtwo-router/pingpai.vue'
+import guoji from   './components/classtwo-router/guoji.vue'
 import detail from './components/Productdetailspage/productdetail.vue'
 // import productdetail from './components/Productdetailspage/productdetail.vue' 
 Vue.use(Router)
@@ -82,7 +85,22 @@ export default new Router({
      {
       path:"/classtwo",
       name:"classtwo",
-      component: classtwo
+      component: classtwo,
+      children:[
+        {
+          path:"liuxing",
+          component: liuxing
+        },
+        {
+          path:"pingpai",
+          component: pingpai
+        },
+        {
+          path:"guoji",
+          component: guoji
+        },
+        
+      ]
      },
 
      {

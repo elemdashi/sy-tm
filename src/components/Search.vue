@@ -2,12 +2,13 @@
   <div class="search">
     <div class="search-box">
         <form>
-            <input class="search-input" type="search" placeholder="搜索商品/店铺/品牌">
+            <input class="search-input" type="search" v-model="me" placeholder="搜索商品/店铺/品牌">
             <input class="submit" type="submit" title="提交" @click="pageSearchList()">
         </form>
       
     </div>
     
+
   </div>
 </template>
 <script>
@@ -15,6 +16,19 @@
 
 export default {
   name: 'search',
+  data(){
+       return{
+           me:""
+       }
+  },
+  watch:{
+    me:function(newValue){
+        this.$store.state.searchmessage=newValue
+    }
+  },
+  mounted () {
+    this.me=this.$store.state.searchmessage
+  },
   methods:{
       pageSearchList(){
            this.$router.push({

@@ -11,16 +11,24 @@
       </div>
     </div>
     <div class="class-xia">
-      <div class="class-gundong">
-        <div class="class-zuo">
-          <div class="class-lie" @click="tabClick(0)" v-bind:class="{active:tabIndex==0}">流行趋势</div>
-          <div class="class-lie" @click="tabClick(1)" v-bind:class="{active:tabIndex==1}">国际大牌</div>
-          <div class="class-lie" @click="tabClick(2)" v-bind:class="{active:tabIndex==2}">天猫国际</div>
-          <div class="class-lie" @click="tabClick(3)" v-bind:class="{active:tabIndex==3}">女装</div>
-           <div class="class-lie" @click="tabClick(4)" v-bind:class="{active:tabIndex==4}">女鞋</div>
-          <div class="class-lie" @click="tabClick(5)" v-bind:class="{active:tabIndex==5}">男装</div>
-          <div class="class-lie" @click="tabClick(6)" v-bind:class="{active:tabIndex==6}">男鞋</div>
-          <div class="class-lie" @click="tabClick(7)" v-bind:class="{active:tabIndex==7}">内衣</div>
+      <div class="classtwo-gundong">
+        <div class="classtwo-zuo">
+          <div class="classtwo-lie" @click="tabClick(0)" v-bind:class="{active:tabIndex==0}">流行趋势</div>
+          <div class="classtwo-lie" @click="tabClick(1)" v-bind:class="{active:tabIndex==1}">品牌</div>
+          <div class="classtwo-lie" @click="tabClick(2)" v-bind:class="{active:tabIndex==2}">天猫国际</div>
+          <div class="classtwo-lie" @click="tabClick(3)" v-bind:class="{active:tabIndex==3}">女装</div>
+           <div class="classtwo-lie" @click="tabClick(4)" v-bind:class="{active:tabIndex==4}">女鞋</div>
+          <div class="classtwo-lie" @click="tabClick(5)" v-bind:class="{active:tabIndex==5}">男装</div>
+          <div class="classtwo-lie" @click="tabClick(6)" v-bind:class="{active:tabIndex==6}">男鞋</div>
+          <div class="classtwo-lie" @click="tabClick(7)" v-bind:class="{active:tabIndex==7}">内衣</div>
+           <div class="classtwo-lie" @click="tabClick(8)" v-bind:class="{active:tabIndex==8}">母婴</div>
+          <div class="classtwo-lie" @click="tabClick(9)" v-bind:class="{active:tabIndex==9}">手机</div>
+          <div class="classtwo-lie" @click="tabClick(10)" v-bind:class="{active:tabIndex==10}">数码</div>
+          <div class="classtwo-lie" @click="tabClick(11)" v-bind:class="{active:tabIndex==11}">家电</div>
+           <div class="classtwo-lie" @click="tabClick(12)" v-bind:class="{active:tabIndex==12}">美妆</div>
+          <div class="classtwo-lie" @click="tabClick(13)" v-bind:class="{active:tabIndex==13}">箱包</div>
+          <div class="classtwo-lie" @click="tabClick(14)" v-bind:class="{active:tabIndex==14}">运动</div>
+          <div class="classtwo-lie" @click="tabClick(15)" v-bind:class="{active:tabIndex==15}">户外</div>
         </div>
       </div>
       <div class="class-gundong-you">
@@ -77,9 +85,9 @@ export default {
       console.log(this);
       let that = this;
       axios
-        .get("/data/fenglei.json")
+        .get("/data/classtwo.json")
         .then(function(response) {
-          console.log(this);
+         
           that .dapai=response.data.data.dapai
           that.tuijian = response.data.data.tuijian;
           that.tianmaoguoji=response.data.data.guoji
@@ -94,49 +102,49 @@ export default {
   
             this.tabIndex = index;
             if(index==0){
-                if(this.$route.path != "/class/tuijian"){
-                    this.$router.replace("/class/tuijian");
+                if(this.$route.path != "/classtwo/liuxing"){
+                    this.$router.replace("/classtwo/liuxing");
                 }
             }
 
             if(index==1){
-                if(this.$route.path != "/class/dapai"){
-                    this.$router.replace("/class/dapai");
+                if(this.$route.path != "/classtwo/pingpai"){
+                    this.$router.replace("/classtwo/pingpai");
                 }
             }
 
             if(index==2){
-                if(this.$route.path != "/class/tianmao"){
-                    this.$router.replace("/class/tianmao");
+                if(this.$route.path != "/classtwo/guoji"){
+                    this.$router.replace("/classtwo/guoji");
                 }
             }
 
             if(index==3){
-                if(this.$route.path != "/class/nvzhuang"){
-                    this.$router.replace("/class/nvzhuang");
-                }
+                // if(this.$route.path != "/class/nvzhuang"){
+                //     this.$router.replace("/class/nvzhuang");
+                // }
             }
 
             if(index==4){
-                if(this.$route.path != "/class/nvxie"){
+                // if(this.$route.path != "/class/nvxie"){
                   
-                    this.$router.replace("/class/nvxie");
-                }
+                //     this.$router.replace("/class/nvxie");
+                // }
             }
              if(index==5){
-                if(this.$route.path != "/class/nanzhuang"){
-                    this.$router.replace("/class/nanzhuang");
-                }
+                // if(this.$route.path != "/class/nanzhuang"){
+                //     this.$router.replace("/class/nanzhuang");
+                // }
             }
              if(index==6){
-                if(this.$route.path != "/class/nanxie"){
-                    this.$router.replace("/class/nanxie");
-                }
+                // if(this.$route.path != "/class/nanxie"){
+                //     this.$router.replace("/class/nanxie");
+                // }
             }
              if(index==7){
-                if(this.$route.path != "/class/neiyi"){
-                    this.$router.replace("/class/neiyi");
-                }
+                // if(this.$route.path != "/class/neiyi"){
+                //     this.$router.replace("/class/neiyi");
+                // }
             }
             
 
@@ -156,15 +164,16 @@ export default {
 .class-tui{
     position: absolute;
     left: 5px;
+    font-size: 12px
 }
- #search-input{
+ /* #search-input{
        margin:-5px auto;
-    }
+    } */
  .search-input{
-    margin:0px auto;
-    width:60%;
-    height:35px;
-    border-radius :5px;
+    margin-left: 15px;
+    width:80%;
+    height:25px;
+    border-radius :10px;
     border:none;
     flex-shrink :0;
      background-color: rgb(238, 238, 238);
@@ -177,6 +186,7 @@ export default {
 .classtwo-top{
     width: 100%;
     height: 40px;
+    display: flex
    
 }
 .class-top {
@@ -187,9 +197,8 @@ export default {
  background-color: white
  
 }
-.class-zuo {
-  width: 100px;
-  height: 900px;
+.classtwo-zuo {
+  width: 100%;
 
 }
 .class-xia {
@@ -197,31 +206,34 @@ export default {
   height: 768x;
   display: flex;
 }
-.class-gundong {
-  width: 100px;
+.classtwo-gundong {
+  width: 20%;
   height: 768px;
   overflow: scroll;
 }
 .class-you {
-  width: 275px;
-  height: 900px;
+  width: 100%;
+  
   background-color: rgb(255, 255, 255);
 }
 .class-gundong-you {
-  width: 275px;
+  width: 100%;
   height: 768px;
   overflow: scroll;
 }
-.class-lie {
-  width: 100px;
-  height: 50px;
+.classtwo-lie {
+  width: 100%;
+  height: 60px;
   border-bottom: 1px solid #ccc;
   text-align: center;
-  line-height: 50px;
-  color: rgb(155, 155, 155);
+  line-height: 60px;
+ 
   font-size: 4px;
+  background-color: rgb(247, 247, 247)
 }
 .active{
-  background-color: white
+  background-color: white;
+  color: red;
+  border-left: red solid 4px
 }
 </style>

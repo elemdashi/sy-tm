@@ -17,14 +17,14 @@
     <div class="login-text">
       <div class="login-text-one">
         <div class="login-zou">账户</div>
-        <div>
-          <input type="text" class="login-you" v-model="input1" placeholder="手机号/邮箱/会员名" />
+        <div class="login-you">
+          <input type="text" class="login-input" v-model="input1" placeholder="手机号/邮箱/会员名" />
         </div>
       </div>
       <div class="login-text-one">
         <div class="login-zou">登录密码</div>
-        <div>
-          <input type="text" class="login-you" v-model="input2" placeholder="请输入密码" />
+        <div class="login-you">
+          <input type="text" class="login-input" v-model="input2" placeholder="请输入密码" />
         </div>
 
       </div>
@@ -129,6 +129,8 @@ export default {
 .login-text {
   width: 100%;
   margin-top: 20px;
+ 
+
 }
 .login-text-one {
   border-bottom: 1px solid #ccc;
@@ -139,13 +141,19 @@ export default {
 .login-zou {
   width: 25%;
   height: 60px;
-
+   
   line-height: 60px;
   background-color: white;
+  text-indent: 1em
 }
 .login-you {
-  width: 270px;
+  width: 75%;
   height: 60px;
+  border: 0;
+}
+.login-input{
+  width: 100%;
+   height: 60px;
   border: 0;
 }
 
