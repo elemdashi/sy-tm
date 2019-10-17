@@ -1,25 +1,33 @@
 <template>
   <div class="class">
     <div class="class-top-wai">
-      <div class="class-top">
+      <div class="classone-top">
         <span>全部分类</span>
       </div>
     </div>
     <div class="class-xia">
-      <div class="class-gundong">
-        <div class="class-zuo">
-          <div class="class-lie" @click="tabClick(0)" v-bind:class="{active:tabIndex==0}">为您推荐</div>
-          <div class="class-lie" @click="tabClick(1)" v-bind:class="{active:tabIndex==1}">国际大牌</div>
-          <div class="class-lie" @click="tabClick(2)" v-bind:class="{active:tabIndex==2}">天猫国际</div>
-          <div class="class-lie" @click="tabClick(3)" v-bind:class="{active:tabIndex==3}">女装</div>
-           <div class="class-lie" @click="tabClick(4)" v-bind:class="{active:tabIndex==4}">女鞋</div>
-          <div class="class-lie" @click="tabClick(5)" v-bind:class="{active:tabIndex==5}">男装</div>
-          <div class="class-lie" @click="tabClick(6)" v-bind:class="{active:tabIndex==6}">男鞋</div>
-          <div class="class-lie" @click="tabClick(7)" v-bind:class="{active:tabIndex==7}">内衣</div>
+      <div class="classone-gundong">
+        <div class="classone-zuo">
+          <div class="classone-lie" @click="tabClick(0)" v-bind:class="{activeclass:tabIndex==0}">为您推荐</div>
+          <div class="classone-lie" @click="tabClick(1)" v-bind:class="{activeclass:tabIndex==1}">国际大牌</div>
+          <div class="classone-lie" @click="tabClick(2)" v-bind:class="{activeclass:tabIndex==2}">天猫国际</div>
+          <div class="classone-lie" @click="tabClick(3)" v-bind:class="{activeclass:tabIndex==3}">女装</div>
+           <div class="classone-lie" @click="tabClick(4)" v-bind:class="{activeclass:tabIndex==4}">女鞋</div>
+          <div class="classone-lie" @click="tabClick(5)" v-bind:class="{activeclass:tabIndex==5}">男装</div>
+          <div class="classone-lie" @click="tabClick(6)" v-bind:class="{activeclass:tabIndex==6}">男鞋</div>
+          <div class="classone-lie" @click="tabClick(7)" v-bind:class="{activeclass:tabIndex==7}">内衣</div>
+           <div class="classone-lie" @click="tabClick(8)" v-bind:class="{activeclass:tabIndex==8}">母婴</div>
+          <div class="classone-lie" @click="tabClick(9)" v-bind:class="{activeclass:tabIndex==9}">手机</div>
+          <div class="classone-lie" @click="tabClick(10)" v-bind:class="{activeclass:tabIndex==10}">数码</div>
+          <div class="classone-lie" @click="tabClick(11)" v-bind:class="{activeclass:tabIndex==11}">家电</div>
+           <div class="classone-lie" @click="tabClick(12)" v-bind:class="{activeclass:tabIndex==12}">美妆</div>
+          <div class="classone-lie" @click="tabClick(13)" v-bind:class="{activeclass:tabIndex==13}">箱包</div>
+          <div class="classone-lie" @click="tabClick(14)" v-bind:class="{activeclass:tabIndex==14}">运动</div>
+          <div class="classone-lie" @click="tabClick(15)" v-bind:class="{activeclass:tabIndex==15}">户外</div>
         </div>
       </div>
-      <div class="class-gundong-you">
-        <div class="class-you">
+      <div class="classone-gundong-you">
+        <div class="classone-you">
           <router-view :tui="tuijian" :dapai="dapai" :tianmao="tianmaoguoji"></router-view>
         </div>
       </div>
@@ -125,11 +133,11 @@ export default {
                     this.$router.replace("/class/nanxie");
                 }
             }
-             if(index==7){
-                if(this.$route.path != "/class/neiyi"){
-                    this.$router.replace("/class/neiyi");
-                }
-            }
+            //  if(index==7){
+            //     if(this.$route.path != "/class/neiyi"){
+            //         this.$router.replace("/class/neiyi");
+            //     }
+            // }
             
 
 
@@ -144,16 +152,17 @@ export default {
   display: flex;
   background-color: rgb(238, 238, 238);
 }
-.class-top {
+.classone-top {
   height: 40px;
   width: 100px;
   text-align: center;
+  font-size: 12px;
   line-height: 40px;
   background-color: rgb(238, 238, 238);
 }
-.class-zuo {
-  width: 100px;
-  height: 900px;
+.classone-zuo {
+  width: 100%;
+  
   background-color: rgb(238, 238, 238);
 }
 .class-xia {
@@ -161,31 +170,31 @@ export default {
   height: 768x;
   display: flex;
 }
-.class-gundong {
-  width: 100px;
+.classone-gundong {
+  width: 25%;
   height: 768px;
   overflow: scroll;
 }
-.class-you {
-  width: 275px;
-  height: 900px;
+.classone-you {
+  width: 100%;
+  
   background-color: rgb(255, 255, 255);
 }
-.class-gundong-you {
-  width: 275px;
+.classone-gundong-you {
+  width: 75%;
   height: 768px;
   overflow: scroll;
 }
-.class-lie {
-  width: 100px;
-  height: 50px;
+.classone-lie {
+  width: 100%;
+  height: 60px;
   border-bottom: 1px solid #ccc;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   color: rgb(155, 155, 155);
   font-size: 4px;
 }
-.active{
+.activeclass{
   background-color: white
 }
 </style>

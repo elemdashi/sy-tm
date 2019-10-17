@@ -70,7 +70,7 @@ export default {
 }
 .tuijian-kuai{
     text-align: center;
-    width: 90px;
+    width: 33%;
     font-size: 4px;
     margin-top: 10px
 }
