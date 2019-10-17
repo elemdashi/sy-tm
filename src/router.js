@@ -17,6 +17,8 @@ import nanxie from './components/class-router/nanxie.vue'
 import liuxing from './components/classtwo-router/liuxing.vue'
 import pingpai from   './components/classtwo-router/pingpai.vue'
 import guoji from   './components/classtwo-router/guoji.vue'
+import detail from './components/Productdetailspage/productdetail.vue'
+// import productdetail from './components/Productdetailspage/productdetail.vue' 
 Vue.use(Router)
 
 export default new Router({
@@ -31,13 +33,18 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
     },
 
     {
      path:"/login",
      name:"login",
      component: Login
+    },
+    {
+      path:"/detail",
+      name:"detail",
+      component:detail
     },
 
     {

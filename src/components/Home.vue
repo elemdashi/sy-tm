@@ -1,18 +1,17 @@
 <template>
   <div class="home" id="orderFullScreen">
-    <div id="top"></div>
-    <div class="content" id="content">
     <!-- 顶部搜索框 -->
-      <div class="home-top-bar" >
-        <div @click="toPageClass()"><img  class="class-btn-img" src="/分类.png"></div>
-        <img id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
-        <button @click="toPageLogin()">登录</button>
+ 
+      <div class="content" id="content" v-if="show">
+        <div class="home-top-bar">
+          <div @click="toPageClass()" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></div>
+          <img v-if="show" id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
+          <button @click="toPageLogin()" id="login-btn">登录</button>
+        </div>
+        <div id="search-input" v-if="show">
+          <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
+        </div>
       </div>
-      <div id="search-input">
-        <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
-      </div>
-     
-    </div>
 
   <!-- 外链跳转 -->
     <div class="top-adv-bar">
@@ -145,8 +144,8 @@
       <div class="guess-product-list">
         <el-row :gutter="10" v-for="(item,index) in homelistleft">
           <el-col :span="12" >
-            <a :href="item.url">
-               <div class="grid-content bg-purple" >
+            <!-- <a :href="item.url"> -->
+               <div class="grid-content bg-purple" @click="pageTodetail()">
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
                 <img :src="item.imgadress">
@@ -170,7 +169,7 @@
                 </div>
               </div>
             </div>
-            </a>
+            <!-- </a> -->
            
           </el-col>
 
@@ -207,12 +206,17 @@
 
         
       </div>
+
+
       
     </div>
-    <div class="test">
-      <a href="#top"><img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img"></a>
-    </div>
-
+    <!-- <div id="back-to-top" class="back-to-top" @click="backToTop" v-show="backTopShow" v-cloak>
+        <img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img">
+    </div> -->
+     <button @click="show =!show">切换</button>
+    <backtop></backtop>
+    
+    
       
 
    
@@ -254,26 +258,32 @@
   
 import Vue from 'vue'
 import axios  from 'axios'
-import Swiper from 'swiper';
+import Swiper from 'swiper'
+import backtop from './backtop.vue'
 
 
 
-Vue.use( axios)
+
+Vue.use(axios)
 
 export default {
   name: 'home',
+  components:{
+    backtop
+  },
    data(){
     return{
+      show:true,
       homelistleft:[],
       input:"",
-      tabIndex:1
+      tabIndex:1,
     }
   },
   mounted(){ 
   var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
-            loop: true, // 循环模式选项，true 循环播放
-            observer: true,//实时检测，动态更新
+      loop: true, // 循环模式选项，true 循环播放
+      observer: true,//实时检测，动态更新
 			pagination: {
 				el: '.swiper-pagination',
 				type: 'custom',
@@ -292,39 +302,35 @@ export default {
 				},
 			}
 		})
-      countDown("2019-11-01 00:00:00")
-    document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll)
+    countDown("2019-11-01 00:00:00")
+    // window.addEventListener('scroll', this.backTopShowOperate,true)
+    document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll,true)
 
   },
 created(){
     this.getData()
+    
 },
-
  methods:{
+  //  首页顶部滚动缩放动画
     handleScroll() {
-      
-      var scrolldata = document.getElementById('orderFullScreen').scrollTop
-      if(scrolldata >300){
-        document.getElementById("homeLogo").style.display = "none"
-        document.getElementById("search-input").style.width = 285+'px'
-        document.getElementsByClassName("search-input")[0].style.width = 285+'px'
-        document.getElementById("search-input").style.marginTop = -40+'px'
-        document.getElementById("content").style.height= 60+'px'
-        document.getElementById("jump-img").style.display = "block"
-        // console.log(document.getElementById("search-input").getBoundingClientRect())  
+      if (document.getElementById('orderFullScreen').scrollTop > 300) {
+        document.getElementById("content").setAttribute("style"," transition:all 0.3s;height:60px;")
+       document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:0;height:0")
+       document.getElementById("class-btn-img").setAttribute("style","transition:all 0.3s;margin-top:20px")
+       document.getElementById("login-btn").setAttribute("style","transition:all 0.3s;margin-top:20px")
+        document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:285px;")
         console.log("导航栏变形")
-      }else{
-        document.getElementById("search-input").style.width = 345+'px'
-        document.getElementsByClassName("search-input")[0].style.width = 345+'px'
-        document.getElementById("search-input").style.marginTop = -10+'px'
-        document.getElementById("search-input").style.marginLeft = "auto"
-        document.getElementById("homeLogo").style.display = "block"
-        document.getElementById("content").style.height= 90+'px'
-        document.getElementById("jump-img").style.display = "none"
+      } else {
+       document.getElementById("login-btn").setAttribute("style","transition:all 0.3s;margin-top: 10px;margin-right: 5px;")
+       document.getElementById("class-btn-img").setAttribute('style',"transition:all 0.3s;margin-top: 10px;margin-left: 5px;")
+        document.getElementById("content").setAttribute("style"," transition:all 0.3s;height:90px;")
+       document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:118.5px;height:20.5px")
+        document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:355px;")
         console.log("取消导航栏变形")
       }
-      
     },
+
     toPageClasstwo(){
     this.$router.push({
             name:'classtwo',
@@ -342,6 +348,11 @@ created(){
       })
     },
     toPageSearch(){
+       this.$router.push({
+        name:'search',
+      })
+    },
+    pageTodetail(){
        this.$router.push({
         name:'search',
       })
@@ -373,13 +384,17 @@ created(){
     box-sizing: border-box;
 }
   html,body{
+    // overflow-x:hidden;
+    // overflow-y:auto;
     height:100%;
     overflow:hidden
+
   }
-  .home{
-    height:900px;
+  #orderFullScreen{
     background :#fff;
-    overflow :auto;
+    overflow-y:auto;
+    overflow-x:hidden;
+    height:900px;
   }
   .content{
     background-color:rgb(255,0,54);
@@ -390,7 +405,9 @@ created(){
     flex-direction :column;
     width:100%;
   }
-
+#class-btn-img{
+  display:inline-block;
+}
   .home-top-bar{
     display:flex;
     justify-content:space-between;
@@ -609,12 +626,8 @@ created(){
   margin:0 10px 0 10px;
 }
 
-.test{
-  height:600px;
-  
-}
 
-.test img {
+.back-to-top img {
   position :fixed;
   width:44px;
   height:44px;
@@ -750,4 +763,39 @@ created(){
   .specialtyurl{
     margin-top:3px;
   }
+
+  // 回到顶部
+  [v-cloak] {
+ display: none;
+}
+  
+.back-to-top {
+ position: fixed;
+ bottom: 5px;
+ right: 20px;
+ z-index: 100;
+ padding: 8px 10px;
+ cursor: pointer;
+}
+
+
+  
+.back-to-top span {
+ display: block;
+}
+  
+.page {
+ width: 100%;
+ height: 400px;
+ line-height: 400px;
+ text-align: center;
+}
+// 动画
+.active {
+  transition:width 2s;
+  height:20px;
+}
+
+
+
 </style>
