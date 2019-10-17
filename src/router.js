@@ -14,6 +14,8 @@ import nvzhuang from './components/class-router/nvzhuang.vue'
 import nvxie from './components/class-router/nvxie.vue'
 import nanzhuang from './components/class-router/nanzhuang.vue'
 import nanxie from './components/class-router/nanxie.vue'
+import detail from './components/Productdetailspage/productdetail.vue'
+// import productdetail from './components/Productdetailspage/productdetail.vue' 
 Vue.use(Router)
 
 export default new Router({
@@ -28,13 +30,18 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
     },
 
     {
      path:"/login",
      name:"login",
      component: Login
+    },
+    {
+      path:"/detail",
+      name:"detail",
+      component:detail
     },
 
     {
