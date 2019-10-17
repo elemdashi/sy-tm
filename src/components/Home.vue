@@ -4,7 +4,7 @@
  
       <div class="content" id="content" v-if="show">
         <div class="home-top-bar">
-          <div @click="toPageClass()" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></div>
+          <router-link to="/class/tuijian" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></router-link>
           <img v-if="show" id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
           <button @click="toPageLogin()" id="login-btn">登录</button>
         </div>
@@ -19,7 +19,7 @@
       <a href="https://chaoshi.m.tmall.com/?pos=2&acm=201704071.1003.64.1699747&_ig=shoumao&scm=1003.64.201704071.OTHER_1545931209467_1699747&spm=a211ue.11501597.icon.2"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp"><span>天猫超市</span></a>
       <a href="https://pages.tmall.com/wow/jinkou/act/zhiying?wh_from=icon&pos=3&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547673722287_1699747&spm=a211ue.11501597.icon.3"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1Jc0fSFXXXXXTapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>天猫国际</span></a>
       <a href="https://tb.cn/x/ju?pos=4&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547844648097_1699747&spm=a211ue.11501597.icon.4"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp"><span>聚划算</span></a>
-      <a @click="toPageClasstwo()"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>分类</span></a>
+      <router-link to="/classtwo/liuxing"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>分类</span></router-link>
     </div>
 
     <!-- 首页轮播 -->
@@ -143,8 +143,8 @@
       </div>
       <div class="guess-product-list">
         <el-row :gutter="10" v-for="(item,index) in homelistleft">
-          <el-col :span="12" >
-            <!-- <a :href="item.url"> -->
+          <router-link to="/detail">
+               <el-col :span="12" >
                <div class="grid-content bg-purple" @click="pageTodetail()">
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
@@ -159,7 +159,7 @@
                   <span>{{item.mainintro}}</span>
                 </div>
                 <div class="specialtyurl">
-                  <img src="//gw.alicdn.com/tfs/TB1a4C4cq1s3KVjSZFAXXX_ZXXa-230-44.png_150x10000.jpg_.webp" alt="">
+                  <img :src="item.specialtyurl">
                 </div>
                 <div class="price-content">
                   <span class="price">{{item.price}}</span>
@@ -169,12 +169,11 @@
                 </div>
               </div>
             </div>
-            <!-- </a> -->
-           
           </el-col>
-
-           <el-col :span="12" >
-            <a :href="item.url">
+          </router-link>
+         
+          <router-link to="/detail">
+              <el-col :span="12" >
                <div class="grid-content bg-purple" >
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
@@ -199,9 +198,10 @@
                 </div>
               </div>
             </div>
-            </a>
            
           </el-col>
+          </router-link>
+         
         </el-row>
 
         
@@ -213,7 +213,6 @@
     <!-- <div id="back-to-top" class="back-to-top" @click="backToTop" v-show="backTopShow" v-cloak>
         <img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img">
     </div> -->
-     <button @click="show =!show">切换</button>
     <backtop></backtop>
     
     
@@ -319,23 +318,21 @@ created(){
        document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:0;height:0")
        document.getElementById("class-btn-img").setAttribute("style","transition:all 0.3s;margin-top:20px")
        document.getElementById("login-btn").setAttribute("style","transition:all 0.3s;margin-top:20px")
-        document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:285px;")
-        console.log("导航栏变形")
+        document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:285px;margin-top:-25px")
       } else {
        document.getElementById("login-btn").setAttribute("style","transition:all 0.3s;margin-top: 10px;margin-right: 5px;")
        document.getElementById("class-btn-img").setAttribute('style',"transition:all 0.3s;margin-top: 10px;margin-left: 5px;")
         document.getElementById("content").setAttribute("style"," transition:all 0.3s;height:90px;")
        document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:118.5px;height:20.5px")
         document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:355px;")
-        console.log("取消导航栏变形")
       }
     },
 
-    toPageClasstwo(){
-    this.$router.push({
-            name:'classtwo',
-          })
-    },
+toPageClasstwo(){
+  this.$router.push({
+    name:'classtwo',
+  })
+},
 
  toPageClass(){
       this.$router.push({
@@ -476,10 +473,14 @@ created(){
   }
   .home .swiper-wrapper img{
     height:135px;
-    width :375px;
+    width:95%;
   }
     .home .swiper-container {
       margin:0 12px 0 12px ;
+      width:100%;
+    }
+    .swiper-slide{
+      margin:0 auto;
     }
    .home .swiper-wrapper {
      margin-top:10px;
@@ -512,6 +513,7 @@ created(){
 
    .home .middle-adv img{
       height: 180px;
+      width:100%;
       margin:0 auto;
    }
 

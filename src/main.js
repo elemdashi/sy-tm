@@ -7,9 +7,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "swiper/css/swiper.css"
 import {Backtop} from 'element-ui'
+import Mint from 'mint-ui';
 
-
-
+Vue.use(Mint);
 Vue.use(ElementUI);
 Vue.use(Backtop)
 
