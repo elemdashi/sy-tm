@@ -6,18 +6,13 @@
             <input class="submit" type="submit" title="提交" @click="pageSearchList()">
         </form>
     </div>
-    <!-- <div class="showlist"  v-for="(item,index) in showlist">
+    <div class="showlist"  v-for="(item,index) in showlist">
       
-         <span class="list1">{{item.name}}</span>
-         <span class="list2">{{item.name2}}</span>
+         <div class="list1">{{item.name}}</div>
+         <div class="list2">{{item.name2}}</div>
       
-    </div> -->
-    <table>
-      <tr v-for="(item,index) in showlist">
-        <td>{{item.name}}</td>
-        <td>{{item.name2}}</td>
-      </tr>
-    </table>
+    </div>
+    
   </div>
 </template>
 <script>
@@ -87,20 +82,21 @@ export default {
 
 .showlist{
   margin:20px auto;
-  border-bottom: 1px solid rgba(0,0,0,.40);
+  border-bottom: 1px solid #eee;
   width:90%;
   display: flex;
 }
-table{
-  padding:10px;
+.showlist .list1,
+.showlist .list2{
+  width: 179px;
+  font-weight: 400;
+  color: #333;
+  font-size: 13px;
+  padding:2px 0 5px 0 ;
 }
-td{
-  text-align:left;
-  padding-left:60px;
-  padding-top: 20px;
-  border-bottom: 1px solid rgba(0,0,0,.30);
+.showlist .list2{
+  left: 180px;
 }
-
 
 .search-box{
     background-color: rgba(0,0,0,.85);
@@ -145,6 +141,6 @@ td{
     color: transparent;
     padding: 7px 5px;
     box-sizing: initial;
-    border-radius: 2px;
+    border-radius: 1px;
 }
 </style>

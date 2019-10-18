@@ -316,7 +316,7 @@ created(){
       if (document.getElementById('orderFullScreen').scrollTop > 300) {
         document.getElementById("content").setAttribute("style"," transition:all 0.3s;height:60px;")
        document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:0;height:0")
-       document.getElementById("class-btn-img").setAttribute("style","transition:all 0.3s;margin-top:20px")
+       document.getElementById("class-btn-img").setAttribute("style","transition:all 0.3s;margin-top:20px;margin-left:10px")
        document.getElementById("login-btn").setAttribute("style","transition:all 0.3s;margin-top:20px")
         document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:285px;margin-top:-25px")
       } else {

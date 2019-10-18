@@ -43,6 +43,11 @@
                 <div class="dec">
                     <span>秋冬款裤子男士牛仔裤秋季2019新款潮流宽松直筒潮牌修身休闲长裤</span>
                 </div>
+                <div class="express">
+                    <span>快递：0.00</span>
+                    <span>月销量 3.0万+件</span>
+                    <span>广东广州</span>
+                </div>
             </div>
 
             <div class="bottom-product-dec">
@@ -186,10 +191,8 @@ export default {
     width: 100%;
     height: 375px;
 }
-
-  /* 自定义分页器样式 */
-/*包裹自定义分页器的div的位置等CSS样式*/
-    .swiper-pagination-custom {
+   .top-product-dec .swiper-pagination-custom{
+    background: red;
     bottom: 5%;
     left: 0;
     width: 100%;
@@ -197,19 +200,19 @@ export default {
     text-align: center;
   }
   /*自定义分页器的样式，这个你自己想要什么样子自己写*/
-    .swiper-pagination-customs {
+    .top-product-dec .swiper-pagination-customs {
       width: 15px;
       height: 2px;
       display:inline-block;
-      background: #fff;
+      background: red;
       opacity: .3;
       margin: 0 5px;
       outline: 0;
     }
   /*自定义分页器激活时的样式表现*/
-  .swiper-pagination-customs-active{
+  .top-product-dec .swiper-pagination-customs-active{
     opacity :1;
-    background:#ffff;
+    background:red;
   }
 
   .middle-product-dec{
