@@ -2,6 +2,76 @@
   <div class="login">
     <!-- 筛选页面 -->
     <div class="filter-zhu">
+        <div class="filter-jiage">
+            <div class="jiage-top">
+             价格
+            </div>
+            <div class="jiage-bottom">
+                 <div class="jiage-xuanze">价格区间（元）</div>
+                 <div class="jiage-xuanzekuang"></div>
+                  <div class="jiage-xuanzekuang"></div>
+                  <div class="jiage-qujian">
+                    70-130
+                    <div class="qujian-xia">34%的用户选择</div>
+                  </div>
+                  <div class="jiage-qujian">
+                    130-1340
+                    <div class="qujian-xia">37%的用户选择</div>
+                  </div>
+                  <div class="jiage-qujian">
+                    >1340
+                    <div class="qujian-xia">29%的用户选择</div>
+                  </div>
+            </div>
+        </div>
+
+            <div class="filter-pingpai"> 
+               <div class="jiage-top">
+                    品牌
+               </div>
+               <div class="pingpai-bottom">
+                         <div class="pingpai-img" v-for="(item,index) in pingpai" :key="index"><img :src="item" alt="" style=" height:100%;width:100%"></div>
+                          
+               </div>
+
+            </div>
+
+              <div class="filter-pingpai"> 
+               <div class="jiage-top">
+                    类别
+               </div>
+               <div class="leibie-buttom">
+                         <div class="pingpai-img" v-for="(item,index) in leibie" :key="index">{{item}}</div>
+                          
+               </div>
+
+            </div>
+
+
+             <div class="filter-pingpai"> 
+               <div class="jiage-top">
+                    店铺类别
+               </div>
+               <div class="leibie-buttom">
+                         <div class="pingpai-img" v-for="(item,index) in dianpu" :key="index">{{item}}</div>
+                          
+               </div>
+
+            </div>
+
+             <div class="filter-pingpai"> 
+               <div class="jiage-top">
+                    商品类型
+               </div>
+               <div class="leibie-buttom">
+                         <div class="pingpai-img" v-for="(item,index) in leixing" :key="index">{{item}}</div>
+                          
+               </div>
+
+            </div>
+
+   
+
        <div class="filter-bottom"> 
          <div class="filter-wenzi">4126500个结果</div>
          <div class="filter-chongzhi">重置</div>
@@ -21,7 +91,10 @@
     <!-- 下方导航 -->
          <div class="product-top-xia">
             <div class="product-zonghe">综合</div>
+            <router-link to="/shopcar">
              <div class="product-zonghe">销量</div>
+            </router-link>
+             
               <div class="product-zonghe">价格<i class="el-icon-arrow-down"></i></div>
                <div class="product-zonghe">店铺</div>
                 <div class="product-zonghe" @click="xialaliebiao"><i class="el-icon-menu" :class="{xialaactive:xiala}" ></i>  <i class="el-icon-caret-bottom" v-if="xiala" :class="{xialaactive:xiala}"></i>  <i class="el-icon-caret-top" v-else ></i></div>
@@ -37,7 +110,7 @@
             <!-- 商品列表 -->
 
             <div class="product-xia">
-              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key=index>
+              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" @click="chuanzhi(item)">
                 <div class="product-img">
                       <img :src="item.url" alt="" style="height:100%;width:100%">
                 </div>
@@ -59,8 +132,42 @@
                     <div class="shangla-dian">{{item.dian}} </div>
                     <div class="shangla-pingjia">
                          <span>描述相符：</span>
-                         <div class="shangla-pingfeng" v-if="item.miaoshu<4.9">{{item.msiaoshu}}</div>
+                         <div class="shangla-pingfeng" v-if="item.miaoshu<4.85">{{item.miaoshu}}
+                          <div class="pingjia-kuang">低</div>
+                         </div>
+                          <div class="shangla-pingfenggao" v-else>{{item.miaoshu}}
+                            <div class="pingjia-ping" v-if="item.miaoshu==4.85">平</div>
+                             <div class="pingjia-ping" v-else>高</div>
+                          </div>
+                         
                     </div>
+
+                    <div class="shangla-pingjia">
+                         <span>服务态度：</span>
+                         <div class="shangla-pingfeng" v-if="item.fuwu<4.85">{{item.fuwu}}
+                          <div class="pingjia-kuang">低</div>
+                         </div>
+                          <div class="shangla-pingfenggao" v-else>{{item.fuwu}}
+                            <div class="pingjia-ping" v-if="item.fuwu==4.85">平</div>
+                             <div class="pingjia-ping" v-else>高</div>
+                          </div>
+                         
+                    </div>
+
+
+                    <div class="shangla-pingjia">
+                         <span>物流服务：</span>
+                         <div class="shangla-pingfeng" v-if="item.wuliu<4.85">{{item.wuliu}}
+                          <div class="pingjia-kuang">低</div>
+                         </div>
+                          <div class="shangla-pingfenggao" v-else>{{item.wuliu}}
+                            <div class="pingjia-ping" v-if="item.wuliu==4.85">平</div>
+                             <div class="pingjia-ping" v-else>高</div>
+                          </div>
+                         
+                    </div>
+                      
+
               </div>
                    
               </div>
@@ -81,7 +188,24 @@ export default {
     return{
       xiala:false,
       shangpinglist:"",
-    
+      pingpai:[
+        "//img.alicdn.com/bao/uploaded/TB1MUyhXKuSBuNjSsziXXbq8pXa",
+        "//img.alicdn.com/bao/uploaded/TB1pEqMcntYBeNjy1XdXXXXyVXa",
+        "//img.alicdn.com/bao/uploaded/TB1jue_JFXXXXXeXXXXSutbFXXX.jpg",
+        "//img.alicdn.com/bao/uploaded/TB1XGRLpm_I8KJjy0FoXXaFnVXa",
+        "//img.alicdn.com/bao/uploaded/TB1qsBqnf2H8KJjy1zkXXXr7pXa",
+        "//img.alicdn.com/bao/uploaded/TB1FxgBmKOSBuNjy0FdXXbDnVXa",
+        "//img.alicdn.com/bao/uploaded/TB1TW5deBDH8KJjSszcSuvDTFXa.jpg",
+        "//img.alicdn.com/bao/uploaded/TB1RskcNVXXXXaFaXXXSutbFXXX.jpg",
+        "//img.alicdn.com/bao/uploaded/TB1bKIvJVXXXXaJXVXXSutbFXXX.jpg",
+        "//img.alicdn.com/bao/uploaded/TB1bKIvJVXXXXaJXVXXSutbFXXX.jpg",
+        "//img.alicdn.com/bao/uploaded/TB17T4yb1SSBuNjy0FlXXbBpVXa",
+        "//img.alicdn.com/bao/uploaded/TB1swHCjx6I8KJjy0FgXXXXzVXa"
+      ],
+      leibie:["男装","男T恤","运动服","女士内衣","时尚女鞋","精品男装"],
+      dianpu:["旗舰店","专卖店" ,"专营店"],
+      leixing:["通用排序","公益宝贝"]
+       
     }
   },
   created(){
@@ -99,6 +223,11 @@ export default {
       let a=document.querySelector(".filter-zhu")
       a.style.width="0px"
     },
+    chuanzhi(item){
+       this.$store.state.shopcar.push(item)
+       console.log(this.$store.state.shopcar)
+    },
+     
     xialaliebiao(){
       if(this.xiala==true){
         this.xiala=false
@@ -186,9 +315,11 @@ export default {
   width: 0px;
   height: 100%;
   z-index: 20;
-  background-color: rgb(232, 232, 232);
+  background-color: rgb(255, 255, 255);
   right: 0;
   transition: all 0.5s;
+  overflow: hidden;
+  filter:alpha(Opacity=80);-moz-opacity:0.8;opacity: 0.8; 
   
 }
 .filter-bottom{
@@ -197,7 +328,8 @@ export default {
   height: 50px;
   bottom: 0px;
   background-color: white;
-  display: flex
+  display: flex;
+  
 }
 .filter-wenzi{
   width: 65%;
@@ -248,7 +380,8 @@ color: #9D9D9D
 .product-xiala{
   width: 100%;
  height: 0px;
-  background-color: rgba(0, 0, 0, 0.1)
+  background-color: rgb(0, 0, 0);
+  filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6; 
 }
 .product-xialabiao{
   height: 0px;
@@ -360,12 +493,127 @@ text-indent: 1em
   height: 15%;
 display: flex  ;
 color: #9D9D9D;
-font-size: 12px
+font-size: 12px;
+margin-top: 3px
 }
 .shangla-pingfeng{
-  width: 20%;
+  width: 40%;
+  height: 100%;
+  color: green;
+  font-size: 12px;
+  display: flex
+}
+.shangla-pingfenggao{
+  width: 40%;
   height: 100%;
   color: red;
+  font-size: 12px;
+  display: flex
+}
+.pingjia-kuang{
+   width: 20%;
+   height: 100%;
+   background-color: green;
+   color: white;
+   margin-left: 5px;
+   text-align: center;
+   line-height: 15px;
+   border-radius: 3px
+}
+.pingjia-ping{
+    width: 20%;
+   height: 100%;
+   background-color:rgb(221, 37, 37);
+   color: white;
+   margin-left: 5px;
+   text-align: center;
+   line-height: 15px;
+   border-radius: 3px
+}
+.filter-jiage{
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid black
+}
+.jiage-top{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  line-height: 30px;
+  color: #9D9D9D;
+  justify-content: space-between;
+
+}
+.jiage-bottom{
+  height: 120px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.jiage-xuanze{
+  width: 32%;
+  height: 40%;
+  text-align: center;
+  line-height: 40px;
+  color: #9D9D9D;
+  margin-left: 3px
+}
+.jiage-xuanzekuang{
+  width: 32%;
+  height: 40%;
+  text-align: center;
+  line-height: 40px;
+  color: #9D9D9D;
+  border: 1px solid black;
+  margin-left: 3px;
+  border-radius: 6px
+}
+.jiage-qujian{
+  width: 32%;
+  height: 40px;
+  text-align: center;
+   border: 1px solid black;
+  margin-left: 3px;
+  border-radius: 6px
+}
+.qujian-xia{
+  width: 100%;
+  height: 44%;
+  text-align: center;
+  background-color: rgb(204, 204, 204);
   font-size: 12px
 }
+.filter-pingpai{
+  width: 100%;
+   
+ 
+}
+.pingpai-top{
+  height: 30px;
+  width: 100%;
+ 
+}
+.pingpai-bottom{
+  width: 100%;
+  height: 200px;
+ overflow: hidden;
+  display: flex;
+ flex-wrap: wrap
+}
+.pingpai-img{
+  width: 32%;
+  height: 40px;
+  border: 1px solid black;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: 5px
+}
+.leibie-buttom{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap
+}
+
 </style>
