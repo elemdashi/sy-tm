@@ -7,7 +7,7 @@
             <div class="top-bar-title"> 
                 <span id="productbtn" @click="pageuppro">商品</span>
                 <span id="commentbtn" @click="pageupcom">评价</span>
-                <span id="detailbtn">详情</span>
+                <span id="detailbtn" @click="pagedetail">详情</span>
                 <i class="el-icon-shopping-cart-2"></i>
             </div>
         </div>
@@ -24,12 +24,8 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i2/2261786154/O1CN017JogBc1vKZwkQgzN1_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i4/2261786154/O1CN01OMHep61vKZwp75jpX_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i3/2261786154/O1CN015h0KdN1vKZwnNYoTv_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i1/2261786154/O1CN01QfqWys1vKZwmf74cV_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i4/2261786154/O1CN01CV1SJy1vKZwlE5GfM_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
+                    <div class="swiper-wrapper" >
+                        <div class="swiper-slide" v-for="(item,index) in imglist"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -39,20 +35,20 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label><i>￥</i>49-79</label>
+                    <label><i>￥</i>{{detaillist.money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small">价格：<del>￥138.00</del></span>
+                    <span class="small">价格：<del>￥{{detaillist.delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span>秋冬款裤子男士牛仔裤秋季2019新款潮流宽松直筒潮牌修身休闲长裤</span>
+                    <span>{{detaillist.fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
                     <span class="small">月销量 3.0万+件</span>
-                    <span class="small">广东广州</span>
+                    <span class="small">{{detaillist.address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -101,7 +97,7 @@
             <div class="product-comment-group" id="comment">
                 <div class="product-comment">
                     <div class="product-comment-title">商品评价（5270）</div>
-                    <div>查看全部 <i class="el-icon-arrow-right"></i></div>
+                    <div class="product-comment-title2">查看全部 <i class="el-icon-arrow-right"></i></div>
                 </div>
                 <ul class="tag">
                     <li>很划算(403)</li>
@@ -111,6 +107,37 @@
                 <div class="tag-comment">
                     <div class="tag-user">
                          <img src="//img.alicdn.com/tps/i3/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png_80x80Q90s50.jpg_.webp" alt="">
+                         <span>张**8</span>
+                    </div>
+                    <div class="tagcontent">
+                        穿了不到一周就这样了
+                    </div>
+                    <div class="date">2019-10-14 颜色:B款/黑色;尺码:29</div>
+                </div>
+                
+            </div>
+            <div class="product-ask-group">
+                <div class="title">
+                    <div class="title1">问大家(19)</div>
+                    <div class="title2">打开APP查看全部 <i class="el-icon-arrow-right" ></i></div>
+                </div>
+
+                <div class="ask">
+                    <div class="left">
+                        <div class="ask1">
+                            <span class="askicon">问</span>
+                            <span class="asktitle">起球吗？。。。。</span>
+                        </div>
+                    
+                         <div class="ask1right">4个回答</div>
+                    </div>
+                    <div class="right">
+                        <div class="ask2">
+                            <span class="askicon">问</span>
+                            <span class="asktitle">你好麻烦问下，这裤子，弹性大吗？？</span>
+                        </div>
+                    
+                         <div class="ask2right">1个回答</div>
                     </div>
                    
                 </div>
@@ -135,7 +162,33 @@
             </div>
         </div>
 
-        <div class="test">ssss</div>
+        <div class="test" id="prodetail">
+            <img src="//img.alicdn.com/imgextra/i2/188124207/O1CN01BcWJKD1gwqkRbSFaI_!!188124207.jpg_1152x1920Q90s50.jpg_.webp" alt="">
+        </div>
+
+        <!----------  底部固定操作栏/加入购物车   ------------>
+        <div class="action-bar">
+            <div class="left-icon">
+                <div class="left-icon1">
+                    <img src="/店铺.png" alt="">
+                    <span>店铺</span>
+                </div>
+                 <div class="left-icon1">
+                    <img src="/旺旺.png" alt="">
+                    <span>客服</span>
+                </div>
+                 <div class="left-icon1">
+                    <img src="/收藏.png" alt="">
+                    <span>收藏</span>
+                </div>
+               
+            </div>
+            <div class="right-btn">
+                <button class="shopcar">加入购物车</button>
+                <button class="buy">立即购买</button>
+            </div>
+        </div>
+
         
        
 
@@ -145,7 +198,9 @@
 <script>
 import Vue from 'vue'
 import Swiper from 'swiper'
-import { Popup } from 'mint-ui';
+import { Popup } from 'mint-ui'
+import axios  from 'axios'
+ Vue.use(axios)
 
 Vue.component(Popup.name, Popup);
 export default {
@@ -153,7 +208,12 @@ export default {
     data(){
         return{
             showicon:false,
+            detaillist:[],
+            imglist:[]
         }
+    },
+    created(){
+    this.getData()
     },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
@@ -163,20 +223,12 @@ export default {
 			pagination: {
 				el: '.swiper-pagination',
                 type: 'fraction',
-                autoplayDisableOnInteraction : false,
-                renderCustom: function (swiper, current, total) {
-                    var paginationHtml = " ";
-                    for (var i = 0; i < total; i++) {
-                        // 判断是不是激活焦点，是的话添加active类，不是就只添加基本样式类
-                        if (i === (current - 1)) {
-                            paginationHtml += '<span class="swiper-pagination-customs swiper-pagination-customs-active"></span>';
-                        }else{
-                            paginationHtml += '<span class="swiper-pagination-customs"></span>';
-                        }						  
-                    }
-                    return paginationHtml;
+                 renderFraction: function (currentClass, totalClass) {
+                    return '<span class="' + currentClass + '"></span>' +
+                            ' / ' +
+                            '<span class="' + totalClass + '"></span>';
                 },
-			}
+                    }
 		})
          window.addEventListener('scroll', this.handleScroll,true)
     },
@@ -186,7 +238,10 @@ export default {
         },
         pageupcom(){
             document.getElementById("comment").scrollIntoView();
-
+        },
+        pagedetail(){
+            document.getElementById("prodetail").scrollIntoView();
+            
         },
         showwindow(){
             document.getElementById("jumpwindow").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
@@ -223,19 +278,33 @@ export default {
         },
         pagetohome(){
              this.$router.push("/home")
+        },
+        getData(){
+              console.log("获取商品详细数据");
+                let that = this
+                axios.get('/data/shangping.json')
+                    .then(function (response) {
+                            that.detaillist = response.data.data.nanzhuang[0];
+                            that.imglist = response.data.data.nanzhuang[0].xiangqing;
+                            console.log(that.detaillist)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
         }
     }
 }
 </script>
 <style>
-    .active{
-        
-    }
+.test{
+    height:2000px
+}
 .detail{
     background :rgb(245,245,245);
     /* overflow-y:auto; */
     overflow: auto;
-    height: 2000px;
+    position: relative;
+    height: 900px;
 }
 
 .detail-top-bar{
@@ -245,6 +314,7 @@ export default {
     width: 100%;
     display: flex;
     position:fixed;
+    z-index: 999;
 }
 #topbar2{
     z-index: 999;
@@ -292,39 +362,28 @@ export default {
     margin:5px;
     display: inline-block;
 }
-.test{
-    height:5000px;
-}
 
 /* 轮播样式 */
+.product-dec-swiper{
+    position: relative;
+}
+.product-dec-swiper .swiper-pagination{
+    position: absolute;
+    bottom:10px;
+    left: 320px;
+    background-color: rgba(100,100,100,.6);
+    border-radius: 10px;
+    line-height: 20px;
+    height: 20px;
+    color: #fff;
+    width: 10%;
+    font-size: 12px;
+}
 .detail .swiper-slide img{
     width: 100%;
     height: 375px;
 }
-   .top-product-dec .swiper-pagination-custom{
-    background: red;
-    bottom: 5%;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    text-align: center;
-  }
-  /*自定义分页器的样式，这个你自己想要什么样子自己写*/
-    .product-dec-swiper .swiper-pagination-customs {
-      width: 15px;
-      height: 2px;
-      display:inline-block;
-      background: red;
-      opacity: .3;
-      margin: 0 5px;
-      outline: 0;
-    }
-  /*自定义分页器激活时的样式表现*/
-  .product-dec-swiper .swiper-pagination-customs-active{
-    opacity :1;
-    background:red;
-  }
-
+ 
   .price-product-dec,.serve-product-dec,.select-product-dec{
       background: #fff;
       width: 100%;
@@ -415,7 +474,7 @@ export default {
        overflow: hidden;
         height: 0px;
        bottom:0px;
-       position: absolute;
+       position: fixed;
        background: #fff;
        width: 100%;
        z-index: 999;
@@ -488,11 +547,170 @@ export default {
      }
     ul{
         list-style-type: none;
-         margin-left: 6px;
     }
      .tag li {
          display: inline-block;
+         background-color: #FEE;
+        color: #666;
+        margin: 6px 3px;
+        padding: 6px 9px;
+        text-align: center;
+        border-radius: 26px;
+        font-size: 12px;
+        line-height: 14px;
      }
+
+     .tag-user img{
+         width: 24px;
+         height: 24px;
+         vertical-align: middle;
+     }
+    .product-comment-group{
+        margin-top:10px;
+        background: #FFFF;
+    }
+     .product-comment {
+         font-size: 14px;
+         padding-top:10px;
+     }
+     .product-comment .product-comment-title2, .product-comment .product-comment-title2 i{
+         color:#ff0036;
+     }
+     .product-comment .product-comment-title{
+         color:#666666;
+     }
+     .tag-user span{
+         font-size: 12px;
+         color:#999999;
+         margin-left: 6px;
+     }
+     .tag-user{
+         margin-left: 6px;
+         line-height: 24px;
+     }
+.tagcontent{
+    font-size: 13px;
+    line-height: 16px;
+    text-align: justify;
+    height: 32px;
+    overflow: hidden;
+    word-break: break-all;
+    margin-left: 6px;
+    padding:5px 0 ;
+    margin-top:10px;
+}
+.tag-comment .date{
+    margin-left: 6px;
+    font-size: 10px;
+    padding-top: 8px;
+    color: #999;
+    line-height: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    margin-right:5px; 
+}
+.product-ask-group{
+    padding:10px 0 10px 0;
+    margin-bottom: 10px;
+}
+.product-ask-group .title{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6px;
+}
+.product-ask-group .title .title1{
+    font-size: 14px;
+    color: #666666;
+}
+.product-ask-group .title .title2 {
+    color: #ff0036;
+    font-size: 14px;
+    position: absolute;
+    left:248px;
+}
+.product-ask-group .title .title2  i{
+    color: #ff0036;
+
+}
+.askicon{
+    background: #ff7b3f;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-left:6px;
+}
+
+
+.asktitle{
+    font-size: 13px;
+}
+
+.ask .left ,.ask .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+     font-size: 13px;
+    color: #999999;
+}
+.ask .asktitle{
+    color:#051b28;
+}
+
+.product-ask-group{
+    background: #ffff;
+}
+
+/* 底部固定操作栏样式 */
+.action-bar{
+    box-shadow: 5px 5px 5px #051b28;
+    width:100%;
+    height: 50px;
+    background: #fff;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+}
+.left-icon{
+    width:40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left-icon1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.left-icon img{
+    width: 18px
+}
+.right-btn{
+    width: 60%;
+    display: flex;
+
+}
+.right-btn button{
+    height: 100%;
+    border:none;
+    outline: none;
+    flex:1
+}
+.right-btn .shopcar{
+    background: #FF9500;
+    color: #fff;
+}
+.right-btn .buy{
+    background: #FF0036;
+    color: #fff;
+}
+
+    
 
 
 

@@ -9,14 +9,26 @@
           <router-link to="/class/tuijian" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></router-link>
           <img v-if="show" id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
           <button @click="toPageLogin()" id="login-btn" v-if="login=='false'">登录</button>
-          <button v-else id="login-btn" ><i class="el-icon-user"></i></button>
+          <button v-else id="login-btn"@click="openfloat" ><i class="el-icon-user"></i></button>
         </div>
         <div id="search-input" v-if="show">
           <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
         </div>
       </div>
 
-  <!-- 外链跳转 -->
+      <!-- 我的天猫浮动窗口 -->
+      <div class="floatwin" v-if="showfloat">
+        <div class="title">
+          <span>我的天猫</span>
+           <button @click="closefloat">X</button>
+        </div>
+       
+      </div>
+      <div class="homeshadow" v-if="showfloat">
+        
+      </div>
+
+      <!-- 外链跳转 -->
     <div class="top-adv-bar">
       <a href="https://suning.tmall.com/?pos=1&acm=201704071.1003.64.1699747&scm=1003.64.201704071.OTHER_1547149173937_1699747&spm=a211ue.11501597.icon.1"><img class="adv-icon" src="https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp"><span>苏宁易购</span></a>
       <a href="https://chaoshi.m.tmall.com/?pos=2&acm=201704071.1003.64.1699747&_ig=shoumao&scm=1003.64.201704071.OTHER_1545931209467_1699747&spm=a211ue.11501597.icon.2"><img class="adv-icon" src="//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp"><span>天猫超市</span></a>
@@ -271,6 +283,7 @@ export default {
   name: 'home',
    data(){
     return{
+      showfloat:false,
       show:true,
       homelistleft:[],
       input:"",
@@ -383,8 +396,13 @@ toPageClasstwo(){
         name:'search',
       })
     },
-
-
+    // 打开/关闭浮动窗口
+    openfloat(){
+      this.showfloat = true
+    },
+    closefloat(){
+      this.showfloat = false
+    },
     getData() {
             console.log("获取后台数据");
            let that = this
@@ -403,11 +421,32 @@ toPageClasstwo(){
 </script>
 
 <style lang="stylus">
+//浮动窗口
+.floatwin{
+  top:10px;
+  z-index:999;
+  width:100%;
+  position:fixed;
+  background:#fff;
+}
+.floatwin .title{
+  margin:0 auto;
+  width :95%;
+  display:flex;
+   justify-content:space-between;
+}
+// 背景遮罩
+.homeshadow{
+  position:absolute;
+  background: rgba(0,0,0,.5);
+  height: 1000px;
+  width: 100%;
+  z-index: 900;
+}
 .el-icon-user{
   color:white;
   font-size:20px;
-  
-  
+  margin-right:10px;
 }
 
 *{
@@ -443,7 +482,7 @@ html, body {
   .content{
     background-color:rgb(255,0,54);
     position :fixed;
-    z-index :999;
+    z-index :500;
     height:90px;
     display :flex;
     flex-direction :column;
