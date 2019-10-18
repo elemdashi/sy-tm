@@ -5,7 +5,7 @@
       <div class="class-top">
           <div class="class-tui" @click="tui()"> 返回 </div>
         <router-link to="/search"  id="search-input">
-        <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌">
+        <input  icon="el-icon-search" class="search-inputclass" v-model="input" placeholder="搜索商品、品牌">
         </router-link>
        
       </div>
@@ -169,7 +169,7 @@ export default {
  /* #search-input{
        margin:-5px auto;
     } */
- .search-input{
+ .search-inputclass{
     margin-left: 15px;
     width:80%;
     height:25px;
