@@ -1,5 +1,6 @@
 <template>
   <div class="home" id="orderFullScreen">
+ 
      <el-backtop ></el-backtop>
     <!-- 顶部搜索框 -->
  
@@ -7,7 +8,8 @@
         <div class="home-top-bar">
           <router-link to="/class/tuijian" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></router-link>
           <img v-if="show" id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
-          <button @click="toPageLogin()" id="login-btn">登录</button>
+          <button @click="toPageLogin()" id="login-btn" v-if="login=='false'">登录</button>
+          <button v-else id="login-btn" ><i class="el-icon-user"></i></button>
         </div>
         <div id="search-input" v-if="show">
           <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">
@@ -99,7 +101,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple">
            <div class="grid-content-top left">
-             <span>聚划算</span>
+             <span>{{login}}</span>
           </div>
 
           <div class="grid-content-bottom">
@@ -280,7 +282,9 @@ export default {
  // 返回顶部所需时间
  backSeconds : 100,
  // 往下滑动多少显示返回顶部（单位：px）
- showPx : 200
+ showPx : 200,
+ login:"false"
+
     }
   },
   mounted(){ 
@@ -311,7 +315,12 @@ export default {
   },
 created(){
     this.getData()
+    if(localStorage.getItem("log")=="true"){
+      this.login=localStorage.getItem("log")
+    }
+ 
 },
+
  methods:{
   //  首页顶部滚动缩放动画
     handleScroll() {
@@ -394,6 +403,12 @@ toPageClasstwo(){
 </script>
 
 <style lang="stylus">
+.el-icon-user{
+  color:white;
+  font-size:20px;
+  
+  
+}
 
 *{
     padding: 0;
