@@ -1,5 +1,6 @@
 <template>
   <div class="home" id="orderFullScreen">
+     <el-backtop ></el-backtop>
     <!-- 顶部搜索框 -->
  
       <div class="content" id="content" v-if="show">
@@ -210,10 +211,9 @@
 
       
     </div>
-    <!-- <div id="back-to-top" class="back-to-top" @click="backToTop" v-show="backTopShow" v-cloak>
-        <img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img">
-    </div> -->
-    <backtop></backtop>
+
+    <!-- 向顶部滚动 -->
+    <img src="//gw.alicdn.com/tfs/TB1GEyAqDtYBeNjy1XdXXXXyVXa-88-88.png_110x10000.jpg_.webp" alt="" id="jump-img" @click="backToTop" v-show="backTopShow">
     
     
       
@@ -258,7 +258,7 @@
 import Vue from 'vue'
 import axios  from 'axios'
 import Swiper from 'swiper'
-import backtop from './backtop.vue'
+
 
 
 
@@ -267,15 +267,20 @@ Vue.use(axios)
 
 export default {
   name: 'home',
-  components:{
-    backtop
-  },
    data(){
     return{
       show:true,
       homelistleft:[],
       input:"",
       tabIndex:1,
+       //是否显示回到顶部
+ backTopShow : false,
+ // 是否允许操作返回顶部
+ backTopAllow : true,
+ // 返回顶部所需时间
+ backSeconds : 100,
+ // 往下滑动多少显示返回顶部（单位：px）
+ showPx : 200
     }
   },
   mounted(){ 
@@ -302,17 +307,21 @@ export default {
 			}
 		})
     countDown("2019-11-01 00:00:00")
-    // window.addEventListener('scroll', this.backTopShowOperate,true)
     document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll,true)
-
   },
 created(){
     this.getData()
-    
 },
  methods:{
   //  首页顶部滚动缩放动画
     handleScroll() {
+       if (!this.backTopAllow) return;
+        if (document.getElementById('orderFullScreen').scrollTop > 800) {
+          
+        this.backTopShow = true;
+        } else {
+        this.backTopShow = false;
+        }
       if (document.getElementById('orderFullScreen').scrollTop > 300) {
         document.getElementById("content").setAttribute("style"," transition:all 0.3s;height:60px;")
        document.getElementById("homeLogo").setAttribute("style","transition:all 0.3s;width:0;height:0")
@@ -327,6 +336,17 @@ created(){
         document.getElementsByClassName("search-input")[0].setAttribute("style"," transition:all 0.3s;width:355px;")
       }
     },
+    backToTop : function() {
+      var step = document.getElementById('orderFullScreen').scrollTop / this.backSeconds;
+      var backTopInterval = setInterval(function() {
+      if (document.getElementById('orderFullScreen').scrollTop > 0) {
+      document.getElementById('orderFullScreen').scrollTop-= step;
+      } else {
+      app.backTopAllow = true;
+      clearInterval(backTopInterval);
+      }
+      }, 1);
+      },
 
 toPageClasstwo(){
   this.$router.push({
@@ -380,13 +400,25 @@ toPageClasstwo(){
     margin: 0;
     box-sizing: border-box;
 }
-  html,body{
-    // overflow-x:hidden;
-    // overflow-y:auto;
-    height:100%;
-    overflow:hidden
 
-  }
+html, body {
+ width: 100%;
+ height: 100%;
+ position: relative;
+ overflow-x: hidden;
+ overflow-y: auto;
+ z-index: 1;
+}
+  
+#jump-img {
+ position: fixed;
+ bottom: 5px;
+ right: 20px;
+ z-index: 100;
+ width:44px;
+ height:44px;
+}
+
   #orderFullScreen{
     background :#fff;
     overflow-y:auto;
