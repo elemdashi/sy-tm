@@ -24,12 +24,8 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i2/2261786154/O1CN017JogBc1vKZwkQgzN1_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i4/2261786154/O1CN01OMHep61vKZwp75jpX_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i3/2261786154/O1CN015h0KdN1vKZwnNYoTv_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i1/2261786154/O1CN01QfqWys1vKZwmf74cV_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
-                        <div class="swiper-slide"><img src="//img.alicdn.com/imgextra/i4/2261786154/O1CN01CV1SJy1vKZwlE5GfM_!!2261786154.jpg_2200x2200Q50s50.jpg_.webp"></div>
+                    <div class="swiper-wrapper" >
+                        <div class="swiper-slide" v-for="(item,index) in imglist"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -39,20 +35,20 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label><i>￥</i>49-79</label>
+                    <label><i>￥</i>{{detaillist.money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small">价格：<del>￥138.00</del></span>
+                    <span class="small">价格：<del>￥{{detaillist.delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span>秋冬款裤子男士牛仔裤秋季2019新款潮流宽松直筒潮牌修身休闲长裤</span>
+                    <span>{{detaillist.fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
                     <span class="small">月销量 3.0万+件</span>
-                    <span class="small">广东广州</span>
+                    <span class="small">{{detaillist.address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -145,7 +141,9 @@
 <script>
 import Vue from 'vue'
 import Swiper from 'swiper'
-import { Popup } from 'mint-ui';
+import { Popup } from 'mint-ui'
+import axios  from 'axios'
+ Vue.use(axios)
 
 Vue.component(Popup.name, Popup);
 export default {
@@ -153,7 +151,12 @@ export default {
     data(){
         return{
             showicon:false,
+            detaillist:[],
+            imglist:[]
         }
+    },
+    created(){
+    this.getData()
     },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
@@ -223,6 +226,19 @@ export default {
         },
         pagetohome(){
              this.$router.push("/home")
+        },
+        getData(){
+              console.log("获取商品详细数据");
+                let that = this
+                axios.get('/data/shangping.json')
+                    .then(function (response) {
+                            that.detaillist = response.data.data.nanzhuang[0];
+                            that.imglist = response.data.data.nanzhuang[0].xiangqing;
+                            console.log(that.detaillist)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
         }
     }
 }
