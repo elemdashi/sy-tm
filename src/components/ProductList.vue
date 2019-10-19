@@ -230,7 +230,7 @@ export default {
     },
     chuanzhi(item){
        this.$store.state.shopcar.push(item)
-       console.log(this.$store.state.shopcar)
+      //  console.log(this.$store.state.shopcar)
     },
      
     xialaliebiao(){

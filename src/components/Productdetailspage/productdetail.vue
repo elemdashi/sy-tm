@@ -248,7 +248,7 @@ export default {
     methods:{
         addproduct(){
             console.log("加入购物车了")
-            this.$store.state.shopcar = this.detaillist
+            this.$store.state.shopcar.push(this.detaillist) 
         },
          handleClose(done) {
         this.$confirm('确认关闭？')
