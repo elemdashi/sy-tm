@@ -8,7 +8,8 @@ export default new Vuex.Store({
        logging:"false",
        searchmessage:"",
        shopcar:[],
-       zong:0
+       zong:0,
+       alerady:[]
   },
   mutations: {
         

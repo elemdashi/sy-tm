@@ -26,7 +26,7 @@
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
                     <div class="swiper-wrapper" >
-                        <div class="swiper-slide" v-for="(item,index) in imglist"><img :src="item"></div>
+                        <div class="swiper-slide" v-for="(item,index) in imglist" :key="index"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -54,7 +54,7 @@
             </div>
             <!-- 商品促销和服务 -->
             <div class="serve-product-dec" >
-                <div class="promotion"@click="showwindow">
+                <div class="promotion" @click="showwindow">
                     <div class="left">
                         <span class="small">促销</span>
                         <span class="big">购买可得24积分</span>
@@ -192,7 +192,7 @@
             </div>
         </div>
        <!-- 评价页面 -->
-        <el-drawer :visible.sync="drawer":direction="direction":before-close="handleClose" size=100%>
+        <el-drawer :visible.sync="drawer" :direction="direction" :before-close="handleClose" size=100%>
             <img src="/评价.png">
         </el-drawer>
         
