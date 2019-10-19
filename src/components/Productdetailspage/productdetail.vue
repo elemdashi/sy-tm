@@ -187,7 +187,7 @@
                
             </div>
             <div class="right-btn">
-                <button class="shopcar">加入购物车</button>
+                <button class="shopcar" @click="addproduct">加入购物车</button>
                 <button class="buy">立即购买</button>
             </div>
         </div>
@@ -216,20 +216,16 @@ export default {
             showicon:false,
             detaillist:[],
             imglist:[],
-             drawer: false,
+            drawer: false,
             direction: 'rtl',
             tag:"false"
         }
-    },
-    watch(){
-        this.$store.state.logging
     },
     created(){
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
     }
         console.log(localStorage.getItem("log"))
-        
     this.getData()
     },
     mounted(){
@@ -250,6 +246,10 @@ export default {
          window.addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
+        addproduct(){
+            console.log("加入购物车了")
+            this.$store.state.shopcar = this.detaillist
+        },
          handleClose(done) {
         this.$confirm('确认关闭？')
           .then(_ => {
@@ -723,10 +723,13 @@ export default {
     display: flex;
 }
 .left-icon{
+    color:#999999;
+    font-size: 12px;
     width:40%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 .left-icon1{
     display: flex;
