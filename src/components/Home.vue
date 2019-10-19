@@ -144,7 +144,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple">
            <div class="grid-content-top left">
-             <span>{{login}}</span>
+             <span>聚划算</span>
           </div>
 
           <div class="grid-content-bottom">
@@ -444,6 +444,7 @@ created(){
             axios.get('/data/homepage.json')
                 .then(function (response) {
                      that.homelistleft = response.data.data.leftproduct;
+                    //  that.homelistleft = response.data.data.leftproduct;
                 })
                 .catch(function (error) {
                     console.log(error);
