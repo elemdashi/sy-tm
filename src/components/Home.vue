@@ -9,7 +9,7 @@
           <router-link to="/class/tuijian" id="class-btn-img"><img  class="class-btn-img" src="/分类.png"></router-link>
           <img v-if="show" id="homeLogo" class="homeLogo" src="//gw.alicdn.com/tfs/TB1wQw8qamWBuNjy1XaXXXCbXXa-237-41.png_240x10000.jpg_.webp">
           <button @click="toPageLogin()" id="login-btn" v-if="login=='false'">登录</button>
-          <button v-else id="login-btn"@click="openfloat" ><i class="el-icon-user"></i></button>
+          <button v-else id="login-btn" @click="openfloat" ><i class="el-icon-user"></i></button>
         </div>
         <div id="search-input" v-if="show">
           <input  icon="el-icon-search" class="search-input" v-model="input" placeholder="搜索商品、品牌" @click="toPageSearch()">

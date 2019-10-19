@@ -91,9 +91,9 @@
     <!-- 下方导航 -->
          <div class="product-top-xia">
             <div class="product-zonghe">综合</div>
-            <router-link to="/shopcar">
+           
              <div class="product-zonghe">销量</div>
-            </router-link>
+           
              
               <div class="product-zonghe">价格<i class="el-icon-arrow-down"></i></div>
                <div class="product-zonghe">店铺</div>
