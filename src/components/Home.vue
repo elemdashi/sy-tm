@@ -22,6 +22,37 @@
           <span>我的天猫</span>
            <button @click="closefloat">X</button>
         </div>
+        <div class="actionbtn">
+          <div class="top">
+            <div class="top-icon">
+              <img src="/天猫 T.png" alt="">
+              <span>天猫客户端</span>
+            </div>
+            <div class="top-icon">
+              <img src="/礼物.png" alt="">
+              <span>新人有礼</span>
+            </div>
+            <div class="top-icon" @click="toshopcar">
+              <img src="/购物车.png" alt="">
+              <span>购物车</span>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="bottom-icon">
+              <img src="/收藏红.png" alt="">
+              <span>收藏宝贝</span>
+            </div>
+            <div class="bottom-icon">
+              <img src="/店铺蓝.png" alt="">
+              <span>收藏店铺</span>
+            </div>
+            <div class="bottom-icon">
+              <img src="/订单.png" alt="">
+              <span>全部订单</span>
+            </div>
+          </div>
+
+        </div>
        
       </div>
       <div class="homeshadow" v-if="showfloat">
@@ -370,12 +401,16 @@ created(){
       }, 1);
       },
 
-toPageClasstwo(){
-  this.$router.push({
-    name:'classtwo',
-  })
-},
-
+  toPageClasstwo(){
+    this.$router.push({
+      name:'classtwo',
+    })
+  },
+  toshopcar(){
+     this.$router.push({
+      name:'shopcar',
+    })
+  },
  toPageClass(){
       this.$router.push({
         name:'class',
@@ -423,17 +458,58 @@ toPageClasstwo(){
 <style lang="stylus">
 //浮动窗口
 .floatwin{
-  top:10px;
+  top:50px;
   z-index:999;
   width:100%;
   position:fixed;
-  background:#fff;
+  background:#E5E5E5;
 }
 .floatwin .title{
+  height:33px;
+  font-size:14px;
+  font-weight:600;
   margin:0 auto;
   width :95%;
   display:flex;
    justify-content:space-between;
+   align-items :center;
+}
+.floatwin .title button{
+  font-size:20px;
+  background:none;
+  outline:none;
+  border:none;
+}
+.floatwin .actionbtn {
+  height:214px;
+  background-color:#fff;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+.floatwin .actionbtn  .top{
+  margin-top:15px;
+}
+.floatwin .actionbtn  img{
+  width:33px;
+  height:33px;
+}
+.floatwin .actionbtn  .top .top-icon,.floatwin .actionbtn  .bottom .bottom-icon{
+  display:flex;
+  flex-direction:column;
+   align-items :center;
+   font-size:12px;
+}
+.floatwin .actionbtn  .top,.floatwin .actionbtn  .bottom{
+  height:50%;
+  display:flex;
+  align-items :center;
+
+}
+.floatwin .actionbtn  .top div,.floatwin .actionbtn  .bottom div{
+  display:flex;
+  flex:1;
+  justify-content :center;
 }
 // 背景遮罩
 .homeshadow{
