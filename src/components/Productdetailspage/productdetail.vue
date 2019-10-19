@@ -250,12 +250,12 @@ export default {
     methods:{
         addproduct(){
             console.log("加入购物车了")
-            if(this.detaillist.count==0){
+            if(this.detaillist[0].count==0){
                  this.$store.state.shopcar.push(this.detaillist)
-                  this.detaillist.count++
+                  this.detaillist[0].count++
             }else{
-                this.detaillist.count++
-                console.log(this.detaillist.count)
+                this.detaillist[0].count++
+                console.log(this.detaillist[0].count)
             }
                  console.log(this.$store.state.shopcar)
            
