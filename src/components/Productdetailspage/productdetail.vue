@@ -248,7 +248,15 @@ export default {
     methods:{
         addproduct(){
             console.log("加入购物车了")
-            this.$store.state.shopcar = this.detaillist
+            if((this.$store.state.shopcar.indexOf(this.detaillist))===0){
+                 this.$store.state.shopcar.push(this.detaillist)
+            }else{
+                this.detaillist.count++
+                console.log(this.detaillist.count)
+            }
+                
+                 console.log(this.$store.state.shopcar)
+           
         },
          handleClose(done) {
         this.$confirm('确认关闭？')
