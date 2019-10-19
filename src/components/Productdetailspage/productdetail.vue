@@ -248,13 +248,13 @@ export default {
     methods:{
         addproduct(){
             console.log("加入购物车了")
-            if((this.$store.state.shopcar.indexOf(this.detaillist))===0){
+            if(this.detaillist.count==0){
                  this.$store.state.shopcar.push(this.detaillist)
+                  this.detaillist.count++
             }else{
                 this.detaillist.count++
                 console.log(this.detaillist.count)
             }
-                
                  console.log(this.$store.state.shopcar)
            
         },

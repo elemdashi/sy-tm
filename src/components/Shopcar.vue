@@ -20,6 +20,12 @@
                        <div class="shop-img">
                          <img :src="item.url" alt="" style="width:100%;height:100%">
                        </div>
+                       <div class="xiangqing-zuo">
+                         <div class="xiangqing-miaoshu">
+                            {{item.name}}
+                         </div>
+                            
+                       </div>
                  </div>
 
              </div>
@@ -35,6 +41,9 @@ export default {
     return{
         
     }
+  },
+  created(){
+      console.log(this.$store.state.shopcar)
   },
   methods:{
     huitui(){
@@ -132,5 +141,15 @@ font-size: 18px
   margin-top: 20px;
   margin-left: 30px
 }
-
+.xiangqing-zuo{
+  width: 55%;
+  height: 100%;
+  margin-left: 5px;
+  border: 1px solid black
+}
+.xiangqing-miaoshu{
+  width: 100%;
+  height: 20%;
+   font-size: 10px
+}
 </style>
