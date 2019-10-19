@@ -32,8 +32,18 @@ export default {
        }
   },
   watch:{
-    me:function(newValue){
-        this.$store.state.searchmessage=newValue
+    me:function(newValue,oldValue){
+      console.log(newValue)
+      let that = this
+      if(this.timer){
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+         this.$store.state.searchmessage = newValue
+          this.showlist = this.searchlist
+          console.log("去后端")
+      }, 1500);
+       
     }
   },
   created(){
