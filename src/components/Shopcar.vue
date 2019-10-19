@@ -36,6 +36,9 @@ export default {
         
     }
   },
+  created(){
+      console.log(this.$store.state.shopcar)
+  },
   methods:{
     huitui(){
       window.history.back()

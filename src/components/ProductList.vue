@@ -110,13 +110,16 @@
             <!-- 商品列表 -->
 
             <div class="product-xia">
-              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" @click="chuanzhi(item)">
+              
+              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" >
+                 <router-link to="/detail" tag="div">
                 <div class="product-img">
                       <img :src="item.url" alt="" style="height:100%;width:100%">
                 </div>
                 <div class="product-name">
                   {{item.name}}
                 </div>
+                </router-link>
                 <div class="product-kuai-xia">
                   <div class="product-dollor">
                     ￥&nbsp;{{item.money}}
@@ -124,10 +127,12 @@
                   <div class="product-xiaoliang">
                         {{item.much}}
                   </div>
+                    
                   <div class="product-shangla" @click="shangla(index)">
                      <i class="el-icon-more"></i>
                   </div>
                 </div>
+               
                 <div class="shanglakuang" @click="huilai(index)">
                     <div class="shangla-dian">{{item.dian}} </div>
                     <div class="shangla-pingjia">
@@ -439,12 +444,13 @@ position: relative;
   height: 5%;
   margin: 0 auto;
   text-align: center;
-   line-height: 10px;
+   line-height: 15px;
    font-size: 12px;
    overflow: hidden;
    white-space: nowrap;
    text-overflow: ellipsis;
-   margin-top: 15px
+   margin-top: 10px;
+   margin-bottom: 3px
 }
 .product-kuai-xia{
   width: 100%;
