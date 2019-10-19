@@ -5,7 +5,7 @@
        <div class="shopmuch">购物车（{{this.$store.state.zong}}）</div>
     </div>
     <div class="shop-liebiao">
-             <div class="shop-xiangqing" v-for="(item,index) in this.$store.state.shopcar" :key="index">
+             <div class="shop-xiangqing" v-for="(item,index) in this.$store.state.shopcar[0]" :key="index">
                  <div class="xiangqing-top">
                    <div class="radius" @click="xuanze(index,item)"></div>
                    <i class="el-icon-goods"></i>
