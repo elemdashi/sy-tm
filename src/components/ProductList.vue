@@ -111,9 +111,9 @@
 
             <div class="product-xia">
               
-              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" >
-                 <router-link to="/detail" tag="div">
-                <div class="product-img">
+              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" @click="itemname(item)">
+                 <router-link to="/detail" tag="div" >
+                <div class="product-img" >
                       <img :src="item.url" alt="" style="height:100%;width:100%">
                 </div>
                 <div class="product-name">
@@ -214,9 +214,16 @@ export default {
     }
   },
   created(){
+    this.$store.state.promsg.splice(0,1)
     this.getData()
   },
   methods: {
+    itemname(item){
+      
+      if(this.$store.state.promsg.length==0){
+          this.$store.state.promsg.push(item)
+      }
+    },
     huitui() {
       window.history.back();
     },

@@ -9,7 +9,11 @@ export default new Vuex.Store({
        searchmessage:"",
        shopcar:[],
        zong:0,
+<<<<<<< HEAD
        alerady:[]
+=======
+       promsg:[]
+>>>>>>> c3a38debdf43afe19daa97047b9b5b6bf11e2fa1
   },
   mutations: {
         

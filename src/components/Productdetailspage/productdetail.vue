@@ -3,7 +3,7 @@
         <el-backtop ></el-backtop>
         <!------- 滚动隐藏顶部导航栏 -------->
         <div class="detail-top-bar" id="topbar">
-            <i class="el-icon-arrow-left" @click="pagetohome"></i>
+            <i class="el-icon-arrow-left" @click="pagetolist"></i>
             <div class="top-bar-title"> 
                 <span id="productbtn" @click="pageuppro">商品</span>
                 <span id="commentbtn" @click="pageupcom">评价</span>
@@ -14,10 +14,11 @@
         </div>
         <div v-if="showicon" id="topbar2" >
             <div>
-                <i class="el-icon-arrow-left" @click="pagetohome"></i>
+                <i class="el-icon-arrow-left" @click="pagetolist"></i>
             </div>
             <div>
-                 <i class="el-icon-shopping-cart-2 "></i>
+                <router-link to="/shopcar" v-if="tag=='true'"><i class="el-icon-shopping-cart-2" ></i></router-link>
+                <router-link to="/login" v-else><i class="el-icon-shopping-cart-2" ></i></router-link>
             </div>
            
         </div>
@@ -26,7 +27,7 @@
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
                     <div class="swiper-wrapper" >
-                        <div class="swiper-slide" v-for="(item,index) in imglist" :key="index"><img :src="item"></div>
+                        <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -36,20 +37,20 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label><i>￥</i>{{detaillist.money}}</label>
+                    <label><i>￥</i>{{detaillist[0].money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small">价格：<del>￥{{detaillist.delmoney}}</del></span>
+                    <span class="small">价格：<del>￥{{detaillist[0].delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span>{{detaillist.fullname}}</span>
+                    <span>{{detaillist[0].fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
                     <span class="small">月销量 3.0万+件</span>
-                    <span class="small">{{detaillist.address}}</span>
+                    <span class="small">{{detaillist[0].address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -87,7 +88,7 @@
                     <span class="small3">请选择颜色 尺码</span>
                     <i class="el-icon-arrow-right" ></i>
                 </div>
-                <div class="data" @click="showwindow">
+                <div class="data" @click="showwindow" id="comment">
                     <span class="small">参数</span>
                     <span class="small3">品牌 材质</span>
                     <i class="el-icon-arrow-right" ></i>
@@ -95,7 +96,7 @@
             </div>
 
             <!-------------------  商品评价  ----------------------->
-            <div class="product-comment-group" id="comment">
+            <div class="product-comment-group" >
                 <div class="product-comment">
                     <div class="product-comment-title">商品评价（5270）</div>
                     <!-- <div class="product-comment-title2">查看全部 <i class="el-icon-arrow-right"></i></div> -->
@@ -205,8 +206,8 @@
 import Vue from 'vue'
 import Swiper from 'swiper'
 import { Popup } from 'mint-ui'
-import axios  from 'axios'
- Vue.use(axios)
+// import axios  from 'axios'
+//  Vue.use(axios)
 
 Vue.component(Popup.name, Popup);
 export default {
@@ -225,8 +226,9 @@ export default {
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
     }
-        console.log(localStorage.getItem("log"))
-    this.getData()
+    console.log(localStorage.getItem("log"))
+     this.detaillist = this.$store.state.promsg
+     console.log(this.detaillist)
     },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
@@ -308,22 +310,9 @@ export default {
   
                 
         },
-        pagetohome(){
-             this.$router.push("/home")
+        pagetolist(){
+             this.$router.push("/productlist")
         },
-        getData(){
-              console.log("获取商品详细数据");
-                let that = this
-                axios.get('/data/shangping.json')
-                    .then(function (response) {
-                            that.detaillist = response.data.data.nanzhuang[0];
-                            that.imglist = response.data.data.nanzhuang[0].xiangqing;
-                            console.log(that.detaillist)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-        }
     }
 }
 </script>
@@ -765,6 +754,10 @@ export default {
 .right-btn .buy{
     background: #FF0036;
     color: #fff;
+}
+
+#prodetail img{
+    width:100%;
 }
 
     

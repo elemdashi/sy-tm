@@ -8,8 +8,8 @@
     </div>
     <div class="showlist"  v-for="(item,index) in showlist">
       
-         <div class="list1">{{item.name}}</div>
-         <div class="list2">{{item.name2}}</div>
+         <div class="list1" @click="todetail">{{item.name}}</div>
+         <div class="list2" @click="todetail">{{item.name2}}</div>
       
     </div>
     
@@ -54,6 +54,11 @@ export default {
     this.me=this.$store.state.searchmessage
   },
   methods:{
+    todetail(){
+        this.$router.push({
+        name:'detail',
+      })
+    },
     functionname(){
       let that = this
       that.show = true
