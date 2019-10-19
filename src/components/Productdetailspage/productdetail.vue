@@ -8,7 +8,8 @@
                 <span id="productbtn" @click="pageuppro">商品</span>
                 <span id="commentbtn" @click="pageupcom">评价</span>
                 <span id="detailbtn" @click="pagedetail">详情</span>
-                <i class="el-icon-shopping-cart-2"></i>
+                <router-link to="/shopcar" v-if="tag=='true'"><i class="el-icon-shopping-cart-2" ></i></router-link>
+                <router-link to="/login" v-else><i class="el-icon-shopping-cart-2" ></i></router-link>
             </div>
         </div>
         <div v-if="showicon" id="topbar2" >
@@ -97,7 +98,8 @@
             <div class="product-comment-group" id="comment">
                 <div class="product-comment">
                     <div class="product-comment-title">商品评价（5270）</div>
-                    <div class="product-comment-title2">查看全部 <i class="el-icon-arrow-right"></i></div>
+                    <!-- <div class="product-comment-title2">查看全部 <i class="el-icon-arrow-right"></i></div> -->
+                    <el-button class="product-comment-title2" @click="drawer = true" type="primary">查看全部 <i class="el-icon-arrow-right" ></i></el-button>
                 </div>
                 <ul class="tag">
                     <li>很划算(403)</li>
@@ -116,10 +118,10 @@
                 </div>
                 
             </div>
-            <div class="product-ask-group">
+            <!-- <div class="product-ask-group">
                 <div class="title">
                     <div class="title1">问大家(19)</div>
-                    <div class="title2">打开APP查看全部 <i class="el-icon-arrow-right" ></i></div>
+                    <el-button class="title2" @click="drawer = true" type="primary">打开APP查看全部 <i class="el-icon-arrow-right" ></i></el-button>
                 </div>
 
                 <div class="ask">
@@ -141,7 +143,8 @@
                     </div>
                    
                 </div>
-            </div>
+            </div> -->
+             <!-- <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">点我打开</el-button> -->
 
             <!-- 底部弹窗 -->
             <div class="jumpwindow" id="jumpwindow">
@@ -188,7 +191,10 @@
                 <button class="buy">立即购买</button>
             </div>
         </div>
-
+       <!-- 评价页面 -->
+        <el-drawer :visible.sync="drawer":direction="direction":before-close="handleClose" size=100%>
+            <img src="/评价.png">
+        </el-drawer>
         
        
 
@@ -209,17 +215,28 @@ export default {
         return{
             showicon:false,
             detaillist:[],
-            imglist:[]
+            imglist:[],
+             drawer: false,
+            direction: 'rtl',
+            tag:"false"
         }
     },
+    watch(){
+        this.$store.state.logging
+    },
     created(){
+         if(localStorage.getItem("log")=="true"){
+        this.tag=localStorage.getItem("log")
+    }
+        console.log(localStorage.getItem("log"))
+        
     this.getData()
     },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
-      loop: true, // 循环模式选项，true 循环播放
-      observer: true,//实时检测，动态更新
+            loop: true, // 循环模式选项，true 循环播放
+            observer: true,//实时检测，动态更新
 			pagination: {
 				el: '.swiper-pagination',
                 type: 'fraction',
@@ -233,6 +250,13 @@ export default {
          window.addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
+         handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
         pageuppro(){
             document.getElementById("product").scrollIntoView();
         },
@@ -301,10 +325,12 @@ export default {
 }
 .detail{
     background :rgb(245,245,245);
-    /* overflow-y:auto; */
     overflow: auto;
     position: relative;
     height: 900px;
+}
+.el-drawer{
+    width: 100%;
 }
 
 .detail-top-bar{
@@ -329,14 +355,15 @@ export default {
     border-radius: 8px;
     width: 8px;
     height: 8px;
-    background: red;
+    /* background: red; */
 
 }
-#topbar2 .el-icon-shopping-cart-2:before {
+#topbar2 .el-icon-shopping-cart-2 {
     color: #fff;
     box-shadow: 5px 5px 5px #cccc;
     background: none;
-    margin:-21px;
+    right:20px;
+    position: absolute;
 }
 .detail-top-bar div{
     display: inline-flex;
@@ -348,6 +375,10 @@ export default {
      margin:10px;
      font-size: 13px;
      color: rgb(153, 153, 153)
+}
+#topbar2 .el-icon-arrow-left{
+    position: absolute;
+    left: 1px;
 }
 .el-icon-arrow-left{
     font-size: 25px;
@@ -566,15 +597,28 @@ export default {
          vertical-align: middle;
      }
     .product-comment-group{
+        margin-bottom: 10px;
         margin-top:10px;
         background: #FFFF;
     }
      .product-comment {
          font-size: 14px;
          padding-top:10px;
+         display: flex;
+         align-items: center;
+         align-content: center;
      }
      .product-comment .product-comment-title2, .product-comment .product-comment-title2 i{
          color:#ff0036;
+     }
+     .product-comment .product-comment-title2{
+         border:none;
+         outline: none;
+         background: none;
+         padding:0;
+     }
+     .el-button span{
+         line-height: 30px;
      }
      .product-comment .product-comment-title{
          color:#666666;
@@ -627,6 +671,8 @@ export default {
     color: #666666;
 }
 .product-ask-group .title .title2 {
+    background: none;
+    border: none;
     color: #ff0036;
     font-size: 14px;
     position: absolute;
