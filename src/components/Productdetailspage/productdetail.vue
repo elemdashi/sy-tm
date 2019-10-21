@@ -49,7 +49,7 @@
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
-                    <span class="small">月销量 3.0万+件</span>
+                    <span class="small">{{detaillist[0].much}}</span>
                     <span class="small">{{detaillist[0].address}}</span>
                 </div>
             </div>
