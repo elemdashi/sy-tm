@@ -70,19 +70,9 @@
 
     <!-- 首页轮播 -->
     <div class="swiper-container">
-      <div class="swiper-wrapper">
-          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tps/i4/TB1sNryiV67gK0jSZPfSuuhhFXa.jpg_790x10000Q75.jpg_.webp"></a></div>
-          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tfs/TB1GDEJdKP2gK0jSZFoXXauIVXa-1035-390.png_790x10000.jpg_.webp"></a></div>
-          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tps/i4/TB12OAqiVY7gK0jSZKzSuuikpXa.jpg_790x10000Q75.jpg_.webp"></a></div>
-          <div class="swiper-slide"><a href="https://pages.tmall.com/wow/jinkou/act/zhiyingupr?trackInfo=2017041212100101;64215954804;285964;569080230133;3;285964_569080230133;1007.15052.117304.100200300000000;bb79ffc6-26c6-458a-95f3-38dad81fef52;3;0;null;2591009;66049&wh_biz=tm&item_id=569080230133&pvid=bb79ffc6-26c6-458a-95f3-38dad81fef52&pos=3&activity_id=285964&wh_pid=act%2Fasmy&acm=2017041213.1003.1.2368046&scm=1003.1.2017041212.OTHER_0_6766394&spm=a211ue.11501597.banner.6"><img src="//gw.alicdn.com/tfs/TB1KrKCiYr1gK0jSZR0XXbP8XXa-1035-390.jpg_790x10000Q75.jpg_.webp"></a></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i1/1154864/O1CN01xUaYfw1lnl1VGCGHl_!!1154864-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/tfs/TB1HHWbNrPpK1RjSZFFXXa5PpXa-1035-390.png_790x10000.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i4/251856/O1CN01QVVowT1Pa5fCSOrZn_!!251856-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i4/1058333/O1CN01U29JfK2BQYyqaZrbd_!!1058333-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i1/1462642/O1CN012OCIvZ1VO4y4bvkos_!!1462642-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
-          <div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i2/918137/O1CN01P8a7bI29ynLj1OZlj_!!918137-0-lubanu.jpg_790x10000Q75.jpg_.webp"></div>
+      <div class="swiper-wrapper" >
+          <div class="swiper-slide" v-for="(item,index) in swiperlist"><img :src="item"></div>
       </div>
-      <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>
     </div>
 
@@ -314,6 +304,18 @@ export default {
   name: 'home',
    data(){
     return{
+      swiperlist:[
+      "//gw.alicdn.com/tps/i4/TB1sNryiV67gK0jSZPfSuuhhFXa.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/tfs/TB1GDEJdKP2gK0jSZFoXXauIVXa-1035-390.png_790x10000.jpg_.webp",
+      "//gw.alicdn.com/tfs/TB1HHWbNrPpK1RjSZFFXXa5PpXa-1035-390.png_790x10000.jpg_.webp",
+      "//gw.alicdn.com/tps/i4/TB1jjCbjuL2gK0jSZPhSuuhvXXa.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/imgextra/i2/1450893/O1CN01D1h4PS1IT2FgUyHEP_!!1450893-0-lubanu.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/imgextra/i1/600788/O1CN01udpm661HgwfHC2PGS_!!600788-0-lubanu.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/imgextra/i2/1450847/O1CN01MW4Mqe1I7y290SOmG_!!1450847-0-lubanu.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/imgextra/i1/600788/O1CN01udpm661HgwfHC2PGS_!!600788-0-lubanu.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/imgextra/i2/1080800/O1CN01buPdHl1HmRQ0BaaVS_!!1080800-0-lubanu.jpg_790x10000Q75.jpg_.webp",
+      "//gw.alicdn.com/tps/i4/TB1GIYOgbY1gK0jSZTESutDQVXa.jpg_790x10000Q75.jpg_.webp"
+      ],
       showfloat:false,
       show:true,
       homelistleft:[],
