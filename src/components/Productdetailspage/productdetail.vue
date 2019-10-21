@@ -76,15 +76,13 @@
                 <div class="serve" @click="showwindow">
                     <div class="left">
                         <span class="small">服务</span>
-                    </div>
-                    <div class="right">
-                            <span class="small2">假一赔四</span>
-                            <span>·</span>
-                            <span class="small2">上门取退</span>
-                            <span>·</span>
-                            <span class="small2">极速退款</span>
-                            <span>·</span>
-                            <span class="small2">退货运费险</span>
+                        <span class="small2">假一赔四</span>
+                        <span>·</span>
+                        <span class="small2">上门取退</span>
+                        <span>·</span>
+                        <span class="small2">极速退款</span>
+                        <span>·</span>
+                        <span class="small2">退货运费险</span>
                         <i class="el-icon-arrow-right" ></i>
                     </div>
                   
@@ -326,6 +324,7 @@ export default {
         return{
             choseIndex:0,
             choseIndex1:0,
+            sizelist:["无绒款/灰蓝",],
             showicon:false,
             detaillist:[],
             imglist:[],
@@ -626,12 +625,15 @@ export default {
     
    
    .serve-product-dec .promotion i{
-       margin-right: 5px;
+       margin-right: 8px;
        line-height: 23px;
    }
     .serve-product-dec  .serve {
         display: flex;
        padding-bottom:6px;
+    }
+    .serve-product-dec  .serve  i {
+        margin-left:73px;
     }
    .small2 {
        font-size: 12px;
