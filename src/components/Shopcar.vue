@@ -5,7 +5,7 @@
        <div class="shopmuch">购物车（{{this.$store.state.zong}}）</div>
     </div>
     <div class="shop-liebiao">
-             <div class="shop-xiangqing" v-for="(item,index) in this.$store.state.shopcar[0]" :key="index">
+             <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index">
                  <div class="xiangqing-top">
                    <div class="radius" @click="xuanze(index,item)"></div>
                    <i class="el-icon-goods"></i>
@@ -61,11 +61,13 @@ export default {
     return{
         xuanzhong:"true",
         money:[],
-        muchmoney:0
+        muchmoney:0,
+        shopcarone:[]
     }
   },
   created(){
-      console.log(this.$store.state.shopcar)
+     this.shopcarone=JSON.parse(localStorage.getItem("shop"))
+     console.log(this.shopcarone)
   },
   watch:{
     money:function(newValue,oldValue){
