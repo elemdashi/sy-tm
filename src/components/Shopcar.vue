@@ -50,7 +50,7 @@
                  </div>
                           <!-- 最底部 -->
                       <div class="shop-bottom">
-                        <div>
+                        <div @click="topagehome">
                           <img src="/首页.png" alt="">
                           <span>首页</span>
                         </div>
@@ -104,6 +104,11 @@ export default {
     }
   },
   methods:{
+    topagehome(){
+        this.$router.push({
+       name:'home',
+    })
+    },
     huitui(){
       window.history.back()
     },
@@ -296,8 +301,9 @@ display: flex
   height: 5%;
   position: fixed;
   border: 1px solid #cccc;
-  bottom: 5%;
+  bottom: 31px;
   display: flex;
+  background: #fff;
 
 }
 .radius-quanxuan{
@@ -331,6 +337,8 @@ display: flex
 
 /* 底部导航栏 */
 .shop-bottom{
+  border-top: 1px solid #cccc;
+  padding-top:5px;
   background-color: #fff;
   display: flex;
   justify-content: space-around;
