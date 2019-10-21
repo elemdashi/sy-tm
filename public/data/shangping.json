@@ -97,6 +97,7 @@
             "fullname":"森马潮牌秋季修身小脚黑色宽松弹力牛仔裤",
             "address":"福建福州",
             "money":"119.00",
+            "delmoney":"419",
             "much":"月销4079笔",
             "dian":"森马官方旗舰店",
             "miaoshu":4.84,
@@ -113,7 +114,9 @@
         {
             "url":"//img.alicdn.com/bao/uploaded/i2/1610222843/O1CN01RRE9HB1Ws8YK48pUc_!!0-item_pic.jpg_960x960Q50s50.jpg_.webp",
             "name":"花花公子秋冬款宽松直筒弹力修身休闲牛仔裤",
+            "fullname":"花花公子秋冬款宽松直筒弹力修身休闲牛仔裤",
             "money":"139.00",
+            "delmoney":"229",
             "much":"月销4079笔",
             "dian":"playboy官方旗舰店",
             "miaoshu":4.88,
@@ -130,7 +133,9 @@
         {
             "url":"//img.alicdn.com/bao/uploaded/i4/188124207/TB2fc8Mg79WBuNjSspeXXaz5VXa_!!188124207-0-item_pic.jpg_960x960Q50s50.jpg_.webp",
             "name":"唐狮春秋修身小脚弹力小脚韩版牛仔裤",
+            "fullname":"唐狮春秋修身小脚弹力小脚韩版牛仔裤",
             "money":"139.00",
+            "delmoney":"239",
             "much":"月销8725笔",
             "dian":"森马官方旗舰店",
             "miaoshu":4.83,
@@ -147,7 +152,9 @@
         {
           "url":"//img.alicdn.com/bao/uploaded/i3/1022008754/O1CN01NIiHZl2EXNgpwhe5S_!!0-item_pic.jpg_960x960Q50s50.jpg_.webp",
           "name":"g2000长袖防皱商务修身纯色衬衫",
+          "fullname":"g2000长袖防皱商务修身纯色衬衫",
           "money":"159.00",
+          "delmoney":"355",
           "much":"月销4079笔",
           "dian":"森马官方旗舰店",
           "miaoshu":4.83,

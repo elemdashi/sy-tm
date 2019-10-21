@@ -171,7 +171,11 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
+<<<<<<< HEAD
                             <div @click="chosechange1(index,item)" :class="{active:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
+=======
+                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
+>>>>>>> 4b2361c8e5cd9c3ab852c53726e720f3778b4ceb
                         </div>
                        
                     </div>
@@ -994,7 +998,7 @@ export default {
     color:#FF0036;
     border: 1px solid #FF0036;
 }
-.active{
+.active2{
     color:#FF0036;
     border: 1px solid #FF0036;
     background: red;
