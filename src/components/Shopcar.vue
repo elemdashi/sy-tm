@@ -42,14 +42,40 @@
                        </div>
                  </div>
                  <div class="shoping-flex">
-                         <div class="radius-quanxuan"></div>
+                      <div class="radius-quanxuan"></div>
                       <div class="shop-jiesuan">全选</div>
                       <div class="shop-heji">合计   <span style="color:orange">￥{{muchmoney}}</span></div>
                       <div class="shop-jieqian">结算（ {{muchmoney}} ）</div>
+             
                  </div>
+                          <!-- 最底部 -->
+                      <div class="shop-bottom">
+                        <div>
+                          <img src="/首页.png" alt="">
+                          <span>首页</span>
+                        </div>
+                        <div>
+                          <img src="/购物车灰.png" alt="">
+                          <span>购物车</span>
+                        </div>
+                        <div>
+                          <img src="/订单灰.png" alt="">
+                          <span>订单列表</span>
+                        </div>
+                        <div>
+                          <img src="/用户灰.png" alt="">
+                          <span>我的淘宝</span>
+                          </div>
+                        <div>
+                          <img src="/更多.png" alt="">
+                          <span>更多</span>
+                        </div>
+                     </div>
+    <!--  -->
 
              </div>
     </div>
+
   </div>
 </template>
 <script>
@@ -267,8 +293,8 @@ display: flex
   width: 100%;
   height: 5%;
   position: fixed;
-  border: 1px solid black;
-  bottom: 0px;
+  border: 1px solid #cccc;
+  bottom: 5%;
   display: flex;
 
 }
@@ -299,5 +325,25 @@ display: flex
   text-align: center;
   line-height: 40px;
   color: white
+}
+
+/* 底部导航栏 */
+.shop-bottom{
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  color: #5D6568;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+.shop-bottom img{
+  width: 15px;
+}
+.shop-bottom div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
