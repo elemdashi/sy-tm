@@ -107,7 +107,7 @@
             </a>
           </div>
          
-        </div>
+      </div>
       </el-col>
       <el-col :span="12">
         <div class="grid-content bg-purple">
@@ -293,12 +293,7 @@
 import Vue from 'vue'
 import axios  from 'axios'
 import Swiper from 'swiper'
-
-
-
-
-
-Vue.use(axios)
+Vue.prototype.$ajax = axios
 
 export default {
   name: 'home',
