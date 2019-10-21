@@ -223,12 +223,13 @@ export default {
         }
     },
     created(){
+        
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
     }
     console.log(localStorage.getItem("log"))
-     this.detaillist = this.$store.state.promsg
-     console.log(this.detaillist)
+     this.detaillist.push(JSON.parse(localStorage.getItem("item")))
+     console.log(this.detaillist[0].name)
     },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
@@ -250,14 +251,21 @@ export default {
     methods:{
         addproduct(){
             console.log("加入购物车了")
+            console.log(this.detaillist)
+            console.log(this.detaillist[0].count)
             if(this.detaillist[0].count==0){
-                 this.$store.state.shopcar.push(this.detaillist)
+                 this.$store.state.shopcar.push(this.detaillist[0])
+
                   this.detaillist[0].count++
+                  let shopjson=JSON.stringify(this.$store.state.shopcar)
+                  localStorage.setItem("shop",shopjson)
             }else{
                 this.detaillist[0].count++
-                console.log(this.detaillist[0].count)
+                 let shopjson=JSON.stringify(this.$store.state.shopcar)
+                  localStorage.setItem("shop",shopjson)
+               
             }
-                 console.log(this.$store.state.shopcar)
+               
            
         },
          handleClose(done) {

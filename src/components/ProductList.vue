@@ -214,14 +214,19 @@ export default {
     }
   },
   created(){
+  
     this.$store.state.promsg.splice(0,1)
     this.getData()
+      console.log(this.$store.state.promsg)
   },
   methods: {
     itemname(item){
-      
+     console.log(item)
       if(this.$store.state.promsg.length==0){
           this.$store.state.promsg.push(item)
+          var json=JSON.stringify(item)
+          localStorage.setItem("item",json)
+         console.log(JSON.parse(localStorage.getItem("item")).name) 
       }
     },
     huitui() {
