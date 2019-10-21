@@ -27,7 +27,7 @@
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
                     <div class="swiper-wrapper" >
-                        <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
+                        <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -37,20 +37,20 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label><i>￥</i>{{detaillist[0].money}}</label>
+                    <label><i>￥</i>{{detaillist[1].money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small">价格：<del>￥{{detaillist[0].delmoney}}</del></span>
+                    <span class="small">价格：<del>￥{{detaillist[1].delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span>{{detaillist[0].fullname}}</span>
+                    <span>{{detaillist[1].fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
-                    <span class="small">{{detaillist[0].much}}</span>
-                    <span class="small">{{detaillist[0].address}}</span>
+                    <span class="small">{{detaillist[1].much}}</span>
+                    <span class="small">{{detaillist[1].address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -222,16 +222,31 @@ export default {
             tag:"false"
         }
     },
+    // computed: {
+    //                count(){
+    //                    return this. $store.state.promsg
+    //                },
+                  
+    //            },
+
+    
     created(){
+          
         
+
+        console.log(this.$store.state.promsg)
+        console.log(JSON.parse(localStorage.getItem("item")))
+        this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
+        console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
     }
     console.log(localStorage.getItem("log"))
-     this.detaillist.push(JSON.parse(localStorage.getItem("item")))
-     console.log(this.detaillist[0].name)
+     this.detaillist=this.$store.state.promsg
+     console.log(this.detaillist)
     },
     mounted(){
+      
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
             loop: true, // 循环模式选项，true 循环播放
@@ -249,6 +264,11 @@ export default {
          window.addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
+        huoqu(){
+       this.$store.commit("item")
+       console.log(this.$store.state.promsg)
+    },
+
         addproduct(){
             console.log("加入购物车了")
             console.log(this.detaillist)

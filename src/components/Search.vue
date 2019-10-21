@@ -6,7 +6,7 @@
             <input class="submit" type="submit" title="提交" @click="pageSearchList()">
         </form>
     </div>
-    <div class="showlist"  v-for="(item,index) in showlist">
+    <div class="showlist"  v-for="(item,index) in showlist" :key="index">
       
          <div class="list1" @click="todetail">{{item.name}}</div>
          <div class="list2" @click="todetail">{{item.name2}}</div>

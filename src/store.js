@@ -14,7 +14,10 @@ export default new Vuex.Store({
   },
   
   mutations: {
-        
+        // item(state){
+        //   state.promsg=[]
+        //   state.promsg.push(JSON.parse(localStorage.getItem("item")) )
+        // }
   },
   
   actions: {
