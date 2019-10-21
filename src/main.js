@@ -9,6 +9,12 @@ import "swiper/css/swiper.css"
 import {Backtop} from 'element-ui'
 import Mint from 'mint-ui';
 
+import Vuex from 'vuex'
+import axios from 'axios'
+
+Vue.use(Vuex)
+Vue.prototype.$ajax = axios
+
 Vue.use(Mint);
 Vue.use(ElementUI);
 Vue.use(Backtop)

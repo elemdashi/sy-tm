@@ -71,7 +71,7 @@
     <!-- 首页轮播 -->
     <div class="swiper-container">
       <div class="swiper-wrapper" >
-          <div class="swiper-slide" v-for="(item,index) in swiperlist"><img :src="item"></div>
+          <div class="swiper-slide" v-for="(item,index) in swiperlist" :key="index"><img :src="item"></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -178,7 +178,7 @@
         <span>猜你喜欢</span>
       </div>
       <div class="guess-product-list">
-        <el-row :gutter="10" v-for="(item,index) in homelistleft">
+        <el-row :gutter="10" v-for="(item,index) in homelistleft" :key="index">
           <router-link to="/detail">
                <el-col :span="12" >
                <div class="grid-content bg-purple" @click="pageTodetail()">

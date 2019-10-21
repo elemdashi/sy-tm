@@ -2,12 +2,12 @@
   <div class="shopcar">
     <div class="shop-top">
        <i class="el-icon-arrow-left" @click="huitui()"></i>
-       <div class="shopmuch">购物车（{{this.$store.state.zong}}）</div>
+       <div class="shopmuch">购物车（{{shopcarone.length}}）</div>
     </div>
     <div class="shop-liebiao">
-             <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index">
-                 <div class="xiangqing-top">
-                   <div class="radius" @click="xuanze(index,item)"></div>
+             <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index" >
+                 <div class="xiangqing-top" @click="xuanze(index,item)">
+                   <div class="radius" ></div>
                    <i class="el-icon-goods"></i>
                    <div class="shop-dianpu">{{item.dian}}</div>
                    <i class="el-icon-arrow-right"></i>
@@ -45,7 +45,7 @@
                       <div class="radius-quanxuan"></div>
                       <div class="shop-jiesuan">全选</div>
                       <div class="shop-heji">合计   <span style="color:orange">￥{{muchmoney}}</span></div>
-                      <div class="shop-jieqian">结算（ {{muchmoney}} ）</div>
+                      <div class="shop-jieqian">结算（{{money.length}}）</div>
              
                  </div>
                           <!-- 最底部 -->
@@ -98,9 +98,13 @@ export default {
   watch:{
     money:function(newValue,oldValue){
       console.log(newValue)
+      let much=0
        for(var i=0;i<newValue.length;i++){
-           this.muchmoney +=newValue[i].money
+         
+           much +=newValue[i].money*newValue[i].count
        }
+       this.muchmoney=much
+        console.log(this.muchmoney)
     }
   },
   methods:{
@@ -119,14 +123,18 @@ export default {
       item.count++
     },
     xuanze(index,item){
-      if(this.xuanzhong=="false"){
+     
+      console.log(item)
+       console.log(item.xuan)
+      if(item.xuan=="1"){
           let radius=document.querySelectorAll(".radius")
          let radiuszi=document.querySelectorAll(".radius-two")
          radius[index].style.background="rgb(255,80,0)"
          radiuszi[index].style.background="rgb(255,80,0)"
          this.$store.state.alerady.push(item)
          this.money.push(item)
-         this.xuanzhong="true"
+         console.log(this.money)
+        item.xuan="2"
       }else{
           let radius=document.querySelectorAll(".radius")
          let radiuszi=document.querySelectorAll(".radius-two")
@@ -136,13 +144,14 @@ export default {
                 var ind=mon.findIndex(function (mon) {
                    return mon.name==item.name
                })
+               console.log(ind)
                 this.money.splice(ind,1)
          let it =this.$store.state.alerady
           var inde=it.findIndex(function (it) {
                    return it.name==item.name
                })
          this.$store.state.alerady.splice(inde,1)
-         this.xuanzhong="false"
+         item.xuan="1"
       }
        
     },
