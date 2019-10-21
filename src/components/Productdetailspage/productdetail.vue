@@ -170,6 +170,73 @@
                 </div>
                 
             </div>
+            <!------------ 商品规格弹窗 ------------->
+            <div class="jumpwindow2" id="jumpwindow2">
+                <div class="header">
+                  <div class="img">
+                      <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01995L831gwqnxe7VAq_!!188124207.jpg_200x200Q50s50.jpg" alt="">
+                  </div>
+                  <div class="title">
+                      <div>￥89</div>
+                      <div>库存 2219件</div>
+                      <div>已选择:无绒款/中牛仔蓝 31</div>
+                  </div>
+                  <div>
+                      <button @click="cancelwindow2">X</button>
+                  </div>
+                  
+                </div>
+
+                <div class="body">
+                    <!-- 颜色规格 -->
+                    <div class="color">
+                        <h2>颜色</h2>
+                        <div class="proclass">
+                            <div>
+                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
+                                <span>无绒款/灰蓝</span>
+                            </div>
+                            <div>
+                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
+                                <span>无绒款/灰蓝</span>
+                            </div>
+                            <div>
+                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
+                                <span>无绒款/灰蓝</span>
+                            </div>
+                            <div>
+                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
+                                <span>无绒款/灰蓝</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--尺码规格 -->
+                    <div class="size">
+                        <div>28</div>
+                        <div>28</div>
+                    </div>
+
+                    <!-- 购买数量 -->
+                    <div class="number">
+                        <div>购买数量</div>
+                        <button>-</button>1<button>+</button>
+                    </div>
+
+                    <!-- 花呗分期 -->
+                    <div class="huabei">
+                        <div>花呗分期 (可选)</div>
+                        <div>
+                            <span>分3期(含手续费)</span>
+                            <span>￥46.03/期</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="winbtn">
+                    <button @click="cancelwindow">确定</button>
+                </div>
+                
+            </div>
 
             <!------- 遮罩 ---------->
             <div class="shadow" id="shadow" @click="cancelwindow">
@@ -281,6 +348,8 @@ export default {
     },
 
         addproduct(){
+             document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
+              document.getElementById("shadow").setAttribute("style","height:650px;transition: all 0.2s;opacity:1")
             console.log("加入购物车了")
             console.log(this.$store.state.promsg[0])
             console.log(this.detaillist)
@@ -324,6 +393,10 @@ export default {
         },
         cancelwindow(){
             document.getElementById("jumpwindow").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
+            document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
+        },
+        cancelwindow2(){
+            document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
         },
         handleScroll(){
@@ -799,6 +872,38 @@ export default {
 
 #prodetail img{
     width:100%;
+}
+/* 规格弹窗 */
+.jumpwindow2 {
+   overflow: hidden;
+    height: 0px;
+    bottom:0px;
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 5px 5px 5px #cccc;
+    }
+.jumpwindow2 .header{
+    border-bottom: 1px solid #cccc;
+}
+.jumpwindow2 .header img{
+    width:100px;
+    height: 100px;
+}
+.jumpwindow2 .header  .img{
+    border:1px solid #fff;
+}
+.jumpwindow2 .header .title{
+    margin-left: 10px;
+}
+.jumpwindow2 .body img{
+    width:24px;
+    height: 24px;
+}
+.jumpwindow2 .header{
+    display: flex;
+    flex-direction: row;
 }
 
     
