@@ -190,7 +190,7 @@
                     <div class="color">
                         <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div @click="chosechange(0)":class="{active:choseIndex==0}" >
+                            <div @click="chosechange(0)" :class="{active:choseIndex==0}" >
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span >无绒款/灰蓝</span>
                             </div>
@@ -198,11 +198,11 @@
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span >无绒款/浅牛仔蓝</span>
                             </div>
-                            <div  @click="chosechange(2)":class="{active:choseIndex==2}">
+                            <div  @click="chosechange(2)" :class="{active:choseIndex==2}">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span >无绒款/中牛仔蓝</span>
                             </div>
-                            <div  @click="chosechange(3)":class="{active:choseIndex==3}">
+                            <div  @click="chosechange(3)" :class="{active:choseIndex==3}">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span>无绒款/深色]牛仔蓝</span>
                             </div>
@@ -213,14 +213,14 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-                            <div @click="chosechange1(0)":class="{active:choseIndex1==0}" >28</div>
-                            <div @click="chosechange1(1)":class="{active:choseIndex1==1}" >29</div>
-                            <div @click="chosechange1(2)":class="{active:choseIndex1==2}" >30</div>
-                            <div @click="chosechange1(3)":class="{active:choseIndex1==3}" >31</div>
-                            <div @click="chosechange1(4)":class="{active:choseIndex1==4}" >32</div>
-                            <div @click="chosechange1(5)":class="{active:choseIndex1==5}" >33</div>
-                            <div @click="chosechange1(6)":class="{active:choseIndex1==6}" >34</div>
-                            <div @click="chosechange1(7)":class="{active:choseIndex1==7}" >35</div>
+                            <div @click="chosechange1(0)" :class="{active:choseIndex1==0}" >28</div>
+                            <div @click="chosechange1(1)" :class="{active:choseIndex1==1}" >29</div>
+                            <div @click="chosechange1(2)" :class="{active:choseIndex1==2}" >30</div>
+                            <div @click="chosechange1(3)" :class="{active:choseIndex1==3}" >31</div>
+                            <div @click="chosechange1(4)" :class="{active:choseIndex1==4}" >32</div>
+                            <div @click="chosechange1(5)" :class="{active:choseIndex1==5}" >33</div>
+                            <div @click="chosechange1(6)" :class="{active:choseIndex1==6}" >34</div>
+                            <div @click="chosechange1(7)" :class="{active:choseIndex1==7}" >35</div>
                         </div>
                        
                     </div>

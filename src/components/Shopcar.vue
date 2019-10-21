@@ -5,8 +5,8 @@
        <div class="shopmuch">购物车（{{shopcarone.length}}）</div>
     </div>
     <div class="shop-liebiao">
-             <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index" @click="xuanze(index,item)">
-                 <div class="xiangqing-top">
+             <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index" >
+                 <div class="xiangqing-top" @click="xuanze(index,item)">
                    <div class="radius" ></div>
                    <i class="el-icon-goods"></i>
                    <div class="shop-dianpu">{{item.dian}}</div>
