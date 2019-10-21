@@ -26,8 +26,14 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <div class="swiper-wrapper" >
-                        <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index"><img :src="item"></div>
+                    <div class="swiper-wrapper" v-if="this.detaillist.length==2">
+                        <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index" ><img :src="item"></div>
+                       
+                
+                    </div>
+                     <div class="swiper-wrapper"  v-else>
+                        
+                        <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
                         <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -37,20 +43,25 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label><i>￥</i>{{detaillist[1].money}}</label>
+                    <label v-if="this.detaillist.length==2"><i>￥</i>{{detaillist[1].money}}</label>
+                     <label v-else><i>￥</i>{{detaillist[0].money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small">价格：<del>￥{{detaillist[1].delmoney}}</del></span>
+                    <span class="small" v-if="this.detaillist.length==2">价格：<del>￥{{detaillist[1].delmoney}}</del></span>
+                     <span class="small" v-else>价格：<del>￥{{detaillist[0].delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span>{{detaillist[1].fullname}}</span>
+                    <span v-if="this.detaillist.length==2">{{detaillist[1].fullname}}</span>
+                     <span v-else>{{detaillist[0].fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
-                    <span class="small">{{detaillist[1].much}}</span>
-                    <span class="small">{{detaillist[1].address}}</span>
+                    <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].much}}</span>
+                    <span class="small" v-else>{{detaillist[0].much}}</span>
+                    <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].address}}</span>
+                     <span class="small" v-else>{{detaillist[0].address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -271,10 +282,12 @@ export default {
 
         addproduct(){
             console.log("加入购物车了")
+            console.log(this.$store.state.promsg[0])
             console.log(this.detaillist)
             console.log(this.detaillist[0].count)
+            console.log(this.$store.state.shopcar)
             if(this.detaillist[0].count==0){
-                 this.$store.state.shopcar.push(this.detaillist[0])
+                 this.$store.state.shopcar.push(this.$store.state.promsg[0])
 
                   this.detaillist[0].count++
                   let shopjson=JSON.stringify(this.$store.state.shopcar)
