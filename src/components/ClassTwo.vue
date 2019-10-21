@@ -45,7 +45,8 @@
 import Vue from "vue";
 import axios from "axios";
 
-Vue.use(axios);
+// Vue.use(axios);
+Vue.prototype.$ajax = axios
 
 
 

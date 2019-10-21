@@ -82,7 +82,7 @@
     <div class="product-top">
       <i class="el-icon-arrow-left" @click="huitui"></i>
       <router-link to="/search" class="product-sousuo">
-        <div class="product-message">{{this.$store.state.searchmessage}} &nbsp;X</div>
+        <div class="product-message" v-if="this.$store.state.searchmessage != ''">{{this.$store.state.searchmessage}} &nbsp;X</div>
       </router-link>
       <div class="product-filter" @click="filter">
           筛选
@@ -186,7 +186,8 @@
 <script>
 import Vue from 'vue'
 import axios  from 'axios'
-Vue.use(axios)
+// Vue.use(axios)
+Vue.prototype.$ajax = axios
 export default {
   name: "productList",
   data(){
@@ -236,7 +237,9 @@ export default {
       console.log(this.$store.state.promsg)
     },
     huitui() {
-      window.history.back();
+         this.$router.push({
+      name:'search',
+    })
     },
     filter(){
       let a=document.querySelector(".filter-zhu")

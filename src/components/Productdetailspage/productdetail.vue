@@ -108,7 +108,6 @@
             <div class="product-comment-group" >
                 <div class="product-comment">
                     <div class="product-comment-title">商品评价（5270）</div>
-                    <!-- <div class="product-comment-title2">查看全部 <i class="el-icon-arrow-right"></i></div> -->
                     <el-button class="product-comment-title2" @click="drawer = true" type="primary">查看全部 <i class="el-icon-arrow-right" ></i></el-button>
                 </div>
                 <ul class="tag">
@@ -128,33 +127,6 @@
                 </div>
                 
             </div>
-            <!-- <div class="product-ask-group">
-                <div class="title">
-                    <div class="title1">问大家(19)</div>
-                    <el-button class="title2" @click="drawer = true" type="primary">打开APP查看全部 <i class="el-icon-arrow-right" ></i></el-button>
-                </div>
-
-                <div class="ask">
-                    <div class="left">
-                        <div class="ask1">
-                            <span class="askicon">问</span>
-                            <span class="asktitle">起球吗？。。。。</span>
-                        </div>
-                    
-                         <div class="ask1right">4个回答</div>
-                    </div>
-                    <div class="right">
-                        <div class="ask2">
-                            <span class="askicon">问</span>
-                            <span class="asktitle">你好麻烦问下，这裤子，弹性大吗？？</span>
-                        </div>
-                    
-                         <div class="ask2right">1个回答</div>
-                    </div>
-                   
-                </div>
-            </div> -->
-             <!-- <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">点我打开</el-button> -->
 
             <!-- 底部弹窗 -->
             <div class="jumpwindow" id="jumpwindow">
@@ -295,8 +267,6 @@
 import Vue from 'vue'
 import Swiper from 'swiper'
 import { Popup } from 'mint-ui'
-// import axios  from 'axios'
-//  Vue.use(axios)
 
 Vue.component(Popup.name, Popup);
 export default {
@@ -344,7 +314,7 @@ export default {
                 },
                     }
 		})
-         window.addEventListener('scroll', this.handleScroll,true)
+        document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
         huoqu(){
@@ -378,10 +348,7 @@ export default {
                 this.detaillist[0].count++
                  let shopjson=JSON.stringify(this.$store.state.shopcar)
                   localStorage.setItem("shop",shopjson)
-               
             }
-               
-           
         },
          handleClose(done) {
         this.$confirm('确认关闭？')
@@ -479,8 +446,6 @@ export default {
     border-radius: 8px;
     width: 8px;
     height: 8px;
-    /* background: red; */
-
 }
 #topbar2 .el-icon-shopping-cart-2 {
     color: #fff;

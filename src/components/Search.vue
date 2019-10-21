@@ -2,15 +2,13 @@
   <div class="search">
     <div class="search-box">
         <form>
-            <input class="search-input" type="search" v-model="me" placeholder="搜索商品/店铺/品牌" @input="functionname()">
+            <input class="search-input" type="search" v-model="me" placeholder="搜索商品/店铺/品牌" @input="set()">
             <input class="submit" type="submit" title="提交" @click="pageSearchList()">
         </form>
     </div>
     <div class="showlist"  v-for="(item,index) in showlist" :key="index">
-      
          <div class="list1" @click="todetail">{{item.name}}</div>
          <div class="list2" @click="todetail">{{item.name2}}</div>
-      
     </div>
     
   </div>
@@ -18,7 +16,8 @@
 <script>
   import Vue from "vue";
  import axios  from 'axios'
- Vue.use(axios)
+//  Vue.use(axios)
+Vue.prototype.$ajax = axios
 
 export default {
 
@@ -28,30 +27,16 @@ export default {
            me:"",
            searchlist:[],
            showlist:[],
-           show:false,
        }
   },
   watch:{
     me:function(newValue,oldValue){
-      console.log(newValue)
-      let that = this
-      if(this.timer){
-        clearTimeout(this.timer)
-      }
-      this.timer = setTimeout(() => {
          this.$store.state.searchmessage = newValue
-          this.showlist = this.searchlist
-          console.log("去后端")
-      }, 1500);
-       
     }
   },
   created(){
     this.showlist = this.searchlist
     this.getData()
-  },
-  mounted () {
-    this.me=this.$store.state.searchmessage
   },
   methods:{
     todetail(){
@@ -60,15 +45,25 @@ export default {
       })
     },
     functionname(){
+      console.log(this.me)
       let that = this
-      that.show = true
       if(that.me.trim()){
-          this.showlist = this.searchlist.filter(function(item){
+          that.showlist = that.searchlist.filter(function(item){
         if((item.name.includes(that.me))||(item.name2.includes(that.me))){
           return item
         }
       })
       }
+    },
+    set(){
+      let that = this
+      if(this.timer){
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+         this.functionname()
+          console.log("去后端")
+      }, 1000);
     },
       pageSearchList(){
            this.$router.push({
