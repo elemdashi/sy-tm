@@ -94,7 +94,7 @@
   
             <!-------------- 商品规格参数选择----------------- -->
             <div class="select-product-dec">
-                <div class="select" @click="showwindow">
+                <div class="select" @click="addproduct">
                     <span class="small">选择</span>
                     <span class="small3">请选择颜色 尺码</span>
                     <i class="el-icon-arrow-right" ></i>
@@ -177,63 +177,95 @@
                       <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01995L831gwqnxe7VAq_!!188124207.jpg_200x200Q50s50.jpg" alt="">
                   </div>
                   <div class="title">
-                      <div>￥89</div>
-                      <div>库存 2219件</div>
-                      <div>已选择:无绒款/中牛仔蓝 31</div>
+                      <div class="price">￥89</div>
+                      <div class="normal">库存 2219件</div>
+                      <div class="normal">已选择: 无绒款/中牛仔蓝 31</div>
                   </div>
-                  <div>
-                      <button @click="cancelwindow2">X</button>
-                  </div>
+                    <button @click="cancelwindow2">X</button>
                   
                 </div>
 
                 <div class="body">
                     <!-- 颜色规格 -->
                     <div class="color">
-                        <h2>颜色</h2>
+                        <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div>
+                            <div @click="chosechange(0)":class="{active:choseIndex==0}" >
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span>无绒款/灰蓝</span>
+                                <span >无绒款/灰蓝</span>
                             </div>
-                            <div>
+                            <div @click="chosechange(1)" :class="{active:choseIndex==1}">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span>无绒款/灰蓝</span>
+                                <span >无绒款/浅牛仔蓝</span>
                             </div>
-                            <div>
+                            <div  @click="chosechange(2)":class="{active:choseIndex==2}">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span>无绒款/灰蓝</span>
+                                <span >无绒款/中牛仔蓝</span>
                             </div>
-                            <div>
+                            <div  @click="chosechange(3)":class="{active:choseIndex==3}">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span>无绒款/灰蓝</span>
+                                <span>无绒款/深色]牛仔蓝</span>
                             </div>
                         </div>
                     </div>
 
                     <!--尺码规格 -->
                     <div class="size">
-                        <div>28</div>
-                        <div>28</div>
+                        <div class="normal">尺码</div>
+                        <div class="sizenumber">
+                            <div @click="chosechange1(0)":class="{active:choseIndex1==0}" >28</div>
+                            <div @click="chosechange1(1)":class="{active:choseIndex1==1}" >29</div>
+                            <div @click="chosechange1(2)":class="{active:choseIndex1==2}" >30</div>
+                            <div @click="chosechange1(3)":class="{active:choseIndex1==3}" >31</div>
+                            <div @click="chosechange1(4)":class="{active:choseIndex1==4}" >32</div>
+                            <div @click="chosechange1(5)":class="{active:choseIndex1==5}" >33</div>
+                            <div @click="chosechange1(6)":class="{active:choseIndex1==6}" >34</div>
+                            <div @click="chosechange1(7)":class="{active:choseIndex1==7}" >35</div>
+                        </div>
+                       
                     </div>
 
                     <!-- 购买数量 -->
                     <div class="number">
-                        <div>购买数量</div>
-                        <button>-</button>1<button>+</button>
+                        <div class="normal">购买数量</div>
+                        <div class="btn">
+                            <button>-</button><span>1</span><button>+</button>
+                        </div>
+                        
                     </div>
 
                     <!-- 花呗分期 -->
                     <div class="huabei">
-                        <div>花呗分期 (可选)</div>
-                        <div>
-                            <span>分3期(含手续费)</span>
-                            <span>￥46.03/期</span>
+                        <div class="title normal">花呗分期 (可选)</div>
+                        <div class="title2">
+                            <div class="title2see normal">
+                                <div class="box">
+                                    <span>分3期(含手续费)</span>
+                                    <span>￥46.03/期</span>
+                                </div>
+                                <div class="box">
+                                    <span>分6期(含手续费)</span>
+                                    <span>￥23.51/期</span>
+                                </div>
+                                <div class="box">
+                                    <span>分12期(含手续费)</span>
+                                    <span>￥12.09/期</span>
+                                </div>
+                                <div class="box">
+                                    <span>分18期(含手续费)</span>
+                                    <span>￥8.36/期</span>
+                                </div>
+                                <div class="box">
+                                    <span>分24期(含手续费)</span>
+                                    <span>￥6.46/期</span>
+                                </div>
+                            </div>
                         </div>
+                       
                     </div>
                 </div>
-                <div class="winbtn">
-                    <button @click="cancelwindow">确定</button>
+                <div class="winbtn" id="buybtn">
+                    <button @click="cancelwindow2">确定</button>
                 </div>
                 
             </div>
@@ -292,6 +324,8 @@ export default {
     name:"detail",
     data(){
         return{
+            choseIndex:0,
+            choseIndex1:0,
             showicon:false,
             detaillist:[],
             imglist:[],
@@ -300,18 +334,7 @@ export default {
             tag:"false"
         }
     },
-    // computed: {
-    //                count(){
-    //                    return this. $store.state.promsg
-    //                },
-                  
-    //            },
-
-    
     created(){
-          
-        
-
         console.log(this.$store.state.promsg)
         console.log(JSON.parse(localStorage.getItem("item")))
         this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
@@ -324,7 +347,6 @@ export default {
      console.log(this.detaillist)
     },
     mounted(){
-      
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
             loop: true, // 循环模式选项，true 循环播放
@@ -346,10 +368,16 @@ export default {
        this.$store.commit("item")
        console.log(this.$store.state.promsg)
     },
-
+       chosechange(index){
+           this.choseIndex = index
+       },
+       chosechange1(index){
+           this.choseIndex1 = index
+       },
         addproduct(){
-             document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
-              document.getElementById("shadow").setAttribute("style","height:650px;transition: all 0.2s;opacity:1")
+            document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
+            document.getElementById("shadow").setAttribute("style","height:650px;transition: all 0.2s;opacity:1")
+            document.getElementById('topbar').setAttribute("style","transition:all 1.5s;opacity:0")
             console.log("加入购物车了")
             console.log(this.$store.state.promsg[0])
             console.log(this.detaillist)
@@ -884,28 +912,127 @@ export default {
     z-index: 999;
     box-shadow: 5px 5px 5px #cccc;
     }
+    .jumpwindow2 .normal{
+        color:#051B28;
+        font-size: 13px;
+    }
 .jumpwindow2 .header{
     border-bottom: 1px solid #cccc;
+    width: 90%;
+    margin: 0 auto;
 }
 .jumpwindow2 .header img{
     width:100px;
     height: 100px;
 }
+.jumpwindow2 .header button{
+    border-radius: 50%;
+    border: 1px solid #cccc;
+    background: none;
+    display: inline-block;
+    height:20px;
+    width: 20px;
+    margin-left: 80px;
+}
+
 .jumpwindow2 .header  .img{
     border:1px solid #fff;
 }
 .jumpwindow2 .header .title{
+    margin-top:20px;
     margin-left: 10px;
+}
+.jumpwindow2 .header .title .price{
+    font-size: 16px;
+    color:#FF0036;
+}
+.jumpwindow2 .body {
+    width: 90%;
+    margin:0 auto;
 }
 .jumpwindow2 .body img{
     width:24px;
     height: 24px;
+    vertical-align:middle
 }
 .jumpwindow2 .header{
     display: flex;
     flex-direction: row;
 }
 
+.jumpwindow2 .body .proclass div{
+    display: flex;
+    padding:5px;
+    border-radius: 10px;
+    display: inline-block;
+    background: #F5F5F5;
+    margin-top:10px;
+    margin-left: 10px;
+    color:#051B28;
+    font-size: 13px;
+
+}
+.jumpwindow2 .body .proclass div span{
+    margin-left: 10px;
+}
+
+.jumpwindow2 .size .sizenumber div{
+    display: inline-block;
+    background: #F5F5F5;
+    margin:10px;
+    width:40px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+.jumpwindow2 .size, .jumpwindow2 .color,.jumpwindow2 .number{
+    margin-top:10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccc;
+}
+.jumpwindow2 .huabei{
+     margin-top:10px;
+    padding-bottom: 10px;
+}
+.jumpwindow2 .number{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.jumpwindow2 .number .btn button {
+    border: none;
+    outline: none;
+    background: #F5F5F5;
+    width: 25px;
+    height: 25px;
+}
+.jumpwindow2 .number .btn span{
+    background: #F5F5F5;
+    display: inline-block;
+    margin:0 5px 0 5px;
+}
+.jumpwindow2 .huabei .title2{
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    margin-top:10px;
+}
+.jumpwindow2 .huabei .title2 .title2see{
+    display: flex;
+}
+.jumpwindow2 .huabei .title2 .box{
+    width: 120px;
+    margin-right: 20px;
+    background: #F5F5F5;
+}
+#buybtn{
+    position: absolute;
+    bottom: 0px
+}
+.active{
+    color:#FF0036;
+    border: 1px solid #FF0036;
+}
     
 
 
