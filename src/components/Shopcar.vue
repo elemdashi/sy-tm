@@ -105,7 +105,8 @@ export default {
        }
        this.muchmoney=much
         console.log(this.muchmoney)
-    }
+    },
+   
   },
   methods:{
     topagehome(){
@@ -117,10 +118,30 @@ export default {
       window.history.back()
     },
     jian(item){
-      item.count--
+      
+      if(item.xuan=="2"){
+        console.log("222")
+         let min=this.money
+                let indx=min.findIndex(function (min) {
+                   return min.name==item.name
+               })
+               this.money[indx].count--
+      }else{
+        console.log("3")
+         item.count--
+      }
     },
     jia(item){
-      item.count++
+     
+       if(item.xuan=="2"){
+         let min=this.money
+                let indx=min.findIndex(function (min) {
+                   return min.name==item.name
+               })
+              this. money[indx].count++
+      }else{
+         item.count++
+      }
     },
     xuanze(index,item){
      
