@@ -177,7 +177,7 @@
                   <div class="title">
                       <div class="price">￥89</div>
                       <div class="normal">库存 2219件</div>
-                      <div class="normal">已选择: 无绒款/中牛仔蓝 31</div>
+                      <div class="normal">已选择: {{choseitem}} {{choseitem2}}</div>
                   </div>
                     <button @click="cancelwindow2">X</button>
                   
@@ -188,21 +188,9 @@
                     <div class="color">
                         <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div @click="chosechange(0)" :class="{active:choseIndex==0}" >
+                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span >无绒款/灰蓝</span>
-                            </div>
-                            <div @click="chosechange(1)" :class="{active:choseIndex==1}">
-                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span >无绒款/浅牛仔蓝</span>
-                            </div>
-                            <div  @click="chosechange(2)" :class="{active:choseIndex==2}">
-                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span >无绒款/中牛仔蓝</span>
-                            </div>
-                            <div  @click="chosechange(3)" :class="{active:choseIndex==3}">
-                                <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
-                                <span>无绒款/深色]牛仔蓝</span>
+                                <span>{{item}}</span>
                             </div>
                         </div>
                     </div>
@@ -211,14 +199,7 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-                            <div @click="chosechange1(0)" :class="{active:choseIndex1==0}" >28</div>
-                            <div @click="chosechange1(1)" :class="{active:choseIndex1==1}" >29</div>
-                            <div @click="chosechange1(2)" :class="{active:choseIndex1==2}" >30</div>
-                            <div @click="chosechange1(3)" :class="{active:choseIndex1==3}" >31</div>
-                            <div @click="chosechange1(4)" :class="{active:choseIndex1==4}" >32</div>
-                            <div @click="chosechange1(5)" :class="{active:choseIndex1==5}" >33</div>
-                            <div @click="chosechange1(6)" :class="{active:choseIndex1==6}" >34</div>
-                            <div @click="chosechange1(7)" :class="{active:choseIndex1==7}" >35</div>
+                            <div @click="chosechange1(index,item)" :class="{active:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
                         </div>
                        
                     </div>
@@ -322,9 +303,12 @@ export default {
     name:"detail",
     data(){
         return{
+            choseitem:"",
+            choseitem2:"",
             choseIndex:0,
             choseIndex1:0,
-            sizelist:["无绒款/灰蓝",],
+            colorlist:["无绒款/灰蓝","无绒款/浅牛仔蓝","无绒款/中牛仔蓝","无绒款/深牛仔蓝"],
+            sizelist:[28,29,30,31,32],
             showicon:false,
             detaillist:[],
             imglist:[],
@@ -367,11 +351,13 @@ export default {
        this.$store.commit("item")
        console.log(this.$store.state.promsg)
     },
-       chosechange(index){
+       chosechange(index,item){
            this.choseIndex = index
+           this.choseitem = item
        },
-       chosechange1(index){
+       chosechange1(index,item){
            this.choseIndex1 = index
+           this.choseitem2 = item
        },
         addproduct(){
             document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
@@ -970,7 +956,6 @@ export default {
     background: #F5F5F5;
     margin-top:10px;
     margin-left: 10px;
-    color:#051B28;
     font-size: 13px;
 
 }
@@ -986,6 +971,7 @@ export default {
     height: 32px;
     line-height: 32px;
     text-align: center;
+    border-radius: 10px;
 }
 .jumpwindow2 .size, .jumpwindow2 .color,.jumpwindow2 .number{
     margin-top:10px;
@@ -1031,9 +1017,22 @@ export default {
     position: absolute;
     bottom: 0px
 }
+.active1{
+     display: flex;
+    padding:5px;
+    border-radius: 10px;
+    display: inline-block;
+    background: rgb(255,245,247);
+    margin-top:10px;
+    margin-left: 10px;
+    font-size: 13px;
+    color:#FF0036;
+    border: 1px solid #FF0036;
+}
 .active{
     color:#FF0036;
     border: 1px solid #FF0036;
+    background: red;
 }
     
 
