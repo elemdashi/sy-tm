@@ -259,31 +259,7 @@
 </template>
 
 <script>
-  function countDown (time) {
-            var nowTime = +new Date()
-            var inputTime = +new Date(time)
-            var times = (inputTime - nowTime) / 1000
-            if(times > 0) {
-        var hour = parseInt(times / 60 / 60 % 24)
-        hour = hour < 10 ? '0' + hour : hour 
-        var min = parseInt(times / 60 % 60)
-        min = min < 10 ? '0' + min : min 
-        var sec = parseInt(times % 60)
-        sec = sec < 10 ? '0' + sec : sec 
-        document.getElementById('hour').innerHTML = hour
-        document.getElementById('min').innerHTML = min
-        document.getElementById('sec').innerHTML = sec
-        setTimeout(function () {
-          countDown(time)
-        }, 1000)
-    }else {
-        hour = min = sec = 0
-        hour = min = sec =  '0' + hour
-        document.getElementById('hour').innerHTML = hour
-        document.getElementById('min').innerHTML = min
-        document.getElementById('sec').innerHTML = sec
-    } 
-  }
+ 
 
   
  
@@ -293,6 +269,9 @@ import Vue from 'vue'
 import axios  from 'axios'
 import Swiper from 'swiper'
 Vue.prototype.$ajax = axios
+import countDown from './tool/time.js';
+
+ 
 
 export default {
   name: 'home',
@@ -315,16 +294,15 @@ export default {
       homelistleft:[],
       input:"",
       tabIndex:1,
-       //是否显示回到顶部
- backTopShow : false,
- // 是否允许操作返回顶部
- backTopAllow : true,
- // 返回顶部所需时间
- backSeconds : 100,
- // 往下滑动多少显示返回顶部（单位：px）
- showPx : 200,
- login:"false"
-
+      //是否显示回到顶部
+      backTopShow : false,
+      // 是否允许操作返回顶部
+      backTopAllow : true,
+      // 返回顶部所需时间
+      backSeconds : 100,
+      // 往下滑动多少显示返回顶部（单位：px）
+      showPx : 200,
+      login:"false"
     }
   },
   mounted(){ 
@@ -349,7 +327,7 @@ export default {
 					return paginationHtml;
 				},
 			}
-		})
+    })
     countDown("2019-11-01 00:00:00")
     document.getElementById('orderFullScreen').addEventListener('scroll', this.handleScroll,true)
   },
