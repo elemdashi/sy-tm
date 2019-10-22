@@ -6,18 +6,23 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "swiper/css/swiper.css"
-import {Backtop} from 'element-ui'
 import Mint from 'mint-ui';
 
 import Vuex from 'vuex'
 import axios from 'axios'
+import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(Vuex)
 Vue.prototype.$ajax = axios
 
+Vue.use(VueLazyLoad, {
+  preLoad: 1,
+  error: require('./assets/error.jpg'),
+  loading: require('./assets/loading.gif'),
+  attempt: 2,
+})
 Vue.use(Mint);
 Vue.use(ElementUI);
-Vue.use(Backtop)
 
 
 
