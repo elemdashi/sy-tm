@@ -369,7 +369,7 @@ export default {
             console.log("加入购物车了")
             console.log("加入的商品是" + this.$store.state.promsg[1].name)
             console.log(this.detaillist)
-            console.log(this.detaillist[0].count)
+            console.log(this.detaillist[1].count)
             console.log(this.$store.state.shopcar)
              if(this.detaillist[1].count==0){
                  this.$store.state.shopcar.push(this.detaillist[1])

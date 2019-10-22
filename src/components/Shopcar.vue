@@ -230,7 +230,6 @@ font-size: 18px
 .shop-xiangqing{
   width: 100%;
   height: 150px;
-  border: 1px solid black;
   background-color: white;
   margin-top: 5px
 }
