@@ -235,6 +235,7 @@ export default {
          console.log(JSON.parse(localStorage.getItem("item")).name) 
       }
       console.log(this.$store.state.promsg)
+      
     },
     huitui() {
          this.$router.push({
