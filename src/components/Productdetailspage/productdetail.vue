@@ -26,12 +26,12 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <div class="swiper-wrapper" v-if="this.detaillist.length==2">
+                    <!-- <div class="swiper-wrapper" v-if="this.detaillist.length==2">
                         <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index" ><img :src="item"></div>
                        
                 
-                    </div>
-                     <div class="swiper-wrapper"  v-else>
+                    </div> -->
+                     <div class="swiper-wrapper" >
                         
                         <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
@@ -171,11 +171,7 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-<<<<<<< HEAD
-                            <div @click="chosechange1(index,item)" :class="{active:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
-=======
-                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
->>>>>>> 4b2361c8e5cd9c3ab852c53726e720f3778b4ceb
+                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
                         </div>
                        
                     </div>
@@ -294,16 +290,24 @@ export default {
     created(){
         console.log(this.$store.state.promsg)
         console.log(JSON.parse(localStorage.getItem("item")))
-        this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
-        console.log(this.$store.state.promsg)
+        this.detaillist=[]
+         
+        // this.$store.state.promsg=[]
+        let a=JSON.parse(localStorage.getItem("item"))
+        
+        // this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
+      
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
-    }
+               }
     console.log(localStorage.getItem("log"))
+    console.log(a) 
+ 
      this.detaillist=this.$store.state.promsg
      console.log(this.detaillist)
     },
     mounted(){
+        console.log(this.detaillist)
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
             loop: true, // 循环模式选项，true 循环播放
@@ -320,6 +324,7 @@ export default {
 		})
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
     },
+    
     methods:{
         huoqu(){
        this.$store.commit("item")
@@ -342,8 +347,12 @@ export default {
             console.log(this.detaillist)
             console.log(this.detaillist[0].count)
             console.log(this.$store.state.shopcar)
-            if(this.detaillist[0].count==0){
-                 this.$store.state.shopcar.push(this.$store.state.promsg[0])
+            // let jiaru=localStorage.getItem("shop")
+            //  let jia=jiaru.findIndex(function (jiaru) {
+            //        return jiaru.name==this.detaillist[0].name
+            //    })
+            if(this.detaillist[0].count==0 ){
+                 this.$store.state.shopcar.push(this.detaillist[0])
 
                   this.detaillist[0].count++
                   let shopjson=JSON.stringify(this.$store.state.shopcar)

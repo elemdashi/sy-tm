@@ -120,7 +120,7 @@ export default {
     jian(item){
       
       if(item.xuan=="2"){
-        console.log("222")
+       
          let min=this.money
                 let indx=min.findIndex(function (min) {
                    return min.name==item.name
