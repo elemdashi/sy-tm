@@ -160,7 +160,7 @@
                     <div class="color">
                         <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist">
+                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist" :key="index">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span>{{item}}</span>
                             </div>
@@ -171,7 +171,7 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
+                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
                         </div>
                        
                     </div>
@@ -215,8 +215,8 @@
                        
                     </div>
                 </div>
-                <div class="winbtn" id="buybtn">
-                    <button @click="cancelwindow2">确定</button>
+                <div class="winbtn" id="buybtn" >
+                    <button @click="cancelwindow2" >确定</button>
                 </div>
                 
             </div>
@@ -288,8 +288,9 @@ export default {
         }
     },
     created(){
-        console.log(this.$store.state.promsg)
-        console.log(JSON.parse(localStorage.getItem("item")))
+        // console.log(this.$store.state.promsg)
+        // console.log(JSON.parse(localStorage.getItem("item")))
+        // this.detaillist=[]
         this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
         console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){

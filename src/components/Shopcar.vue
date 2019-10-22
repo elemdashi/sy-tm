@@ -6,17 +6,17 @@
     </div>
     <div class="shop-liebiao">
              <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index" >
-                 <div class="xiangqing-top" @click="xuanze(index,item)">
-                   <div class="radius" ></div>
+                 <div class="xiangqing-top" >
+                   <div class="radius"  @click="xuanze(index,item)"></div>
                    <i class="el-icon-goods"></i>
                    <div class="shop-dianpu">{{item.dian}}</div>
                    <i class="el-icon-arrow-right"></i>
-                     <div class="shop-bianji">编辑</div>
+                     <div class="shop-bianji" @click="shanchu(item,index)">编辑</div> 
 
                  </div>
 
                  <div class="xiangqing-buttom">
-                       <div class="radius-two" @click="xuanzezi(index,item)"></div>
+                       <div class="radius-two" @click="xuanze(index,item)"></div>
                        <div class="shop-img">
                          <img :src="item.url" alt="">
                        </div>
@@ -43,7 +43,7 @@
                  </div>
                  <div class="shoping-flex">
                       <div class="radius-quanxuan"></div>
-                      <div class="shop-jiesuan">全选</div>
+                      <div class="shop-jiesuan" @click="checkall">全选</div>
                       <div class="shop-heji">合计   <span style="color:orange">￥{{muchmoney}}</span></div>
                       <div class="shop-jieqian">结算（{{money.length}}）</div>
              
@@ -141,13 +141,17 @@ export default {
         money:[],
         muchmoney:0,
         shopcarone:[],
-     
-        
+        editindex:""
     }
   },
   created(){
      this.shopcarone=JSON.parse(localStorage.getItem("shop"))
      console.log(this.shopcarone)
+  },
+ updated() {
+     let shopjsontwo=JSON.stringify(this.shopcarone)
+    localStorage.setItem("shop",shopjsontwo)
+
   },
   computed: {
     heji(){
@@ -172,6 +176,10 @@ export default {
    
   },
   methods:{
+    showe(index){
+      console.log(index)
+      this.editindex = index
+    },
     cancelwindow2(){
         document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
@@ -192,6 +200,23 @@ export default {
            this.choseIndex1 = index
            this.choseitem2 = item
        },
+       shanchu(item,index){
+            let min=this.money
+                let indx=min.findIndex(function (min) {
+                   return min.name==item.name
+               })
+               if(indx !=-1){
+                this.money.splice(indx,1)
+               this. shopcarone.splice(index,1) 
+               }else{
+                  this. shopcarone.splice(index,1)
+               }
+              
+       },
+       checkall(){
+         console.log("全选了")
+       },
+
     topagehome(){
         this.$router.push({
        name:'home',
@@ -212,11 +237,18 @@ export default {
                })
                let temp=this.money[indx]
                temp.count--
+               if(temp.count<1){
+                  temp.count=1
+               }
                this.money.splice(indx,1,temp)
               //  this.money[indx].count--
       }else{
         console.log("3")
+        
          item.count--
+         if(item.count<1){
+                  item.count=1
+               }
       }
     },
     jia(item){
@@ -231,6 +263,7 @@ export default {
                this.money.splice(indx,1,temp)
       }else{
          item.count++
+     
       }
     },
     xuanze(index,item){
@@ -288,6 +321,9 @@ export default {
 
 </script>
 <style >
+.active3{
+  color: red;
+}
 .shop-top{
   width: 100%;
   height: 50px;
@@ -348,6 +384,9 @@ font-size: 18px
 .el-icon-arrow-right{
    margin-top: 8px;
   margin-left: 6px
+}
+.delete1{
+  color: aqua;
 }
 .shop-bianji{
   font-size: 12px;
@@ -437,13 +476,13 @@ display: flex
  margin-left: 5px
 }
 .shop-jiesuan{
-  width: 10%;
+  width: 20%;
   height: 100%;
   line-height: 40px;
  margin-left: 10px
 }
 .shop-heji{
-  width: 24%;
+  width: 40%;
   height: 100%;
   margin-left: 100px;
   line-height: 40px
