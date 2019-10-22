@@ -115,12 +115,14 @@ export default {
     })
     },
     huitui(){
-      window.history.back()
+         this.$router.push({
+       name:'productList',
+    })
     },
     jian(item){
       
       if(item.xuan=="2"){
-       
+        console.log("222")
          let min=this.money
                 let indx=min.findIndex(function (min) {
                    return min.name==item.name
@@ -228,7 +230,7 @@ font-size: 18px
 .shop-xiangqing{
   width: 100%;
   height: 150px;
-  border: 1px solid black;
+ 
   background-color: white;
   margin-top: 5px
 }

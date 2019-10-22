@@ -1,6 +1,6 @@
 <template>
     <div>
-       <div class="tuijian-list">
+       <div class="tuijian-list" v-if="tui[0]">
            <div class="liuxing-ziti">------热门造型清单-------</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[0].remeng" :key="index">
@@ -16,7 +16,7 @@
            </div>
        </div>
 
-        <div class="tuijian-list">
+        <div class="tuijian-list" v-if="tui[1]">
            <div class="liuxing-ziti">------美妆种草合集-------</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[1].zhongcao" :key="index">
@@ -33,7 +33,7 @@
 
 
 
-       <div class="tuijian-list">
+       <div class="tuijian-list" v-if="tui[2]">
            <div class="liuxing-ziti">------热销电子产品-------</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[2].dianzi" :key="index">
@@ -49,7 +49,7 @@
        </div>
 
 
-          <div class="tuijian-list">
+          <div class="tuijian-list" v-if="tui[3]">
            <div class="liuxing-ziti">------热销电子产品-------</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[3].jiadian" :key="index">
@@ -71,8 +71,7 @@ export default {
     name:"liuxing",
     props: ["tui"],
     mounted () {
-        console.log(this.tui)
-        console.log(this.tui[0].remeng)
+       
       
     }
 

@@ -26,12 +26,12 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <!-- <div class="swiper-wrapper" v-if="this.detaillist.length==2">
+                    <div class="swiper-wrapper" v-if="this.detaillist.length==2">
                         <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index" ><img :src="item"></div>
                        
                 
-                    </div> -->
-                     <div class="swiper-wrapper" >
+                    </div>
+                     <div class="swiper-wrapper"  v-else>
                         
                         <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
@@ -151,7 +151,7 @@
                       <div class="normal">库存 2219件</div>
                       <div class="normal">已选择: {{choseitem}} {{choseitem2}}</div>
                   </div>
-                    <button @click="cancelwindow2">X</button>
+                    <button @click="cancelwindow3">X</button>
                   
                 </div>
 
@@ -160,7 +160,7 @@
                     <div class="color">
                         <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist" :key="index">
+                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span>{{item}}</span>
                             </div>
@@ -171,7 +171,7 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
+                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
                         </div>
                        
                     </div>
@@ -290,24 +290,18 @@ export default {
     created(){
         console.log(this.$store.state.promsg)
         console.log(JSON.parse(localStorage.getItem("item")))
-        this.detaillist=[]
-         
-        // this.$store.state.promsg=[]
-        let a=JSON.parse(localStorage.getItem("item"))
-        
-        // this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
-      
+        // this.detaillist=[]
+        this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
+        console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
-               }
+    }
     console.log(localStorage.getItem("log"))
-    console.log(a) 
- 
      this.detaillist=this.$store.state.promsg
      console.log(this.detaillist)
     },
     mounted(){
-        console.log(this.detaillist)
+         console.log(JSON.parse(localStorage.getItem("item")))
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
             loop: true, // 循环模式选项，true 循环播放
@@ -324,7 +318,6 @@ export default {
 		})
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
     },
-    
     methods:{
         huoqu(){
        this.$store.commit("item")
@@ -342,26 +335,8 @@ export default {
             document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
             document.getElementById("shadow").setAttribute("style","height:650px;transition: all 0.2s;opacity:1")
             document.getElementById('topbar').setAttribute("style","transition:all 1.5s;opacity:0")
-            console.log("加入购物车了")
-            console.log(this.$store.state.promsg[0])
-            console.log(this.detaillist)
-            console.log(this.detaillist[0].count)
-            console.log(this.$store.state.shopcar)
-            // let jiaru=localStorage.getItem("shop")
-            //  let jia=jiaru.findIndex(function (jiaru) {
-            //        return jiaru.name==this.detaillist[0].name
-            //    })
-            if(this.detaillist[0].count==0 ){
-                 this.$store.state.shopcar.push(this.detaillist[0])
-
-                  this.detaillist[0].count++
-                  let shopjson=JSON.stringify(this.$store.state.shopcar)
-                  localStorage.setItem("shop",shopjson)
-            }else{
-                this.detaillist[0].count++
-                 let shopjson=JSON.stringify(this.$store.state.shopcar)
-                  localStorage.setItem("shop",shopjson)
-            }
+         
+           
         },
          handleClose(done) {
         this.$confirm('确认关闭？')
@@ -391,6 +366,26 @@ export default {
         cancelwindow2(){
             document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
+            console.log("加入购物车了")
+            console.log("加入的商品是" + this.$store.state.promsg[1].name)
+            console.log(this.detaillist)
+            console.log(this.detaillist[1].count)
+            console.log(this.$store.state.shopcar)
+             if(this.detaillist[1].count==0){
+                 this.$store.state.shopcar.push(this.detaillist[1])
+
+                  this.detaillist[1].count++
+                  let shopjson=JSON.stringify(this.$store.state.shopcar)
+                  localStorage.setItem("shop",shopjson)
+            }else{
+                this.detaillist[1].count++
+                 let shopjson=JSON.stringify(this.$store.state.shopcar)
+                  localStorage.setItem("shop",shopjson)
+            }
+        },
+        cancelwindow3(){
+            document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
+            document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
         },
         handleScroll(){
             if (document.getElementById("detail").scrollTop < 50){
@@ -413,9 +408,7 @@ export default {
             if(scdata >700){
                 document.getElementById("detailbtn").setAttribute("style","color:red; border-bottom:1px solid red")
                  document.getElementById("commentbtn").setAttribute("style","color:#999999; border:none")
-            }
-  
-                
+            } 
         },
         pagetolist(){
              this.$router.push("/productlist")
