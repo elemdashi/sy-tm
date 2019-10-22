@@ -6,12 +6,12 @@
     </div>
     <div class="shop-liebiao">
              <div class="shop-xiangqing" v-for="(item,index) in shopcarone" :key="index" >
-                 <div class="xiangqing-top" @click="xuanze(index,item)">
-                   <div class="radius" ></div>
+                 <div class="xiangqing-top" >
+                   <div class="radius"  @click="xuanze(index,item)"></div>
                    <i class="el-icon-goods"></i>
                    <div class="shop-dianpu">{{item.dian}}</div>
                    <i class="el-icon-arrow-right"></i>
-                     <div class="shop-bianji">编辑</div>
+                     <div class="shop-bianji" @click="shanchu(item,index)">编辑</div>
 
                  </div>
 
@@ -97,6 +97,11 @@ export default {
      this.shopcarone=JSON.parse(localStorage.getItem("shop"))
      console.log(this.shopcarone)
   },
+ updated() {
+     let shopjsontwo=JSON.stringify(this.shopcarone)
+    localStorage.setItem("shop",shopjsontwo)
+
+  },
   computed: {
     heji(){
          let a=0
@@ -120,6 +125,20 @@ export default {
    
   },
   methods:{
+       shanchu(item,index){
+            let min=this.money
+                let indx=min.findIndex(function (min) {
+                   return min.name==item.name
+               })
+               if(indx !=-1){
+                this.money.splice(indx,1)
+               this. shopcarone.splice(index,1) 
+               }else{
+                  this. shopcarone.splice(index,1)
+               }
+              
+       },
+
     topagehome(){
         this.$router.push({
        name:'home',
@@ -159,6 +178,7 @@ export default {
                this.money.splice(indx,1,temp)
       }else{
          item.count++
+     
       }
     },
     xuanze(index,item){

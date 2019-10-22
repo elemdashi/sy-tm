@@ -215,8 +215,8 @@
                        
                     </div>
                 </div>
-                <div class="winbtn" id="buybtn">
-                    <button @click="cancelwindow2">确定</button>
+                <div class="winbtn" id="buybtn" >
+                    <button @click="cancelwindow2" >确定</button>
                 </div>
                 
             </div>
@@ -288,8 +288,8 @@ export default {
         }
     },
     created(){
-        console.log(this.$store.state.promsg)
-        console.log(JSON.parse(localStorage.getItem("item")))
+        // console.log(this.$store.state.promsg)
+        // console.log(JSON.parse(localStorage.getItem("item")))
         // this.detaillist=[]
         this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
         console.log(this.$store.state.promsg)
@@ -367,10 +367,10 @@ export default {
             document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
             console.log("加入购物车了")
-            console.log("加入的商品是" + this.$store.state.promsg[1].name)
-            console.log(this.detaillist)
-            console.log(this.detaillist[1].count)
-            console.log(this.$store.state.shopcar)
+            // console.log("加入的商品是" + this.$store.state.promsg[1].name)
+            // console.log(this.detaillist)
+            // console.log(this.detaillist[1].count)
+            // console.log(this.$store.state.shopcar)
              if(this.detaillist[1].count==0){
                  this.$store.state.shopcar.push(this.detaillist[1])
 
