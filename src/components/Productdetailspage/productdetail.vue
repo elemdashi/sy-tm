@@ -26,12 +26,12 @@
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
                  <div class="swiper-container">
-                    <div class="swiper-wrapper" v-if="this.detaillist.length==2">
+                    <!-- <div class="swiper-wrapper" v-if="this.detaillist.length==2">
                         <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index" ><img :src="item"></div>
                        
                 
-                    </div>
-                     <div class="swiper-wrapper"  v-else>
+                    </div> -->
+                     <div class="swiper-wrapper" >
                         
                         <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
@@ -160,7 +160,7 @@
                     <div class="color">
                         <div class="normal">颜色</div>
                         <div class="proclass">
-                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist">
+                            <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist" :key="index">
                                 <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
                                 <span>{{item}}</span>
                             </div>
@@ -171,7 +171,7 @@
                     <div class="size">
                         <div class="normal">尺码</div>
                         <div class="sizenumber">
-                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
+                            <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist" :key="index">{{item}}</div>
                         </div>
                        
                     </div>
@@ -295,8 +295,10 @@ export default {
         console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
-    }
+               }
     console.log(localStorage.getItem("log"))
+    console.log(a) 
+ 
      this.detaillist=this.$store.state.promsg
      console.log(this.detaillist)
     },
@@ -318,6 +320,7 @@ export default {
 		})
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
     },
+    
     methods:{
         huoqu(){
        this.$store.commit("item")
