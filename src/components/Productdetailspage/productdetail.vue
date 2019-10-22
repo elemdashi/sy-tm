@@ -1,6 +1,5 @@
 <template>
     <div class="detail" id="detail">
-        <el-backtop ></el-backtop>
         <!------- 滚动隐藏顶部导航栏 -------->
         <div class="detail-top-bar" id="topbar">
             <i class="el-icon-arrow-left" @click="pagetolist"></i>
@@ -128,6 +127,44 @@
                 
             </div>
 
+            <!-- 店铺名称 -->
+            <div class="module-shop">
+                <div class="shop-main">
+                    <div class="shop-logo" v-if="this.detaillist.length==2">
+                        <img :src="detaillist[1].shoplogo" alt="">
+                    </div>
+                     <div class="shop-logo" v-else>
+                        <img :src="detaillist[0].shoplogo" alt="">
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name" v-if="this.detaillist.length==2">
+                            {{detaillist[1].dian}}
+                        </div>
+                        <div class="shop-name" v-else>
+                            {{detaillist[0].dian}}
+                        </div>
+                        <div class="shop-title">
+                            <img src="//img.alicdn.com/tfs/TB1u5sBnlfH8KJjy1XbXXbLdXXa-198-36.png_120x120Q90s50.jpg_.webp?getAvatar=avatar" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="score">
+                    <span v-if="this.detaillist.length==2">宝贝描述<b>{{detaillist[1].miaoshu}}</b><img src="/下降.png" alt=""></span>
+                    <span v-else>宝贝描述<b>{{detaillist[0].miaoshu}}</b><img src="/下降.png" alt=""></span>
+                    <span v-if="this.detaillist.length==2">卖家服务<b>{{detaillist[1].wuliu}}</b><img src="/持平.png" alt=""></span>
+                    <span v-else>卖家服务<b>{{detaillist[0].wuliu}}</b><img src="/持平.png" alt=""></span>
+                    <span v-if="this.detaillist.length==2">物流服务<b>{{detaillist[1].fuwu}}</b><img src="/下降.png" alt=""></span>
+                    <span v-else>物流服务<b>{{detaillist[0].fuwu}}</b><img src="/下降.png" alt=""></span>
+                </div>
+
+                <div class="actionenter">
+                    <div>全部商品</div>
+                    <div>进入店铺</div>
+                </div>
+
+            </div>
+
             <!-- 底部弹窗 -->
             <div class="jumpwindow" id="jumpwindow">
                 <div>
@@ -228,7 +265,22 @@
         </div>
 
         <div class="test" id="prodetail">
-            <img src="//img.alicdn.com/imgextra/i2/188124207/O1CN01BcWJKD1gwqkRbSFaI_!!188124207.jpg_1152x1920Q90s50.jpg_.webp" alt="">
+            <img v-lazy="detaillist[1].longimg1" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg1" alt="" v-else>
+            <img v-lazy="detaillist[1].longimg2" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg2" alt="" v-else>
+            <img v-lazy="detaillist[1].longimg3" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg3" alt="" v-else>
+            <img v-lazy="detaillist[1].longimg4" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg4" alt="" v-else>
+             <img v-lazy="detaillist[1].longimg5" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg5" alt="" v-else>
+             <img v-lazy="detaillist[1].longimg6" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg6" alt="" v-else>
+             <img v-lazy="detaillist[1].longimg7" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg7" alt="" v-else>
+            <img v-lazy="detaillist[1].longimg8" alt="" v-if="this.detaillist.length==2">
+            <img v-lazy="detaillist[0].longimg8" alt="" v-else>
         </div>
 
         <!----------  底部固定操作栏/加入购物车   ------------>
@@ -288,9 +340,6 @@ export default {
         }
     },
     created(){
-        // console.log(this.$store.state.promsg)
-        // console.log(JSON.parse(localStorage.getItem("item")))
-        // this.detaillist=[]
         this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
         console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
@@ -317,6 +366,7 @@ export default {
                     }
 		})
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
+        // window.addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
 
@@ -394,7 +444,11 @@ export default {
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
         },
         handleScroll(){
-            if (document.getElementById("detail").scrollTop < 50){
+            console.log("滚动了")
+            console.log(window.scrollY)
+            // let scroll =  window.scrollY
+            let scroll =  document.getElementById("detail").scrollTop
+            if (scroll < 50){
                 document.getElementById('topbar').setAttribute("style","transition:all 1.5s;opacity:0")
                 this.showicon = true
 
@@ -402,16 +456,15 @@ export default {
                 document.getElementById('topbar').setAttribute("style","transition:all 1.5s;opacity:1")
                 this.showicon = false
             }
-            var scdata =  document.getElementById("detail").scrollTop
-            if(scdata < 500){
+            if(scroll < 500){
                document.getElementById("productbtn").setAttribute("style","color:red; border-bottom:1px solid red")
                  document.getElementById("commentbtn").setAttribute("style","color:#999999; border:none")
-            }else if(scdata >500){
+            }else if(scroll >500){
                  document.getElementById("productbtn").setAttribute("style","color:#999999; border:none")
                  document.getElementById("commentbtn").setAttribute("style","color:red; border-bottom:1px solid red")
                   document.getElementById("detailbtn").setAttribute("style","color:#999999; border:none")
             }
-            if(scdata >700){
+            if(scroll >700){
                 document.getElementById("detailbtn").setAttribute("style","color:red; border-bottom:1px solid red")
                  document.getElementById("commentbtn").setAttribute("style","color:#999999; border:none")
             } 
@@ -423,14 +476,11 @@ export default {
 }
 </script>
 <style>
-.test{
-    height:2000px
-}
 .detail{
     background :rgb(245,245,245);
-    overflow: auto;
+    overflow-y: auto;
     position: relative;
-    height: 900px;
+    height: 3000px;
 }
 .el-drawer{
     width: 100%;
@@ -1010,6 +1060,61 @@ export default {
     color:#FF0036;
     border: 1px solid #FF0036;
     background: red;
+}
+/* 店铺名字样式 */
+.module-shop{
+    padding-top:10px;
+    background: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.module-shop .score {
+    margin-top:10px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    color: #999999;
+}
+.module-shop .score img{
+    height: 14px;
+}
+.shop-logo{
+    border: 1px solid #cccc;
+    width: 15%;
+    height: 15%；
+}
+.shop-logo img {
+    display: inline-block;
+    width: 100%;
+    height:100%;
+}
+
+.shop-main{
+    margin-left:10px;
+    display: flex;
+    flex-direction: row;
+}
+.shop-info{
+    margin-left: 10px;
+}
+.shop-info .shop-title img{
+    width: 60%;
+    height: 60%;
+}
+.actionenter{
+    margin-top:10px;
+    display: flex;
+    justify-content: center;
+}
+.actionenter div{
+    width: 25%;
+    font-size: 13px;
+    color: #FF0036;
+    border-radius: 10px;
+    border: 1px solid #FF0036;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
 }
     
 
