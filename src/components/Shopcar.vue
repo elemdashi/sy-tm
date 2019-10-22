@@ -115,7 +115,9 @@ export default {
     })
     },
     huitui(){
-      window.history.back()
+         this.$router.push({
+       name:'productList',
+    })
     },
     jian(item){
       

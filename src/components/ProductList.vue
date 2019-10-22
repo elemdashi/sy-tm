@@ -231,10 +231,9 @@ export default {
           
           var json=JSON.stringify(item)
           localStorage.setItem("item",json)
-          this.$store.state.promsg.push(item)
+          this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
          console.log(JSON.parse(localStorage.getItem("item")).name) 
       }
-      console.log(this.$store.state.promsg)
     },
     huitui() {
          this.$router.push({

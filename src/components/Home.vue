@@ -1,7 +1,6 @@
 <template>
   <div class="home" id="orderFullScreen">
- 
-     <el-backtop ></el-backtop>
+
     <!-- 顶部搜索框 -->
  
       <div class="content" id="content" v-if="show">
