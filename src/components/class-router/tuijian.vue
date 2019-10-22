@@ -1,6 +1,6 @@
 <template>
-    <div>
-       <div class="tuijian-list">
+    <div >
+       <div class="tuijian-list"  v-if="tui[0]">
            <div class="tuijian-ziti">女装</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[0].nvzhuang" :key="index">
@@ -10,7 +10,7 @@
            </div>
        </div>
 
-        <div class="tuijian-list">
+        <div class="tuijian-list" v-if="tui[1]">
            <div class="tuijian-ziti">女鞋</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[1].nvxie" :key="index">
@@ -22,7 +22,7 @@
 
 
 
-       <div class="tuijian-list">
+       <div class="tuijian-list" v-if="tui[2]">
            <div class="tuijian-ziti">男装</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[2].nanzhuang" :key="index">
@@ -33,7 +33,7 @@
        </div>
 
 
-          <div class="tuijian-list">
+          <div class="tuijian-list" v-if="tui[3]">
            <div class="tuijian-ziti">家电</div>
            <div class="tuijian-xia">
                 <div class="tuijian-kuai" v-for="(item,index) in this.tui[3].jiadian" :key="index">
@@ -50,8 +50,11 @@ export default {
     name:"tuijian",
     props: ["tui"],
     mounted () {
-        console.log(this.tui)
-        console.log(this.tui[1].nvxie)
+        // console.log(this.tui)
+        // if (this.tui[1]) {
+        //     console.log(this.tui[1].nvxie)
+        // }
+        
       
     }
 

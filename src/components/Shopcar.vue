@@ -122,7 +122,7 @@ export default {
     jian(item){
       
       if(item.xuan=="2"){
-       
+        console.log("222")
          let min=this.money
                 let indx=min.findIndex(function (min) {
                    return min.name==item.name
@@ -230,6 +230,7 @@ font-size: 18px
 .shop-xiangqing{
   width: 100%;
   height: 150px;
+ 
   background-color: white;
   margin-top: 5px
 }
