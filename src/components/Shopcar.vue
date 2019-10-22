@@ -11,7 +11,7 @@
                    <i class="el-icon-goods"></i>
                    <div class="shop-dianpu">{{item.dian}}</div>
                    <i class="el-icon-arrow-right"></i>
-                     <div class="shop-bianji" @click="shanchu(item,index)">编辑</div> 
+                     <div class="shop-bianji" @click="shanchu(item,index)">删除</div> 
 
                  </div>
 
