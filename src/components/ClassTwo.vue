@@ -1,5 +1,5 @@
 <template>
-  <div class="class">
+  <div class="class" v-if="tuijian">
     <div class="classtwo-top-wai">
         <div class="classtwo-top"></div>
       <div class="class-top">
@@ -72,7 +72,7 @@ export default {
     this.getData();
   },
   mounted() {
-    console.log(this.dapai);
+    
   },
   
   

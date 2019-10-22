@@ -1,5 +1,5 @@
 <template>
-  <div class="class">
+  <div class="class" v-if="tuijian">
     <div class="class-top-wai">
       <div class="classone-top">
         <span>全部分类</span>
@@ -80,7 +80,7 @@ export default {
       axios
         .get("/data/fenglei.json")
         .then(function(response) {
-          console.log(this);
+          // console.log(this);
           that .dapai=response.data.data.dapai
           that.tuijian = response.data.data.tuijian;
           that.tianmaoguoji=response.data.data.guoji
