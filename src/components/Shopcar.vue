@@ -88,12 +88,23 @@ export default {
         xuanzhong:"true",
         money:[],
         muchmoney:0,
-        shopcarone:[]
+        shopcarone:[],
+     
+        
     }
   },
   created(){
      this.shopcarone=JSON.parse(localStorage.getItem("shop"))
      console.log(this.shopcarone)
+  },
+  computed: {
+    heji(){
+         let a=0
+       for(var i=0;i<this.money.length;i++){
+          a+= this.money[i].count*this.money[i].money
+          return a
+       }
+    }
   },
   watch:{
     money:function(newValue,oldValue){
@@ -127,7 +138,10 @@ export default {
                 let indx=min.findIndex(function (min) {
                    return min.name==item.name
                })
-               this.money[indx].count--
+               let temp=this.money[indx]
+               temp.count--
+               this.money.splice(indx,1,temp)
+              //  this.money[indx].count--
       }else{
         console.log("3")
          item.count--
@@ -140,7 +154,9 @@ export default {
                 let indx=min.findIndex(function (min) {
                    return min.name==item.name
                })
-              this. money[indx].count++
+              let temp=this.money[indx]
+               temp.count++
+               this.money.splice(indx,1,temp)
       }else{
          item.count++
       }
