@@ -183,7 +183,7 @@
                <div class="grid-content bg-purple" @click="pageTodetail()">
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
-                <img :src="item.imgadress">
+                <img v-lazy="item.imgadress">
               </div>
               <!-- 商品介绍文字 -->
               <div class="guess-product-list-title">
@@ -194,7 +194,7 @@
                   <span>{{item.mainintro}}</span>
                 </div>
                 <div class="specialtyurl">
-                  <img :src="item.specialtyurl">
+                  <img v-lazy="item.specialtyurl">
                 </div>
                 <div class="price-content">
                   <span class="price">{{item.price}}</span>
@@ -212,7 +212,7 @@
                <div class="grid-content bg-purple" >
               <!-- 商品主图 -->
               <div class="guess-product-list-img">
-                <img :src="item.imgadress">
+                <img v-lazy="item.imgadress">
               </div>
               <!-- 商品介绍文字 -->
               <div class="guess-product-list-title">
