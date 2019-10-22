@@ -18,14 +18,14 @@
                  <div class="xiangqing-buttom">
                        <div class="radius-two" @click="xuanzezi(index,item)"></div>
                        <div class="shop-img">
-                         <img :src="item.url" alt="" style="width:100%;height:100%">
+                         <img :src="item.url" alt="">
                        </div>
                        <div class="xiangqing-zuo">
                          <div class="xiangqing-miaoshu">
                             {{item.name}}
                          </div>
-                         <div class="xiangqing-banbeng">
-                           <div class="banbeng"> 标准版</div>
+                         <div class="xiangqing-banbeng" @click="openwindow">
+                           <div class="banbeng"> {{choseitem}} {{choseitem2}}</div>
                           <i class="el-icon-arrow-down"></i>
                           </div>
                           <div class="xiangqing-zongjie">
@@ -48,29 +48,75 @@
                       <div class="shop-jieqian">结算（{{money.length}}）</div>
              
                  </div>
+                 
+            <!------- 遮罩 ---------->
+            <div class="shadow" id="shadow" >
+
+            </div>
+                 <!-- 商品规格弹窗 -->
+                  <div class="jumpwindow2" id="jumpwindow2">
+                    <div class="header">
+                      <div class="img">
+                          <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01995L831gwqnxe7VAq_!!188124207.jpg_200x200Q50s50.jpg" alt="">
+                      </div>
+                      <div class="title">
+                          <div class="price">￥89</div>
+                          <div class="normal">库存 2219件</div>
+                          <div class="normal">已选择: {{choseitem}} {{choseitem2}}</div>
+                      </div>
+                        <button @click="cancelwindow3">X</button>
+                      
+                    </div>
+
+                    <div class="body">
+                        <!-- 颜色规格 -->
+                        <div class="color">
+                            <div class="normal">颜色</div>
+                            <div class="proclass">
+                                <div @click="chosechange(index,item)" :class="{active1:choseIndex==index}" v-for="(item,index) in colorlist">
+                                    <img src="//gw.alicdn.com/bao/uploaded/i4/188124207/O1CN01zF1Awp1gwqo1CAmbl_!!188124207.jpg_80x80.jpg" alt="">
+                                    <span>{{item}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--尺码规格 -->
+                        <div class="size">
+                            <div class="normal">尺码</div>
+                            <div class="sizenumber">
+                                <div @click="chosechange1(index,item)" :class="{active2:choseIndex1==index}" v-for="(item,index) in sizelist">{{item}}</div>
+                            </div>
+                          
+                        </div>
+
+                    </div>
+                    <div class="winbtn" id="buybtn">
+                        <button @click="cancelwindow2">确定</button>
+                    </div>
+                  </div>
                           <!-- 最底部 -->
-                      <div class="shop-bottom">
-                        <div @click="topagehome">
-                          <img src="/首页.png" alt="">
-                          <span>首页</span>
-                        </div>
-                        <div>
-                          <img src="/购物车灰.png" alt="">
-                          <span>购物车</span>
-                        </div>
-                        <div>
-                          <img src="/订单灰.png" alt="">
-                          <span>订单列表</span>
-                        </div>
-                        <div>
-                          <img src="/用户灰.png" alt="">
-                          <span>我的淘宝</span>
-                          </div>
-                        <div>
-                          <img src="/更多.png" alt="">
-                          <span>更多</span>
-                        </div>
-                     </div>
+                  <div class="shop-bottom">
+                    <div @click="topagehome">
+                      <img src="/首页.png" alt="">
+                      <span>首页</span>
+                    </div>
+                    <div>
+                      <img src="/购物车灰.png" alt="">
+                      <span>购物车</span>
+                    </div>
+                    <div>
+                      <img src="/订单灰.png" alt="">
+                      <span>订单列表</span>
+                    </div>
+                    <div>
+                      <img src="/用户灰.png" alt="">
+                      <span>我的淘宝</span>
+                      </div>
+                    <div>
+                      <img src="/更多.png" alt="">
+                      <span>更多</span>
+                    </div>
+                  </div>
     <!--  -->
 
              </div>
@@ -85,6 +131,12 @@ export default {
   name: 'shopcar',
   data(){
     return{
+      choseitem:"",
+        choseitem2:"",
+        choseIndex:0,
+        choseIndex1:0,
+        colorlist:["无绒款/灰蓝","无绒款/浅牛仔蓝","无绒款/中牛仔蓝","无绒款/深牛仔蓝"],
+        sizelist:[28,29,30,31,32],
         xuanzhong:"true",
         money:[],
         muchmoney:0,
@@ -120,6 +172,26 @@ export default {
    
   },
   methods:{
+    cancelwindow2(){
+        document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
+            document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
+    },
+     cancelwindow3(){
+            document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
+            document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
+        },
+    openwindow(){
+       document.getElementById("jumpwindow2").setAttribute("style","height:650px;transition: all 0.5s;opacity:1")
+            document.getElementById("shadow").setAttribute("style","height:650px;transition: all 0.2s;opacity:1")
+    },
+     chosechange(index,item){
+           this.choseIndex = index
+           this.choseitem = item
+       },
+       chosechange1(index,item){
+           this.choseIndex1 = index
+           this.choseitem2 = item
+       },
     topagehome(){
         this.$router.push({
        name:'home',
@@ -301,6 +373,9 @@ font-size: 18px
   height: 50px;
   margin-top: 20px;
   margin-left: 30px
+}
+.shop-img img{
+  height: 90px;
 }
 .xiangqing-zuo{
   width: 55%;

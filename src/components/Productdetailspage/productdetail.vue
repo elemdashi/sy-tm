@@ -290,7 +290,6 @@ export default {
     created(){
         console.log(this.$store.state.promsg)
         console.log(JSON.parse(localStorage.getItem("item")))
-        // this.detaillist=[]
         this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
         console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
@@ -319,6 +318,7 @@ export default {
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
+
         huoqu(){
        this.$store.commit("item")
        console.log(this.$store.state.promsg)
@@ -371,6 +371,11 @@ export default {
             console.log(this.detaillist)
             console.log(this.detaillist[1].count)
             console.log(this.$store.state.shopcar)
+              this.$message({
+            message:'加入购物车成功',
+            type:'success',
+            duration:'500'
+        });
              if(this.detaillist[1].count==0){
                  this.$store.state.shopcar.push(this.detaillist[1])
 
