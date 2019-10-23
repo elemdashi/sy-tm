@@ -366,7 +366,6 @@ export default {
                     }
 		})
         document.getElementById("detail").addEventListener('scroll', this.handleScroll,true)
-        // window.addEventListener('scroll', this.handleScroll,true)
     },
     methods:{
 

@@ -235,7 +235,6 @@ export default {
                   temp.count=1
                }
                this.money.splice(indx,1,temp)
-              //  this.money[indx].count--
       }else{
         console.log("3")
         
