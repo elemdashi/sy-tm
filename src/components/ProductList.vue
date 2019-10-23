@@ -309,7 +309,8 @@ export default {
   height: 30px;
   font-size: 30px;
   text-align: center;
- margin-top: 10px
+ margin-top: 20px;
+ padding-top: 7px
 }
 .product-sousuo {
   width: 75%;
