@@ -205,6 +205,7 @@ export default {
                }else{
                   this. shopcarone.splice(index,1)
                }
+               localStorage.setItem("shop",shopcarone)
               
        },
        checkall(){

@@ -1,4 +1,6 @@
 <template>
+<div>
+    
     <div class="detail" id="detail">
         <!------- 滚动隐藏顶部导航栏 -------->
         <div class="detail-top-bar" id="topbar">
@@ -24,13 +26,8 @@
         <div id="content" >
             <div class="product-dec-swiper"  id="product">
                 <!------------------- 商品主图详情轮播 ---------------------->
-                 <div class="swiper-container">
-                    <div class="swiper-wrapper" v-if="this.detaillist.length==2">
-                        <div class="swiper-slide" v-for="(item,index) in detaillist[1].xiangqing" :key="index" ><img :src="item"></div>
-                       
-                
-                    </div>
-                     <div class="swiper-wrapper"  v-else>
+                 
+                     <div class="swiper-wrapper"  >
                         
                         <div class="swiper-slide" v-for="(item,index) in detaillist[0].xiangqing" :key="index"><img :src="item"></div>
                     </div>
@@ -42,25 +39,25 @@
             <!----------- 商品价格和名称 ----------------->
             <div class="price-product-dec">
                 <div class="real-price">
-                    <label v-if="this.detaillist.length==2"><i>￥</i>{{detaillist[1].money}}</label>
-                     <label v-else><i>￥</i>{{detaillist[0].money}}</label>
+                    <!-- <label v-if="this.detaillist.length==2"><i>￥</i>{{detaillist[1].money}}</label> -->
+                     <label><i>￥</i>{{detaillist[0].money}}</label>
                     <span class="icon-text">爆款特卖</span>
                     <span class="icon-text">淘金币抵2%</span>
                 </div>
                 <div class="price">
-                    <span class="small" v-if="this.detaillist.length==2">价格：<del>￥{{detaillist[1].delmoney}}</del></span>
-                     <span class="small" v-else>价格：<del>￥{{detaillist[0].delmoney}}</del></span>
+                    <!-- <span class="small" v-if="this.detaillist.length==2">价格：<del>￥{{detaillist[1].delmoney}}</del></span> -->
+                     <span class="small" >价格：<del>￥{{detaillist[0].delmoney}}</del></span>
                 </div>
                 <div class="dec">
-                    <span v-if="this.detaillist.length==2">{{detaillist[1].fullname}}</span>
-                     <span v-else>{{detaillist[0].fullname}}</span>
+                    <!-- <span v-if="this.detaillist.length==2">{{detaillist[1].fullname}}</span> -->
+                     <span >{{detaillist[0].fullname}}</span>
                 </div>
                 <div class="express">
                     <span class="small">快递：0.00</span>
-                    <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].much}}</span>
-                    <span class="small" v-else>{{detaillist[0].much}}</span>
-                    <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].address}}</span>
-                     <span class="small" v-else>{{detaillist[0].address}}</span>
+                    <!-- <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].much}}</span> -->
+                    <span class="small">{{detaillist[0].much}}</span>
+                    <!-- <span class="small" v-if="this.detaillist.length==2">{{detaillist[1].address}}</span> -->
+                     <span class="small" >{{detaillist[0].address}}</span>
                 </div>
             </div>
             <!-- 商品促销和服务 -->
@@ -130,17 +127,17 @@
             <!-- 店铺名称 -->
             <div class="module-shop">
                 <div class="shop-main">
-                    <div class="shop-logo" v-if="this.detaillist.length==2">
+                    <!-- <div class="shop-logo" v-if="this.detaillist.length==2">
                         <img :src="detaillist[1].shoplogo" alt="">
-                    </div>
-                     <div class="shop-logo" v-else>
+                    </div> -->
+                     <div class="shop-logo" >
                         <img :src="detaillist[0].shoplogo" alt="">
                     </div>
                     <div class="shop-info">
-                        <div class="shop-name" v-if="this.detaillist.length==2">
+                        <!-- <div class="shop-name" v-if="this.detaillist.length==2">
                             {{detaillist[1].dian}}
-                        </div>
-                        <div class="shop-name" v-else>
+                        </div> -->
+                        <div class="shop-name" >
                             {{detaillist[0].dian}}
                         </div>
                         <div class="shop-title">
@@ -150,12 +147,12 @@
                 </div>
 
                 <div class="score">
-                    <span v-if="this.detaillist.length==2">宝贝描述<b>{{detaillist[1].miaoshu}}</b><img src="/下降.png" alt=""></span>
-                    <span v-else>宝贝描述<b>{{detaillist[0].miaoshu}}</b><img src="/下降.png" alt=""></span>
-                    <span v-if="this.detaillist.length==2">卖家服务<b>{{detaillist[1].wuliu}}</b><img src="/持平.png" alt=""></span>
-                    <span v-else>卖家服务<b>{{detaillist[0].wuliu}}</b><img src="/持平.png" alt=""></span>
-                    <span v-if="this.detaillist.length==2">物流服务<b>{{detaillist[1].fuwu}}</b><img src="/下降.png" alt=""></span>
-                    <span v-else>物流服务<b>{{detaillist[0].fuwu}}</b><img src="/下降.png" alt=""></span>
+                    <!-- <span v-if="this.detaillist.length==2">宝贝描述<b>{{detaillist[1].miaoshu}}</b><img src="/下降.png" alt=""></span> -->
+                    <span >宝贝描述<b>{{detaillist[0].miaoshu}}</b><img src="/下降.png" alt=""></span>
+                    <!-- <span v-if="this.detaillist.length==2">卖家服务<b>{{detaillist[1].wuliu}}</b><img src="/持平.png" alt=""></span> -->
+                    <span >卖家服务<b>{{detaillist[0].wuliu}}</b><img src="/持平.png" alt=""></span>
+                    <!-- <span v-if="this.detaillist.length==2">物流服务<b>{{detaillist[1].fuwu}}</b><img src="/下降.png" alt=""></span> -->
+                    <span >物流服务<b>{{detaillist[0].fuwu}}</b><img src="/下降.png" alt=""></span>
                 </div>
 
                 <div class="actionenter">
@@ -265,22 +262,22 @@
         </div>
 
         <div class="test" id="prodetail">
-            <img v-lazy="detaillist[1].longimg1" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg1" alt="" v-else>
-            <img v-lazy="detaillist[1].longimg2" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg2" alt="" v-else>
-            <img v-lazy="detaillist[1].longimg3" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg3" alt="" v-else>
-            <img v-lazy="detaillist[1].longimg4" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg4" alt="" v-else>
-             <img v-lazy="detaillist[1].longimg5" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg5" alt="" v-else>
-             <img v-lazy="detaillist[1].longimg6" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg6" alt="" v-else>
-             <img v-lazy="detaillist[1].longimg7" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg7" alt="" v-else>
-            <img v-lazy="detaillist[1].longimg8" alt="" v-if="this.detaillist.length==2">
-            <img v-lazy="detaillist[0].longimg8" alt="" v-else>
+            <!-- <img v-lazy="detaillist[1].longimg1" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg1" alt="" >
+            <!-- <img v-lazy="detaillist[1].longimg2" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg2" alt="" >
+            <!-- <img v-lazy="detaillist[1].longimg3" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg3" alt="" >
+            <!-- <img v-lazy="detaillist[1].longimg4" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg4" alt="" >
+             <!-- <img v-lazy="detaillist[1].longimg5" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg5" alt="">
+             <!-- <img v-lazy="detaillist[1].longimg6" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg6" alt="" >
+             <!-- <img v-lazy="detaillist[1].longimg7" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg7" alt="" >
+            <!-- <img v-lazy="detaillist[1].longimg8" alt="" v-if="this.detaillist.length==2"> -->
+            <img v-lazy="detaillist[0].longimg8" alt="" >
         </div>
 
         <!----------  底部固定操作栏/加入购物车   ------------>
@@ -314,11 +311,13 @@
 
         
     </div>
+
 </template>
 <script>
 import Vue from 'vue'
 import Swiper from 'swiper'
 import { Popup } from 'mint-ui'
+import zhuan from '../zhuan.js'
 
 Vue.component(Popup.name, Popup);
 export default {
@@ -336,20 +335,55 @@ export default {
             imglist:[],
             drawer: false,
             direction: 'rtl',
-            tag:"false"
+            tag:"false",
+            shopp:[]
         }
     },
+    computed: {
+        // detaillist:function(){
+        //  return this.$store.getters.dis
+        // }
+    },
     created(){
-        this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
-        console.log(this.$store.state.promsg)
+        this.detaillist=[]
+        if(localStorage.getItem('shop')){
+             this.shopp=JSON.parse(localStorage.getItem('shop'))
+        }
+       
+        console.log(this.shopp)
+    //     window.addEventListener('beforeunload', e => {
+    //         console.log("111")
+    //     this.detaillist.push(JSON.parse (localStorage.getItem('item')));
+    //    });
+         
+
+        console.log(this.$store.state.distone)
+        let that=this
+        zhuan.$on('item',function(item){
+            console.log(item)
+               that.detaillist.push(item)
+              
+        })
+        if (this.detaillist.length==0) {
+            this.$store.commit('shuaxing')
+            console.log(this.$store.state.distone)
+            
+            // this.detaillist.push(JSON.parse (localStorage.getItem('item')));
+            this.detaillist.push(this.$store.state.distone)
+        }
+       
+        // this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
+        // console.log(this.$store.state.promsg)
          if(localStorage.getItem("log")=="true"){
         this.tag=localStorage.getItem("log")
     }
-    console.log(localStorage.getItem("log"))
-     this.detaillist=this.$store.state.promsg
-     console.log(this.detaillist)
+    console.log(this.$store.state.promsg)
+    // console.log(localStorage.getItem("log"))
+    
+    //  console.log(this.detaillist)
     },
     mounted(){
+        console.log(this.detaillist)
          console.log(JSON.parse(localStorage.getItem("item")))
         var mySwiper = new Swiper('.swiper-container', {
 			autoplay: true,//可选选项，自动滑动
@@ -413,38 +447,79 @@ export default {
             document.getElementById("jumpwindow").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
         },
+
+        bianli(){
+             for(var k=0 ;k<this.shopp.length;k++){
+                 if(this.shopp.length!=0){
+                      if(this.detaillist[0].id==this.shopp[k].id){
+                      return true
+                  }
+                 }
+                  
+               
+            }
+            
+        },
         cancelwindow2(){
+             console.log(this.$store.getters.dis)
+            console.log(this.$store.state.promsg)
             document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
             console.log("加入购物车了")
-            console.log("加入的商品是" + this.$store.state.promsg[1].name)
+            // console.log("加入的商品是" + this.$store.state.promsg[1].name)
             console.log(this.detaillist)
-            console.log(this.detaillist[1].count)
+           
             console.log(this.$store.state.shopcar)
               this.$message({
             message:'加入购物车成功',
             type:'success',
             duration:'500'
         });
-             if(this.detaillist[1].count==0){
-                 this.$store.state.shopcar.push(this.detaillist[1])
-
-                  this.detaillist[1].count++
-                  let shopjson=JSON.stringify(this.$store.state.shopcar)
+                
+     
+              if(this.shopp.length==0){
+                   this.detaillist[0].count++
+                this.shopp.push(this.detaillist[0])
+                 let shopjson=JSON.stringify(this.shopp)
                   localStorage.setItem("shop",shopjson)
-            }else{
-                this.detaillist[1].count++
-                 let shopjson=JSON.stringify(this.$store.state.shopcar)
-                  localStorage.setItem("shop",shopjson)
+              } else{
+                  if(this.bianli()){
+                  for(var k=0 ;k<this.shopp.length;k++){
+                  if(this.detaillist[0].id==this.shopp[k].id){
+                     this.shopp[k].count++
+                  }
+               
             }
+                   let shopjson=JSON.stringify(this.shopp)
+                  localStorage.setItem("shop",shopjson)
+
+                //  this.$store.state.shopcar.push(this.detaillist[0])
+
+                //   this.detaillist[0].count++
+                //   let shopjson=JSON.stringify(this.$store.state.shopcar)
+                //   localStorage.setItem("shop",shopjson)
+            }else{
+                this.detaillist[0].count++
+                this.shopp.push(this.detaillist[0])
+                 let shopjson=JSON.stringify(this.shopp)
+                  localStorage.setItem("shop",shopjson)
+                // this.detaillist[0].count++
+                //  let shopjson=JSON.stringify(this.$store.state.shopcar)
+                //   localStorage.setItem("shop",shopjson)
+            }
+
+              }
+
+
+             
         },
         cancelwindow3(){
             document.getElementById("jumpwindow2").setAttribute("style","height:0px;transition: all 0.5s;opacity:0")
             document.getElementById("shadow").setAttribute("style","height:0px;transition: all 0.2s;opacity:0")
         },
         handleScroll(){
-            console.log("滚动了")
-            console.log(window.scrollY)
+            // console.log("滚动了")
+            // console.log(window.scrollY)
             // let scroll =  window.scrollY
             let scroll =  document.getElementById("detail").scrollTop
             if (scroll < 50){

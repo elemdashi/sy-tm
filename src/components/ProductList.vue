@@ -111,15 +111,16 @@
 
             <div class="product-xia">
               
-              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" @click="itemname(item)">
-                 <router-link to="/detail" tag="div" >
+              <div class="product-kuai" v-for="(item,index) in shangpinglist.nanzhuang" :key="index" >
+               <div   @click="itemname(item)">
+
                 <div class="product-img" >
                       <img :src="item.url" alt="" style="height:100%;width:100%">
                 </div>
                 <div class="product-name">
                   {{item.name}}
                 </div>
-                </router-link>
+               </div>
                 <div class="product-kuai-xia">
                   <div class="product-dollor">
                     ￥&nbsp;{{item.money}}
@@ -186,6 +187,7 @@
 <script>
 import Vue from 'vue'
 import axios  from 'axios'
+import zhuan from './zhuan.js'
 // Vue.use(axios)
 Vue.prototype.$ajax = axios
 export default {
@@ -210,30 +212,48 @@ export default {
       ],
       leibie:["男装","男T恤","运动服","女士内衣","时尚女鞋","精品男装"],
       dianpu:["旗舰店","专卖店" ,"专营店"],
-      leixing:["通用排序","公益宝贝"]
-       
+      leixing:["通用排序","公益宝贝"],
+       xinxi:[]
     }
   },
-  created(){
   
+  created(){
+  console.log(this.$store.state.distone)
     this.$store.state.promsg=[]
     this.getData()
       console.log(this.$store.state.promsg)
   },
+ destroyed(){
+   
+  },
   methods: {
    
     
-
+    
     itemname(item){
+console.log('111')
+      zhuan.$emit('item',item)
+     this.$store.commit('zhi',item)
+      var json=JSON.stringify(item)
    
-    console.log(this.$store.state.promsg)
-      if(this.$store.state.promsg.length==1){
-          
-          var json=JSON.stringify(item)
           localStorage.setItem("item",json)
-          this.$store.state.promsg.push(JSON.parse(localStorage.getItem("item")))
-         console.log(JSON.parse(localStorage.getItem("item")).name) 
-      }
+
+
+          this.$router.push({
+        name:'detail',
+      })
+  //         this.$store.state.promsg=item
+  //           console.log(this.$store.state.promsg)
+   
+      // if(this.$store.state.promsg.length==1){
+          
+          // var json=JSON.stringify(item)
+          // localStorage.setItem("item",json)
+          // this.$store.state.promsg=item
+          //   console.log(this.$store.state.promsg)
+          // this.$store.state.promsg=JSON.parse(localStorage.getItem("item"))
+      //    console.log(JSON.parse(localStorage.getItem("item")).name) 
+      // }
     },
     huitui() {
          this.$router.push({

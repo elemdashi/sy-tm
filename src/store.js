@@ -10,10 +10,32 @@ export default new Vuex.Store({
        shopcar:[],
        zong:0,
        alerady:[],
-       promsg:[]
+       promsg:[],
+       dist:[],
+       item:[],
+       distone:[]
+
+
   },
-  
+  getters:{
+
+      dis:function(state){
+        
+        return state.promsg
+      },
+      disone:function(state){
+        return state.disone
+      }
+
+  },
   mutations: {
+    zhi( state,item){
+      state.distone=[]
+        state.distone.push(item)
+    },
+       shuaxing(state){
+      state.distone=JSON.parse(localStorage.getItem('item'))
+       }
         // item(state){
         //   state.promsg=[]
         //   state.promsg.push(JSON.parse(localStorage.getItem("item")) )
